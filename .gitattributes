@@ -1,1 +1,10 @@
 * text=auto !eol
+/LICENSE -text
+/NOTICE -text
+feed-cms-addon/src/main/resources/feed.cnd -text
+src/site/resources/screenshots/add-rss-feed-small.png -text svneol=unset#image/png
+src/site/resources/screenshots/add-rss-feed.png -text svneol=unset#image/png
+src/site/resources/screenshots/edit-rss-feed-small.png -text svneol=unset#image/png
+src/site/resources/screenshots/edit-rss-feed.png -text svneol=unset#image/png
+src/site/resources/screenshots/rss-feed-in-browser-small.png -text svneol=unset#image/png
+src/site/resources/screenshots/rss-feed-in-browser.png -text svneol=unset#image/png

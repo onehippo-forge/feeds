@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<!--
+    Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+
+    Licensed under the Apache License, Version 2.0 (the  "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<document>
+    <properties>
+        <title>Usage Instructions</title>
+    </properties>
+    <body>
+        <section name="Usage">
+            <subsection name="Create some documents">
+
+                <p>
+                    You need some documents to include in your RSS feed. The CMS addon includes
+                    a sample document type that you can use (RSS item), but you can use
+                    any document type as long as it has at least a title field and a date field.
+                </p>
+
+                <ol>
+                    <li><p>Open the CMS in your browser.</p></li>
+
+                    <li><p>Under Documents, create a new folder called 'news'.</p></li>
+
+                    <li><p>In the folder 'news', create some documents of type 'RSS item', and fill them with dummy text.</p></li>
+                </ol>
+
+            </subsection>
+
+            <subsection name="Create an RSS feed">
+
+                <p>
+                    Creating an RSS feed is no different from creating a document of any other type.
+                    Within the document, you define some meta data like the feed's title and description,
+                    and which documents to include. This is done by specifying a folder, and one or
+                    more document types. The feed will show all documents of those types in that folder.
+                </p>
+
+                <ol>
+                    <li><p>Under Documents, create a folder 'feeds'</p></li>
+
+                    <li>
+                        <p>
+                            In the folder 'feeds', create a document 'news' of type 'RSS feed'.
+                        </p>
+                        <p>
+                            <a href="screenshots/add-rss-feed.png">
+                                <img src="screenshots/add-rss-feed-small.png" alt="Screenshot 'Add new document'" />
+                            </a>
+                        </p>
+                    </li>
+
+                    <li><p>Fill in the rssfeed template's fields (title, description, ...).</p></li>
+
+                    <li>
+                        <p>In the field 'folder' enter 'news'.</p>
+                    </li>
+
+                    <li>
+                        <p>In the field 'document type' enter 'rss:samplerssitem'.</p>
+                        <p>
+                            <a href="screenshots/edit-rss-feed.png">
+                                <img src="screenshots/edit-rss-feed-small.png" alt="Screenshot 'Configure RSS feed'"/>
+                            </a>
+                        </p>
+                    </li>
+
+                </ol>
+
+
+
+            </subsection>
+
+            <subsection name="Website configuration">
+
+                <p>
+                    Finally, you need to configure your website to display the feed.
+                    You need to define a component, a template, and a sitemap item.
+                    If you exactly followed the above instructions, you can use the provided
+                    XML files and import them in the CMS Console.
+                </p>
+
+                <ol>
+                    <li><p>Open the CMS Console.</p></li>
+
+                    <li>
+                        <p>
+                            Under <i>hst:configuration/hst:configuration/hst:sitemap</i>,
+                            import <a href="downloads/hst-configuration/sitemapitem.xml">sitemapitem.xml</a>.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            Under <i>hst:configuration/hst:configuration/hst:components</i>,
+                            import <a href="downloads/hst-configuration/component.xml">component.xml</a>.
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            Under <i>hst:configuration/hst:configuration/hst:templates</i>,
+                            import <a href="downloads/hst-configuration/template.xml">template.xml</a>.
+                        </p>
+                    </li>
+                </ol>
+
+            </subsection>
+
+            <subsection name="Admire the result">
+                <p>
+                    Open your site in your browser, and check out your rss feed!
+                    (http://[YOURDOMAIN]/site/preview/rss)
+                </p>
+                <p>
+                    <a href="screenshots/rss-feed-in-browser.png">
+                        <img src="screenshots/rss-feed-in-browser-small.png" alt="Screenshot 'RSS feed'"/>
+                    </a>
+                </p>
+            </subsection>
+
+
+        </section>
+    </body>
+</document>
