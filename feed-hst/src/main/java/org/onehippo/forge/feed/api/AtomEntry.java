@@ -7,14 +7,14 @@ import java.util.Calendar;
  */
 public interface AtomEntry {
 
-    public String getTitle();
+    public String getTitleAsAtomEntry();
 
-    public Calendar getUpdated();
+    public Calendar getUpdatedAsAtomEntry();
 
-    public String[] getAuthor();
+    public String[] getAuthorsAsAtomEntry();
 
-    public Object getContent();
+    public Object getContentAsAtomEntry();
 
-    public Object getSummary();
+    public Object getSummaryAsAtomEntry();
 
 }

@@ -33,12 +33,9 @@ import javax.ws.rs.core.UriInfo;
 import com.sun.syndication.feed.atom.Content;
 import com.sun.syndication.feed.atom.Entry;
 import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.io.WireFeedOutput;
 
 import org.apache.commons.io.IOUtils;
-import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.content.beans.manager.ObjectConverter;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -152,8 +149,8 @@ public class AtomFeedResource extends AbstractContentResource {
                     final AtomEntry atomEntry = (AtomEntry) bean;
                     final Entry entry = ConversionUtil.covertAtomEntryToEntry(atomEntry);
 
-                    Content content = new ResourceContent(atomEntry.getContent(), requestContext);
-                    Content summary = new ResourceContent(atomEntry.getSummary(), requestContext);
+                    Content content = new ResourceContent(atomEntry.getContentAsAtomEntry(), requestContext);
+                    Content summary = new ResourceContent(atomEntry.getSummaryAsAtomEntry(), requestContext);
 
                     entry.setContents(Arrays.asList(new Content[]{content}));
                     entry.setSummary(summary);

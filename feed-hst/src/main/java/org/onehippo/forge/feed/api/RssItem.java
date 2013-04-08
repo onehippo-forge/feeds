@@ -24,10 +24,10 @@ import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
  */
 public interface RssItem extends HippoDocumentBean {
 
-    public String getTitle();
+    public String getTitleAsRssItem();
 
-    public Object getDescription();
+    public Object getDescriptionAsRssItem();
 
-    public Calendar getPublicationDate();
+    public Calendar getPublicationDateAsRssItem();
 
 }

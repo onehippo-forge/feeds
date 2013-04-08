@@ -154,11 +154,11 @@ public class GenericFeedResource extends AbstractContentResource {
                     final GenericEntry item = (GenericEntry) bean;
                     SyndEntry syndEntry = ConversionUtil.convertGenericEntryToSyndEntry(item);
 
-                    final Object description = item.getDescription();
+                    final Object description = item.getDescriptionAsGenericFeedEntry();
 
                     SyndContent content = new SyndContentImpl();
                     if (description instanceof String) {
-                        content.setValue((String) item.getDescription());
+                        content.setValue((String) item.getDescriptionAsGenericFeedEntry());
                         syndEntry.setDescription(content);
                     } else if (description instanceof HippoHtml) {
                         final HippoHtml hippoHtml = (HippoHtml) description;

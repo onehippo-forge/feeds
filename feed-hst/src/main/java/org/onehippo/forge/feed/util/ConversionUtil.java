@@ -1,6 +1,5 @@
 package org.onehippo.forge.feed.util;
 
-import java.util.Arrays;
 import java.util.Calendar;
 
 import com.sun.syndication.feed.atom.Content;
@@ -34,7 +33,7 @@ public class ConversionUtil {
         feed.setFeedType(descriptor.getType());
         feed.setTitle(descriptor.getTitle());
         feed.setDescription(descriptor.getDescription());
-       // feed.setAuthors(Arrays.asList(descriptor.getAuthor()));
+       // feed.setAuthors(Arrays.asList(descriptor.getAuthorsAsAtomEntry()));
         feed.setPublishedDate(descriptor.getPublicationDate().getTime());
         feed.setLanguage(descriptor.getLanguage());
         //feed.setContributors(Arrays.asList(descriptor.getContributors()));
@@ -52,7 +51,7 @@ public class ConversionUtil {
         channel.setLanguage(descriptor.getLanguage());
         channel.setManagingEditor(descriptor.getManagingEditor());
         channel.setWebMaster(descriptor.getWebMaster());
-//        channel.setCategories(Arrays.asList(descriptor.getCategory()));    todo
+//        channel.setCategories(Arrays.asList(descriptor.getCategoriesAsGenericFeedEntry()));    todo
         channel.setGenerator(descriptor.getGenerator());
         channel.setCopyright(descriptor.getCopyright());
 
@@ -62,7 +61,7 @@ public class ConversionUtil {
     public static Feed convertAtomDescriptorToFeed(final Atom10FeedDescriptor descriptor) {
         Feed feed = new Feed("atom_1.0");
         feed.setTitle(descriptor.getTitle());
-       // feed.setAuthors(Arrays.asList(descriptor.getAuthor()));
+       // feed.setAuthors(Arrays.asList(descriptor.getAuthorsAsAtomEntry()));
         Content content = new Content();
         content.setValue(descriptor.getSubtitle());
         feed.setSubtitle(content);
@@ -80,25 +79,25 @@ public class ConversionUtil {
 
     public static SyndEntry convertGenericEntryToSyndEntry(final GenericEntry entry) {
         SyndEntry syndEntry = new SyndEntryImpl();
-        syndEntry.setTitle(entry.getTitle());
-        final Calendar publishedDate = entry.getPublishedDate();
+        syndEntry.setTitle(entry.getTitleAsGenericFeedEntry());
+        final Calendar publishedDate = entry.getPublishedDateAsGenericFeedEntry();
         if (publishedDate != null) {
             syndEntry.setPublishedDate(publishedDate.getTime());
         }
-        final Calendar updatedDate = entry.getUpdatedDate();
+        final Calendar updatedDate = entry.getUpdatedDateAsGenericFeedEntry();
         if (updatedDate != null) {
             syndEntry.setUpdatedDate(updatedDate.getTime());
         }
-        //syndEntry.setAuthors(Arrays.asList(entry.getAuthor()));
-        //syndEntry.setContributors(Arrays.asList(entry.getContributor()));
-        //syndEntry.setCategories(Arrays.asList(entry.getCategory()));
+        //syndEntry.setAuthors(Arrays.asList(entry.getAuthorsAsAtomEntry()));
+        //syndEntry.setContributors(Arrays.asList(entry.getContributorsAsGenericFeedEntry()));
+        //syndEntry.setCategories(Arrays.asList(entry.getCategoriesAsGenericFeedEntry()));
         return syndEntry;
     }
 
     public static Item covertRssItemToItem(final RssItem rssItem) {
         Item item = new Item();
-        item.setTitle(rssItem.getTitle());
-        final Calendar publicationDate = rssItem.getPublicationDate();
+        item.setTitle(rssItem.getTitleAsRssItem());
+        final Calendar publicationDate = rssItem.getPublicationDateAsRssItem();
         if (publicationDate != null) {
             item.setPubDate(publicationDate.getTime());
         }
@@ -107,8 +106,8 @@ public class ConversionUtil {
 
     public static Entry covertAtomEntryToEntry(final AtomEntry atomEntry) {
         Entry entry = new Entry();
-        entry.setTitle(atomEntry.getTitle());
-        entry.setUpdated(atomEntry.getUpdated().getTime());
+        entry.setTitle(atomEntry.getTitleAsAtomEntry());
+        entry.setUpdated(atomEntry.getUpdatedAsAtomEntry().getTime());
         return entry;
     }
 

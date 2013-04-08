@@ -7,21 +7,21 @@ import java.util.Calendar;
  */
 public interface GenericEntry {
 
-    public String getTitle();
+    public String getTitleAsGenericFeedEntry();
 
-    public Object getDescription();
+    public Object getDescriptionAsGenericFeedEntry();
 
-    public Calendar getPublishedDate();
+    public Calendar getPublishedDateAsGenericFeedEntry();
 
-    public Calendar getUpdatedDate();
+    public Calendar getUpdatedDateAsGenericFeedEntry();
 
-    public String[] getAuthor();
+    public String[] getAuthorsAsGenericFeedEntry();
 
-    public String[] getContributor();
+    public String[] getContributorsAsGenericFeedEntry();
 
-    public String[] getCategory();
+    public String[] getCategoriesAsGenericFeedEntry();
 
-    public String getSource();
+    public String getSourceAsGenericFeedEntry();
 
 
 }

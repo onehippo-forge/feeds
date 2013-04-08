@@ -35,7 +35,6 @@ import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.io.WireFeedOutput;
 
 import org.apache.commons.io.IOUtils;
-import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.content.beans.manager.ObjectConverter;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -148,11 +147,11 @@ public class RssFeedResource extends AbstractContentResource {
                     final RssItem rssItem = (RssItem) bean;
                     final Item item = ConversionUtil.covertRssItemToItem(rssItem);
 
-                    final Object description = rssItem.getDescription();
+                    final Object description = rssItem.getDescriptionAsRssItem();
 
                     Description content = new Description();
                     if (description instanceof String) {
-                        content.setValue((String) rssItem.getDescription());
+                        content.setValue((String) rssItem.getDescriptionAsRssItem());
                         item.setDescription(content);
                     } else if (description instanceof HippoHtml) {
                         final HippoHtml hippoHtml = (HippoHtml) description;
