@@ -74,7 +74,7 @@
 <annotated-class>org.onehiprss2forge.rss.beans.SampleRSSItem</annotated-class>
 <annotated-class>org.onehippo.forge.feed.beans.RSSFeedDescriptor</annotated-class>
                         ]]>
-                        ]]>]]>]]></source>
+                        </source>
                         <p><b>..or</b>, when using automatic scanning in HST 2.20 and up, set this context parameter in web.xml:</p>
                       <source>
                           <![CDATA[
