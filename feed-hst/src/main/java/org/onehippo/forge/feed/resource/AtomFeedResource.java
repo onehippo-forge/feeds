@@ -92,12 +92,10 @@ public class AtomFeedResource extends AbstractContentResource {
                 return null;
             }
 
-            final Mount mount = requestContext.getResolvedMount().getMount();
-            final String mountSite = mount.getProperty(HST_FEEDSITE);
             FeedDescriptor<Feed> document = (FeedDescriptor) contentBean;
 
             final Feed atomFeed = document.convert();
-            atomFeed.setId(createLinkByPath(requestContext, mountSite, "/"));
+            atomFeed.setId(createLinkByPath(requestContext, "/"));
 
             // prevent NPE from auto-deboxing
             if (document.getItemCount() != null) {
@@ -154,13 +152,13 @@ public class AtomFeedResource extends AbstractContentResource {
                     final AtomEntry atomEntry = (AtomEntry) bean;
                     final Entry entry = ConversionUtil.covertAtomEntryToEntry(atomEntry);
 
-                    Content content = new ResourceContent(atomEntry.getContent(), requestContext, mountSite);
-                    Content summary = new ResourceContent(atomEntry.getSummary(), requestContext, mountSite);
+                    Content content = new ResourceContent(atomEntry.getContent(), requestContext);
+                    Content summary = new ResourceContent(atomEntry.getSummary(), requestContext);
 
                     entry.setContents(Arrays.asList(new Content[]{content}));
                     entry.setSummary(summary);
 
-                    entry.setId(getLinkByBean(requestContext, mountSite, bean));
+                    entry.setId(getLinkByBean(requestContext, bean));
                     if (modifier != null) {
                         modifier.modifyEntry(entry, bean);
                     }
@@ -187,7 +185,7 @@ public class AtomFeedResource extends AbstractContentResource {
 
 
     private class ResourceContent extends Content {
-        private ResourceContent(Object o, HstRequestContext requestContext, String mountSite) {
+        private ResourceContent(Object o, HstRequestContext requestContext) {
             if (o instanceof String) {
                 setValue((String) o);
             } else if (o instanceof HippoHtml) {
@@ -197,20 +195,20 @@ public class AtomFeedResource extends AbstractContentResource {
                     contentRewriter = new SimpleContentRewriter();
                     contentRewriter.setFullyQualifiedLinks(true);
                 }
-                String rewrittenHtml = contentRewriter.rewrite(hippoHtml.getContent(), hippoHtml.getNode(), requestContext, mountSite);
+                String rewrittenHtml = contentRewriter.rewrite(hippoHtml.getContent(), hippoHtml.getNode(), requestContext);
                 setValue(rewrittenHtml);
             }
         }
     }
 
-    private String getLinkByBean(final HstRequestContext requestContext, final String mountSite, final HippoBean bean) {
-        final HstLink hstLink = requestContext.getHstLinkCreator().create(bean.getNode(), requestContext, mountSite);
+    private String getLinkByBean(final HstRequestContext requestContext ,final HippoBean bean) {
+        final HstLink hstLink = requestContext.getHstLinkCreator().create(bean, requestContext);
         return hstLink.toUrlForm(requestContext, true);
     }
 
-    private String createLinkByPath(final HstRequestContext requestContext, final String mountSite, final String path) {
+    private String createLinkByPath(final HstRequestContext requestContext, final String path) {
         final HstLinkCreator hstLinkCreator = requestContext.getHstLinkCreator();
-        final HstLink hstChannelLink = hstLinkCreator.create(path, requestContext.getMount(mountSite));
+        final HstLink hstChannelLink = hstLinkCreator.create(path, requestContext.getResolvedMount().getMount());
         return hstChannelLink.toUrlForm(requestContext, true);
     }
 

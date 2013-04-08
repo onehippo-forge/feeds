@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" sv:name="feed">
+  <sv:property sv:name="jcr:primaryType" sv:type="Name">
+    <sv:value>hst:sitemapitem</sv:value>
+  </sv:property>
+  <sv:property sv:name="jcr:uuid" sv:type="String">
+    <sv:value>f9f0ac56-1bf7-4e77-9cee-abf2513ff940</sv:value>
+  </sv:property>
+  <sv:property sv:name="hst:namedpipeline" sv:type="String">
+    <sv:value>JaxrsRestFeedPipeline</sv:value>
+  </sv:property>
+  <sv:node sv:name="rss">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hst:sitemapitem</sv:value>
+    </sv:property>
+    <sv:property sv:name="jcr:uuid" sv:type="String">
+      <sv:value>fcd6384e-b273-4227-8a14-73aa03fe3c19</sv:value>
+    </sv:property>
+    <sv:property sv:name="hst:namedpipeline" sv:type="String">
+      <sv:value>JaxrsRestFeedPipeline</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="atom">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hst:sitemapitem</sv:value>
+    </sv:property>
+    <sv:property sv:name="jcr:uuid" sv:type="String">
+      <sv:value>fd2a9c7e-14c1-489e-8b75-25724ea63ff9</sv:value>
+    </sv:property>
+    <sv:property sv:name="hst:namedpipeline" sv:type="String">
+      <sv:value>JaxrsRestFeedPipeline</sv:value>
+    </sv:property>
+  </sv:node>
+  <sv:node sv:name="generic">
+    <sv:property sv:name="jcr:primaryType" sv:type="Name">
+      <sv:value>hst:sitemapitem</sv:value>
+    </sv:property>
+    <sv:property sv:name="jcr:uuid" sv:type="String">
+      <sv:value>6d4e2571-d994-4d51-bc3e-dd39bec8f0ef</sv:value>
+    </sv:property>
+    <sv:property sv:name="hst:namedpipeline" sv:type="String">
+      <sv:value>JaxrsRestFeedPipeline</sv:value>
+    </sv:property>
+  </sv:node>
+</sv:node>

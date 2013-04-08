@@ -29,8 +29,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -39,7 +37,6 @@ import com.sun.syndication.io.SyndFeedOutput;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.hippoecm.hst.configuration.hosting.Mount;
 import org.hippoecm.hst.content.beans.manager.ObjectConverter;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -59,7 +56,6 @@ import org.hippoecm.hst.jaxrs.services.content.AbstractContentResource;
 import org.onehippo.forge.feed.api.FeedDescriptor;
 import org.onehippo.forge.feed.api.GenericEntry;
 import org.onehippo.forge.feed.api.Modifier;
-import org.onehippo.forge.feed.beans.GenericFeedDescriptor;
 import org.onehippo.forge.feed.util.ConversionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,16 +90,14 @@ public class GenericFeedResource extends AbstractContentResource {
                 return null;
             }
 
-            final Mount mount = requestContext.getResolvedMount().getMount();
-            final String mountSite = mount.getProperty(HST_FEEDSITE);
             FeedDescriptor<SyndFeed> document = (FeedDescriptor) contentBean;
 
             final SyndFeed syndFeed = document.convert();
             final String type = request.getParameter("type");
-            if(StringUtils.isNotEmpty(type)){
-              syndFeed.setFeedType(type);
+            if (StringUtils.isNotEmpty(type)) {
+                syndFeed.setFeedType(type);
             }
-            syndFeed.setLink(createLinkByPath(requestContext, mountSite, "/"));
+            syndFeed.setLink(createLinkByPath(requestContext, "/"));
 
             // prevent NPE from auto-deboxing
             if (document.getItemCount() != null) {
@@ -172,11 +166,11 @@ public class GenericFeedResource extends AbstractContentResource {
                         if (contentRewriter == null) {
                             contentRewriter = new SimpleContentRewriter();
                         }
-                        String rewrittenHtml = contentRewriter.rewrite(hippoHtml.getContent(), hippoHtml.getNode(), requestContext, mountSite);
+                        String rewrittenHtml = contentRewriter.rewrite(hippoHtml.getContent(), hippoHtml.getNode(), requestContext);
                         content.setValue(rewrittenHtml);
                         syndEntry.setDescription(content);
                     }
-                    syndEntry.setLink(getLinkByBean(requestContext, mountSite, bean));
+                    syndEntry.setLink(getLinkByBean(requestContext, bean));
                     if (modifier != null) {
                         modifier.modifyEntry(syndEntry, bean);
                     }
@@ -201,14 +195,14 @@ public class GenericFeedResource extends AbstractContentResource {
         return feed;
     }
 
-    private String getLinkByBean(final HstRequestContext requestContext, final String mountSite, final HippoBean bean) {
-        final HstLink hstLink = requestContext.getHstLinkCreator().create(bean.getNode(), requestContext, mountSite);
+    private String getLinkByBean(final HstRequestContext requestContext, final HippoBean bean) {
+        final HstLink hstLink = requestContext.getHstLinkCreator().create(bean, requestContext);
         return hstLink.toUrlForm(requestContext, true);
     }
 
-    private String createLinkByPath(final HstRequestContext requestContext, final String mountSite, final String path) {
+    private String createLinkByPath(final HstRequestContext requestContext, final String path) {
         final HstLinkCreator hstLinkCreator = requestContext.getHstLinkCreator();
-        final HstLink hstChannelLink = hstLinkCreator.create(path, requestContext.getMount(mountSite));
+        final HstLink hstChannelLink = hstLinkCreator.create(path, requestContext.getResolvedMount().getMount());
         return hstChannelLink.toUrlForm(requestContext, true);
     }
 

@@ -2,6 +2,7 @@
 /LICENSE -text
 /NOTICE -text
 feed-cms-addon/src/main/resources/feed.cnd -text
+feed-cms-addon/src/main/resources/hst/feed.xml -text
 src/site/resources/screenshots/add-rss-feed-small.png -text svneol=unset#image/png
 src/site/resources/screenshots/add-rss-feed.png -text svneol=unset#image/png
 src/site/resources/screenshots/edit-rss-feed-small.png -text svneol=unset#image/png

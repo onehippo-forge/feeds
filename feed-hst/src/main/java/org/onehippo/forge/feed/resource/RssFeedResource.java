@@ -88,9 +88,6 @@ public class RssFeedResource extends AbstractContentResource {
                 log.error("Cannot find feed descriptor. Check relative content path on feed's sitemap item.");
                 return null;
             }
-
-            final Mount mount = requestContext.getResolvedMount().getMount();
-            //final String mountSite = mount.getProperty(HST_FEEDSITE);
             FeedDescriptor<Channel> document = (FeedDescriptor) contentBean;
 
             final Channel rssChannel = document.convert();
@@ -168,7 +165,7 @@ public class RssFeedResource extends AbstractContentResource {
                         content.setValue(rewrittenHtml);
                         item.setDescription(content);
                     }
-                    item.setLink(getLinkByBean(requestContext,  bean));
+                    item.setLink(getLinkByBean(requestContext, bean));
                     if (modifier != null) {
                         modifier.modifyEntry(item, bean);
                     }
@@ -193,12 +190,12 @@ public class RssFeedResource extends AbstractContentResource {
         return feed;
     }
 
-    private String getLinkByBean(final HstRequestContext requestContext,  final HippoBean bean) {
+    private String getLinkByBean(final HstRequestContext requestContext, final HippoBean bean) {
         final HstLink hstLink = requestContext.getHstLinkCreator().create(bean.getNode(), requestContext);
         return hstLink.toUrlForm(requestContext, true);
     }
 
-    private String createLinkByPath(final HstRequestContext requestContext,  final String path) {
+    private String createLinkByPath(final HstRequestContext requestContext, final String path) {
         final HstLinkCreator hstLinkCreator = requestContext.getHstLinkCreator();
         final HstLink hstChannelLink = hstLinkCreator.create(path, requestContext.getResolvedMount().getMount());
         return hstChannelLink.toUrlForm(requestContext, true);
