@@ -1,13 +1,23 @@
 package org.onehippo.forge.feed.api;
 
-import com.sun.syndication.feed.synd.SyndFeed;
+import java.util.List;
 
 /**
  * @version "$Id$"
  */
-public interface FeedDescriptor<T> {
+public interface FeedDescriptor<T, E> {
 
-    public T convert();
+  //  public T convert();
+
+    public T createSyndication();
+
+    public E createEntry();
+
+    public void set(T syndication, List<E> entries);
+
+    public String process(T syndication);
+
+    public FeedType type();
 
     public String getScope();
 

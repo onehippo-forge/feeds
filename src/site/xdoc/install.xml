@@ -28,14 +28,10 @@
         a Maven multiproject consisting of three submodules: cms, site and content.
       </p>
       <p>
-        Any document type you want to include in an RSS feed should have at least a title field
-        and a date field. The RSS Feed Creator CMS addon contains a sample document type
-        (<i>samplerssitem</i>) that you can play around with.
+        Any document type you want to include in a feed should have at least a title field
+        and a date field.
       </p>
-      <p>
-        The documents included in the RSS feed need to be mapped to a URL in the HST sitemap,
-        otherwise the links in the feed will not work.
-      </p>
+
     </section>
     <section name="Installation">
                 <ol>
@@ -44,53 +40,49 @@
                         <source>
                             <![CDATA[
 <dependency>
-  <groupId>org.onehippo.forge.rss</groupId>
-  <artifactId>rss-cms-addon</artifactId>
-  <version>${forge.rss.version}</version>
-  <type>jar</type>
-</dependency>
+      <groupId>org.onehippo.forge</groupId>
+      <artifactId>feed-cms-addon</artifactId>
+      <version>${forge.feed.version}</version>
+    </dependency>
                         ]]>
                         </source>
-                        <p>Note: before 1.03.00, the groupId was org.onehippo.addon</p>
                     </li>
                     <li>
                         <p>Add to the pom.xml of your <i>site</i> module:</p>
                         <source>
                             <![CDATA[
+
+
 <dependency>
- <groupId>org.onehippo.forge.rss</groupId>
- <artifactId>rss-hst-component</artifactId>
- <version>${forge.rss.version}</version>
+      <groupId>org.onehippo.forge</groupId>
+      <artifactId>feed-hst</artifactId>
+ <version>${forge.feed.version}</version>
  <type>jar</type>
 </dependency>
+
+ <dependency>
+      <groupId>rome</groupId>
+      <artifactId>rome</artifactId>
+      <version>1.0</version>
+    </dependency>
+
                         ]]>
                         </source>
-                        <p>Note: before 1.03.00, the groupId was org.onehippo.addon</p>
+
                     </li>
                     <li>
                         <p>In your <i>site</i> module, add to <i>src/main/webapp/WEB-INF/beans-annotated-classes.xml</i>:</p>
                         <source><![CDATA[<![CDATA[<![CDATA[
                             <![CDATA[
-<annotated-class>org.onehiprss2forge.rss.beans.SampleRSSItem</annotated-class>
-<annotated-class>org.onehippo.forge.feed.beans.RSSFeedDescriptor</annotated-class>
+<context-param>
+    <param-name>hst-beans-annotated-classes</param-name>
+    <param-value>classpath*:.......org/example/beans/**/*.class,org/onehippo/forge/feed/**/*.class</param-value>
+  </context-param>
                         ]]>
                         </source>
-                        <p><b>..or</b>, when using automatic scanning in HST 2.20 and up, set this context parameter in web.xml:</p>
-                      <source>
-                          <![CDATA[
-<context-param>
-  <param-name>hst-beans-annotated-classes</param-name>
-  <param-value>classpath*:org/onehippo/forge/rss/beans/*.class</param-value>
-</context-param>
-                        ]]>
-                      </source>
+
                     </li>
-                    <li>
-                        <p>
-                            Copy <a href="downloads/jsp/rss.jsp">rss.jsp</a> to <i>src/main/webapp/jsp/components/</i>
-                            in your <i>site</i> module.
-                        </p>
-                    </li>
+
 
                     <li>
                         <p>

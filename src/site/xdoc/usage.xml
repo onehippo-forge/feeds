@@ -18,122 +18,129 @@
     limitations under the License.
 -->
 <document>
-    <properties>
-        <title>Usage Instructions</title>
-    </properties>
-    <body>
-        <section name="Usage">
-            <subsection name="Create some documents">
+  <properties>
+    <title>Usage &amp; Customization Instructions</title>
+  </properties>
+  <body>
+    <section name="Usage">
+      <subsection name="Create a new Feed Document: RSS, Atom or Generic">
 
-                <p>
-                    You need some documents to include in your RSS feed. The CMS addon includes
-                    a sample document type that you can use (RSS item), but you can use
-                    any document type as long as it has at least a title field and a date field.
-                </p>
+        <p>
+          Add a new "Feed" document (aka descriptor) anywhere in your CMS.
+        </p>
 
-                <ol>
-                    <li><p>Open the CMS in your browser.</p></li>
+        <ol>
+          <li>
+            <p>Open the CMS in your browser.</p>
+          </li>
 
-                    <li><p>Under Documents, create a new folder called 'news'.</p></li>
+          <li>
+            <p>Under Documents, create a new folder called 'syndication'.</p>
+          </li>
 
-                    <li><p>In the folder 'news', create some documents of type 'RSS item', and fill them with dummy text.</p></li>
-                </ol>
+          <li>
+            <p>In the folder 'syndication', create some documents of type 'RSS 2.0 Feed', 'Atom 1.0 Feed' or 'Generic Feed' fill it with dummy text.</p>
+          </li>
+        </ol>
 
-            </subsection>
+        <p>
+          <a href="screenshots/feed-doc1.png">
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+          </a>
+        </p>
 
-            <subsection name="Create an RSS feed">
+      </subsection>
 
-                <p>
-                    Creating an RSS feed is no different from creating a document of any other type.
-                    Within the document, you define some meta data like the feed's title and description,
-                    and which documents to include. This is done by specifying a folder, and one or
-                    more document types. The feed will show all documents of those types in that folder.
-                </p>
+      <subsection name="Define Query parameters on your Feed Document">
 
-                <ol>
-                    <li><p>Under Documents, create a folder 'feeds'</p></li>
+        <p>
+          While you still have the Document open add query parameters on the right side of your document. Such as; document type, limit, etc etc.
+          <br/>
+          <a href="screenshots/feed-doc1.png">
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+          </a>
+        </p>
 
-                    <li>
-                        <p>
-                            In the folder 'feeds', create a document 'news' of type 'RSS feed'.
-                        </p>
-                        <p>
-                            <a href="screenshots/add-rss-feed.png">
-                                <img src="screenshots/add-rss-feed-small.png" alt="Screenshot 'Add new document'" />
-                            </a>
-                        </p>
-                    </li>
+      </subsection>
 
-                    <li><p>Fill in the rssfeed template's fields (title, description, ...).</p></li>
+      <subsection name="Create a link to the Feed Document">
 
-                    <li>
-                        <p>In the field 'folder' enter 'news'.</p>
-                    </li>
+        <p>
+         You could create a link to your Feed document from anywhere in your CMS.
+        </p>
 
-                    <li>
-                        <p>In the field 'document type' enter 'rss:samplerssitem'.</p>
-                        <p>
-                            <a href="screenshots/edit-rss-feed.png">
-                                <img src="screenshots/edit-rss-feed-small.png" alt="Screenshot 'Configure RSS feed'"/>
-                            </a>
-                        </p>
-                    </li>
+        <p>
+          <a href="screenshots/feed-doc2.png">
+            <img src="screenshots/feed-doc2.png" alt="Screenshot 'Add link'" width="700"/>
+          </a>
+        </p>
 
-                </ol>
+        <p>
+         HST will resolve the link to the Feed.
+        </p>
 
 
+        <p>
+          Admire the result:
+          <a href="http://localhost:8080/site/feed/syndication/rss.xml">
+            DEMO PROJECT LINK!
+          </a>
+        </p>
 
-            </subsection>
+        <p>
+          <a href="screenshots/feed-doc3.png">
+            <img src="screenshots/feed-doc3.png" alt="RSS feed example" width="700"/>
+          </a>
+        </p>
 
-            <subsection name="Website configuration">
-
-                <p>
-                    Finally, you need to configure your website to display the feed.
-                    You need to define a component, a template, and a sitemap item.
-                    If you exactly followed the above instructions, you can use the provided
-                    XML files and import them in the CMS Console.
-                </p>
-
-                <ol>
-                    <li><p>Open the CMS Console.</p></li>
-
-                    <li>
-                        <p>
-                            Under <i>hst:configuration/hst:configuration/hst:sitemap</i>,
-                            import <a href="downloads/hst-configuration/sitemapitem.xml">sitemapitem.xml</a>.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p>
-                            Under <i>hst:configuration/hst:configuration/hst:components</i>,
-                            import <a href="downloads/hst-configuration/component.xml">component.xml</a>.
-                        </p>
-                    </li>
-
-                    <li>
-                        <p>
-                            Under <i>hst:configuration/hst:configuration/hst:templates</i>,
-                            import <a href="downloads/hst-configuration/template.xml">template.xml</a>.
-                        </p>
-                    </li>
-                </ol>
-
-            </subsection>
-
-            <subsection name="Admire the result">
-                <p>
-                    Open your site in your browser, and check out your rss feed!
-                    (http://[YOURDOMAIN]/site/preview/rss)
-                </p>
-                <p>
-                    <a href="screenshots/rss-feed-in-browser.png">
-                        <img src="screenshots/rss-feed-in-browser-small.png" alt="Screenshot 'RSS feed'"/>
-                    </a>
-                </p>
-            </subsection>
+      </subsection>
 
 
-        </section>
-    </body>
+
+
+    </section>
+    <section name="Customization">
+      <subsection name="Connect Beans with Entry information">
+
+        <p>
+          Every Feed has one or more entries. RSS Channel has Items, Atom Feed has entries.
+        </p>
+        <p>
+          With the SyndicationElement annotation you can couple bean property methods with entry elements:
+
+          <a href="https://forge.onehippo.org/svn/feeds/demo/trunk/site/src/main/java/org/example/beans/NewsDocument.java">
+            NEWS BEAN LINK
+          </a>
+
+        </p>
+
+        <p>
+          <a href="screenshots/feed-doc4.png">
+            <img src="screenshots/feed-doc4.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+        <p>
+          This will result in the following:
+          <br/>
+          <a href="screenshots/feed-doc5.png">
+            <img src="screenshots/feed-doc5.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+        <p>
+          Example of an Atom feed with the annotations:
+          <br/>
+          <a href="screenshots/feed-doc6.png">
+            <img src="screenshots/feed-doc6.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
+
+
+
+    </section>
+  </body>
 </document>

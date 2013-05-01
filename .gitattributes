@@ -3,9 +3,33 @@
 /NOTICE -text
 feed-cms-addon/src/main/resources/feed.cnd -text
 feed-cms-addon/src/main/resources/hst/feed.xml -text
-src/site/resources/screenshots/add-rss-feed-small.png -text svneol=unset#image/png
-src/site/resources/screenshots/add-rss-feed.png -text svneol=unset#image/png
-src/site/resources/screenshots/edit-rss-feed-small.png -text svneol=unset#image/png
-src/site/resources/screenshots/edit-rss-feed.png -text svneol=unset#image/png
-src/site/resources/screenshots/rss-feed-in-browser-small.png -text svneol=unset#image/png
-src/site/resources/screenshots/rss-feed-in-browser.png -text svneol=unset#image/png
+feed-hst/src/main/java/org/onehippo/forge/feed/api/FeedType.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/ContextTransformable.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/SyndicationElement.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/SyndicationRefs.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/noop/NoopConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/noop/NoopTransformer.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/CalendarToDateConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/CalendarToDateTransformer.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/Converter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/DocumentLinkResolver.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/PathLinkResolver.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/AuthorListToPersonListConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/DocumentAtomLinkResolver.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/ListToAtomCategoryListConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/StringToContentConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/StringToGeneratorConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/HippoGalleryImageSetToImageTransformer.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/HippoHtmlToDescriptionTransformer.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/ListToRssCategoryListConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/StringToDescriptionConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/AbstractSyndicationResource.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/AtomSyndicationResource.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/GenericSyndicationResource.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/RssSyndicationResource.java -text
+src/site/resources/screenshots/feed-doc1.png -text
+src/site/resources/screenshots/feed-doc2.png -text
+src/site/resources/screenshots/feed-doc3.png -text
+src/site/resources/screenshots/feed-doc4.png -text
+src/site/resources/screenshots/feed-doc5.png -text
+src/site/resources/screenshots/feed-doc6.png -text

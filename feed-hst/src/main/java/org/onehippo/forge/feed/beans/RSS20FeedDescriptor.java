@@ -15,21 +15,34 @@
  */
 package org.onehippo.forge.feed.beans;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import com.sun.syndication.feed.rss.Channel;
+import com.sun.syndication.feed.rss.Item;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.WireFeedOutput;
 
+import org.apache.commons.io.IOUtils;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.onehippo.forge.feed.api.FeedDescriptor;
-import org.onehippo.forge.feed.api.RssChannel;
-import org.onehippo.forge.feed.util.ConversionUtil;
+import org.onehippo.forge.feed.api.FeedType;
+import org.onehippo.forge.feed.api.annot.SyndicationElement;
+import org.onehippo.forge.feed.api.transform.rss.ListToRssCategoryListConverter;
+import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
+import org.onehippo.forge.feed.api.transform.rss.HippoGalleryImageSetToImageTransformer;
+import org.onehippo.forge.feed.api.transform.PathLinkResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Node(jcrType = "feed:rss20descriptor")
-public class RSS20FeedDescriptor extends HippoDocument implements RssChannel, FeedDescriptor<Channel> {
+public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor<Channel, Item> {
 
     public static final Logger log = LoggerFactory.getLogger(RSS20FeedDescriptor.class);
 
@@ -37,54 +50,104 @@ public class RSS20FeedDescriptor extends HippoDocument implements RssChannel, Fe
      * required
      */
 
+    @SyndicationElement(type = FeedType.RSS, name = "title")
     public String getTitle() {
         return getProperty("feed:title");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "description")
     public String getDescription() {
         return getProperty("feed:description");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "pubdate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
         return getProperty("hippostdpubwf:publicationDate");
+    }
+
+    @SyndicationElement(type = FeedType.RSS, name = "link", transformer = PathLinkResolver.class)
+    public String getLink() {
+        return "/";
     }
 
     /**
      * other
      */
 
+    @SyndicationElement(type = FeedType.RSS, name = "language")
     public String getLanguage() {
         return getProperty("feed:language");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "copyright")
     public String getCopyright() {
         return getProperty("feed:copyright");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "managingEditor")
     public String getManagingEditor() {
         return getProperty("feed:managingEditor");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "webMaster")
     public String getWebMaster() {
         return getProperty("feed:webMaster");
     }
 
-    public String[] getCategory() {
-        return getProperty("feed:category");
+    @SyndicationElement(type = FeedType.RSS, name = "categories", converter = ListToRssCategoryListConverter.class)
+    public List<String> getCategory() {
+       String[] catgries = getProperty("feed:category");
+        return Arrays.asList(catgries);
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "generator")
     public String getGenerator() {
         return getProperty("feed:generator");
     }
 
+    @SyndicationElement(type = FeedType.RSS, name = "image", transformer = HippoGalleryImageSetToImageTransformer.class)
     public HippoGalleryImageSet getImage() {
         return getLinkedBean("feed:image", HippoGalleryImageSet.class);
     }
 
 
     @Override
-    public Channel convert() {
-        return ConversionUtil.convertRssDescriptorToChannel(this);
+    public Channel createSyndication() {
+        return new Channel("rss_2.0");
+    }
+
+    @Override
+    public Item createEntry() {
+        return new Item();
+    }
+
+    @Override
+    public void set(final Channel syndication, final List<Item> entries) {
+        syndication.setItems(entries);
+    }
+
+    @Override
+    public FeedType type() {
+        return FeedType.RSS;
+    }
+
+    @Override
+    public String process(final Channel syndication) {
+        Writer writer = null;
+        String feed = null;
+        try {
+            writer = new StringWriter();
+            WireFeedOutput output = new WireFeedOutput();
+            output.output(syndication, writer);
+            feed = writer.toString();
+        } catch (FeedException e) {
+            log.error("", e);
+        } catch (IOException e) {
+            log.error("", e);
+        } finally {
+            IOUtils.closeQuietly(writer);
+        }
+        return feed;
     }
 
     /**

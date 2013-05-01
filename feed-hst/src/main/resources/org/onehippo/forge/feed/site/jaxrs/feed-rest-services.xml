@@ -95,19 +95,19 @@
     </property>
   </bean>
 
-  <bean id="rssModifier" class="org.onehippo.forge.feed.api.RSS20Modifier" scope="singleton"/>
-  <bean id="atomModifier" class="org.onehippo.forge.feed.api.Atom10Modifier" scope="singleton"/>
-  <bean id="genericModifier" class="org.onehippo.forge.feed.api.GenericModifier" scope="singleton"/>
+  <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
+  <bean id="atomModifier" class="org.onehippo.forge.feed.api.modifier.Atom10Modifier" scope="singleton"/>
+  <bean id="genericModifier" class="org.onehippo.forge.feed.api.modifier.GenericModifier" scope="singleton"/>
 
-  <bean id="jaxrsRSSResource" class="org.onehippo.forge.feed.resource.RssFeedResource">
+  <bean id="jaxrsRSSResource" class="org.onehippo.forge.feed.resource.RssSyndicationResource">
     <property name="modifier" ref="rssModifier"/>
   </bean>
 
-  <bean id="jaxrsAtomResource" class="org.onehippo.forge.feed.resource.AtomFeedResource">
+  <bean id="jaxrsAtomResource" class="org.onehippo.forge.feed.resource.AtomSyndicationResource">
     <property name="modifier" ref="atomModifier"/>
   </bean>
 
-  <bean id="jaxrsGenericResource" class="org.onehippo.forge.feed.resource.GenericFeedResource">
+  <bean id="jaxrsGenericResource" class="org.onehippo.forge.feed.resource.GenericSyndicationResource">
     <property name="modifier" ref="genericModifier"/>
   </bean>
 

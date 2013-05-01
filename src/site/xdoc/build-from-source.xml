@@ -40,7 +40,7 @@
                 <p>
                     Check out the source code from the SVN repository:
                 </p>
-                <source>svn co https://forge.onehippo.org/svn/rss/trunk/ rss-feed-creator</source>
+                <source>svn co https://forge.onehippo.org/svn/feeds/trunk/</source>
             </subsection>
             <subsection name="Build the project">
                 <p>

@@ -18,66 +18,62 @@
   limitations under the License.
 -->
 <document>
-    <properties>
-        <title>Introduction</title>
-    </properties>
-    <body>
-        <section name="Introduction">
-            <subsection name="What is RSS Feed Creator?">
-                <p>
-                    <b>RSS Feed Creator</b> is an addon for Hippo CMS that lets you create
-                    <a href="http://cyber.law.harvard.edu/rss/rss.html">RSS feeds</a>
-                    from within the CMS. You can create as many feeds as you like, and for each
-                    feed you can setup filters to determine which documents to include.
-                </p>
-                <p>
-                    RSS Feed Creator includes an RSS Feed document type for Hippo CMS, and
-                    an HST component that you can drop in your HST website to display the
-                    feeds you created.
-                </p>
-            </subsection>
-            <subsection name="Project status">
-                <p>
-                    The latest release of RSS Feed Creator is 1.04.00, running on ECM 7.5 (2.18.00) and HST 2.20.00.
-                </p>
-                <table border="1" cellpadding="0" cellspacing="5">
-                  <tbody>
-                    <tr>
-                      <th>Release</th>
-                      <th>CMS</th>
-                      <th>HST</th>
-                    </tr>
-                    <tr>
-                      <td>1.04.00</td>
-                      <td>7.5 (2.18.00)</td>
-                      <td>2.20.00</td>
-                    </tr>
-                    <tr>
-                      <td>1.03.00</td>
-                      <td>7.4 (2.16.xx)</td>
-                      <td>2.05.xx</td>
-                    </tr>
-                    <tr>
-                      <td>1.02.05, 1.02.06</td>
-                      <td>7.3 (2.12.xx)</td>
-                      <td>2.04.xx</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p>See the <a href="release-notes.html">release notes</a> for more information.</p>
-                <p>
-                    See the <a href="https://forge.onehippo.org/gf/project/rss/tracker/">project tracker</a>
-                    for a list of bugs and feature requests.
-                </p>
-            </subsection>
-            <subsection name="How can I use RSS Feed Creator in my project?">
-                <p>
-                    Follow the <a href="install.html">install</a> and <a href="usage.html">usage</a> instructions.
-                </p>
-                <p>
-                    Then learn how to <a href="customization.html">customize RSS Feed Creator for your environment.</a>
-                </p>
-            </subsection>
-        </section>
-    </body>
+  <properties>
+    <title>Introduction</title>
+  </properties>
+  <body>
+    <section name="Introduction">
+      <subsection name="What is the Feed Creator?">
+        <p>
+          <b>Feed Creator</b>
+          was previously known as the RSS Feed Creator Project
+        </p>
+        <p>
+          <b>Feed Creator</b>
+          is an addon for Hippo CMS that lets you create
+          <a href="http://cyber.law.harvard.edu/rss/rss.html">RSS feeds</a>,
+          <a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">ATOM feeds</a>
+          and  provides an API which enables you to create your own web syndications
+          with the CMS. You can create as many feeds as you like, and for each
+          feed you can setup filters to determine which documents to include.
+        </p>
+      </subsection>
+      <subsection name="Project status">
+        <!--todo-->
+        <p>
+          The latest release of the Feed Project is ${project.version}, running on CMS 7.7 (2.22.00) and HST 2.26.00.
+        </p>
+        <table border="1" cellpadding="0" cellspacing="5">
+          <tbody>
+            <tr>
+              <th>Release</th>
+              <th>CMS</th>
+              <th>HST</th>
+            </tr>
+            <tr>
+              <td>${project.version}</td>
+              <td>7.7 (2.22.00)</td>
+              <td>2.26.00</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <p>
+          See the
+          <a href="https://forge.onehippo.org/gf/project/feeds/tracker/">project tracker</a>
+          for a list of bugs and feature requests.
+        </p>
+      </subsection>
+      <subsection name="How can I use Feed Creator in my project?">
+        <p>
+          Follow the
+          <a href="install.html">install</a>
+          and
+          <a href="usage.html">usage</a>
+          instructions.
+        </p>
+      </subsection>
+    </section>
+  </body>
 </document>

@@ -15,20 +15,30 @@
  */
 package org.onehippo.forge.feed.beans;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Calendar;
+import java.util.List;
 
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedOutput;
 
+import org.apache.commons.io.IOUtils;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.onehippo.forge.feed.api.FeedDescriptor;
-import org.onehippo.forge.feed.util.ConversionUtil;
+import org.onehippo.forge.feed.api.FeedType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Node(jcrType = "feed:genericdescriptor")
-public class GenericFeedDescriptor extends HippoDocument implements FeedDescriptor<SyndFeed> {
+public class GenericFeedDescriptor extends HippoDocument implements FeedDescriptor<SyndFeed, SyndEntry> {
 
     public static final Logger log = LoggerFactory.getLogger(GenericFeedDescriptor.class);
 
@@ -76,8 +86,44 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
 
     @Override
-    public SyndFeed convert() {
-        return ConversionUtil.convertGenericDescriptorToSyndFeed(this);
+    public SyndFeed createSyndication() {
+        final SyndFeedImpl syndFeed = new SyndFeedImpl();
+        syndFeed.setFeedType(getType());
+        return syndFeed;
+    }
+
+    @Override
+    public SyndEntry createEntry() {
+        return new SyndEntryImpl();
+    }
+
+    @Override
+    public void set(final SyndFeed syndication, final List<SyndEntry> entries) {
+        syndication.setEntries(entries);
+    }
+
+    @Override
+    public String process(final SyndFeed syndication) {
+        Writer writer = null;
+        String feed = null;
+        try {
+            writer = new StringWriter();
+            SyndFeedOutput output = new SyndFeedOutput();
+            output.output(syndication, writer);
+            feed = writer.toString();
+        } catch (FeedException e) {
+            log.error("", e);
+        } catch (IOException e) {
+            log.error("", e);
+        } finally {
+            IOUtils.closeQuietly(writer);
+        }
+        return feed;
+    }
+
+    @Override
+    public FeedType type() {
+        return FeedType.GENERIC;
     }
 
     /**

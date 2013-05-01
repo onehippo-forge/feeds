@@ -27,7 +27,7 @@
   <description>Hippo Forge Feed Creator</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed</artifactId>
-  <version>1.01.02-SNAPSHOT</version>
+  <version>2.01.01-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -64,7 +64,7 @@
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
-      <id>rss-maven-repo</id>
+      <id>feeds-maven-repo</id>
       <url>svn:https://forge.onehippo.org/svn/feeds/maven2/</url>
     </repository>
   </distributionManagement>
@@ -92,30 +92,6 @@
       <dependency>
         <groupId>org.onehippo.cms7.hst.components</groupId>
         <artifactId>hst-jaxrs</artifactId>
-        <version>${hippo.hst.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.onehippo.cms7.hst</groupId>
-        <artifactId>hst-rest-api</artifactId>
-        <version>${hippo.hst.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.onehippo.cms7.hst</groupId>
-        <artifactId>hst-commons</artifactId>
-        <version>${hippo.hst.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.onehippo.cms7.hst.components</groupId>
-        <artifactId>hst-core</artifactId>
-        <version>${hippo.hst.version}</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.onehippo.cms7.hst</groupId>
-        <artifactId>hst-client</artifactId>
         <version>${hippo.hst.version}</version>
         <scope>provided</scope>
       </dependency>
@@ -253,106 +229,6 @@
       </plugin>
     </plugins>
   </reporting>
-
-  <developers>
-    <developer>
-      <id>nvkampenhout</id>
-      <name>Niels van Kampenhout</name>
-      <roles>
-        <role>emeritus</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>jjoachimsthal</id>
-      <name>Jasha Joachimsthal</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>jhoffman</id>
-      <name>Jeroen Hoffman</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>mmilicevic</id>
-      <name>Marijan Milicevic</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>vkumar</id>
-      <name>Vivek Kumar</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>aschrijvers</id>
-      <name>Ard Schrijvers</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>dvdiepen</id>
-      <name>Dirkjan van Diepen</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>wbarthet</id>
-      <name>William Borg Barthet</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>mchatzidakis</id>
-      <name>Minor Chatzidakis</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-    <developer>
-      <id>lswartsenburg</id>
-      <name>Lucas Swartsenburg</name>
-      <organization>Hippo</organization>
-      <organizationUrl>http://www.onehippo.com</organizationUrl>
-      <timezone>+1</timezone>
-      <roles>
-        <role>Committer</role>
-      </roles>
-    </developer>
-  </developers>
 
   <contributors />
   <mailingLists />
