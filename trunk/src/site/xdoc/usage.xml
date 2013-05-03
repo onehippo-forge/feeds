@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+<!--
+    Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+
+    Licensed under the Apache License, Version 2.0 (the  "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Usage &amp; Customization Instructions</title>
+  </properties>
+  <body>
+    <section name="Usage">
+      <subsection name="Create a new Feed Document: RSS, Atom or Generic">
+
+        <p>
+          Add a new "Feed" document (aka descriptor) anywhere in your CMS.
+        </p>
+
+        <ol>
+          <li>
+            <p>Open the CMS in your browser.</p>
+          </li>
+
+          <li>
+            <p>Under Documents, create a new folder called 'syndication'.</p>
+          </li>
+
+          <li>
+            <p>In the folder 'syndication', create some documents of type 'RSS 2.0 Feed', 'Atom 1.0 Feed' or 'Generic Feed' fill it with dummy text.</p>
+          </li>
+        </ol>
+
+        <p>
+          <a href="screenshots/feed-doc1.png">
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
+      <subsection name="Define Query parameters on your Feed Document">
+
+        <p>
+          While you still have the Document open add query parameters on the right side of your document. Such as; document type, limit, etc etc.
+          <br/>
+          <a href="screenshots/feed-doc1.png">
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
+      <subsection name="Create a link to the Feed Document">
+
+        <p>
+         You could create a link to your Feed document from anywhere in your CMS.
+        </p>
+
+        <p>
+          <a href="screenshots/feed-doc2.png">
+            <img src="screenshots/feed-doc2.png" alt="Screenshot 'Add link'" width="700"/>
+          </a>
+        </p>
+
+        <p>
+         HST will resolve the link to the Feed.
+        </p>
+
+
+        <p>
+          Admire the result:
+          <a href="http://localhost:8080/site/feed/syndication/rss.xml">
+            DEMO PROJECT LINK!
+          </a>
+        </p>
+
+        <p>
+          <a href="screenshots/feed-doc3.png">
+            <img src="screenshots/feed-doc3.png" alt="RSS feed example" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
+
+
+
+    </section>
+    <section name="Customization">
+      <subsection name="Connect Beans with Entry information">
+
+        <p>
+          Every Feed has one or more entries. RSS Channel has Items, Atom Feed has entries.
+        </p>
+        <p>
+          With the SyndicationElement annotation you can couple bean property methods with entry elements:
+
+          <a href="https://forge.onehippo.org/svn/feeds/demo/trunk/site/src/main/java/org/example/beans/NewsDocument.java">
+            NEWS BEAN LINK
+          </a>
+
+        </p>
+
+        <p>
+          <a href="screenshots/feed-doc4.png">
+            <img src="screenshots/feed-doc4.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+        <p>
+          This will result in the following:
+          <br/>
+          <a href="screenshots/feed-doc5.png">
+            <img src="screenshots/feed-doc5.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+        <p>
+          Example of an Atom feed with the annotations:
+          <br/>
+          <a href="screenshots/feed-doc6.png">
+            <img src="screenshots/feed-doc6.png" alt="Bean customization" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
+
+
+
+    </section>
+  </body>
+</document>
