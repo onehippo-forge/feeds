@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * @version "$Id: RssFeedResource.java 9 2013-04-08 08:29:25Z ksalic $"
  */
 @Produces({MediaType.APPLICATION_XML})
-@Path("/feed:rss20descriptor/")
+@Path("/feed:rss20descriptor/")  //todo: include exclude path
 public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
 
     private static Logger log = LoggerFactory.getLogger(AbstractSyndicationResource.class);

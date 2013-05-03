@@ -19,6 +19,9 @@ feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/DocumentAtomLi
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/ListToAtomCategoryListConverter.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/StringToContentConverter.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/atom/StringToGeneratorConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/gen/AuthorListToSyndPersonListConverter.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/gen/HippoGalleryImageSetToSyndImageTransformer.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/gen/ListToSyndCategoryListConverter.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/HippoGalleryImageSetToImageTransformer.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/HippoHtmlToDescriptionTransformer.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/ListToRssCategoryListConverter.java -text

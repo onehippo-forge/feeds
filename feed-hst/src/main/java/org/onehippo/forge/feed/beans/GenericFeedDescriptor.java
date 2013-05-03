@@ -18,6 +18,7 @@ package org.onehippo.forge.feed.beans;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -34,6 +35,14 @@ import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.onehippo.forge.feed.api.FeedDescriptor;
 import org.onehippo.forge.feed.api.FeedType;
+import org.onehippo.forge.feed.api.annot.SyndicationElement;
+import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
+import org.onehippo.forge.feed.api.transform.DocumentLinkResolver;
+import org.onehippo.forge.feed.api.transform.atom.AuthorListToPersonListConverter;
+import org.onehippo.forge.feed.api.transform.atom.DocumentAtomLinkResolver;
+import org.onehippo.forge.feed.api.transform.gen.AuthorListToSyndPersonListConverter;
+import org.onehippo.forge.feed.api.transform.gen.HippoGalleryImageSetToSyndImageTransformer;
+import org.onehippo.forge.feed.api.transform.gen.ListToSyndCategoryListConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,41 +56,57 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
         return getProperty("feed:type");
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "title")
     public String getTitle() {
         return getProperty("feed:title");
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "publishedDate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
         return getProperty("hippostdpubwf:publicationDate");
     }
 
-    public String[] getAuthor() {
-        return getProperty("feed:author");
+    @SyndicationElement(type = FeedType.GENERIC, name = "authors", converter = AuthorListToSyndPersonListConverter.class)
+    public List<String> getAuthor() {
+        String[] authorArray = getProperty("feed:author");
+        return Arrays.asList(authorArray);
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "description")
     public String getDescription() {
         return getProperty("feed:description");
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "language")
     public String getLanguage() {
         return getProperty("feed:language");
     }
 
-
-    public String[] getContributors() {
-        return getProperty("feed:contributor");
+    @SyndicationElement(type = FeedType.GENERIC, name = "contributor", converter = AuthorListToSyndPersonListConverter.class)
+    public List<String> getContributors() {
+        String[] authorArray = getProperty("feed:contributor");
+        return Arrays.asList(authorArray);
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "copyright")
     public String getCopyright() {
         return getProperty("feed:copyright");
     }
 
+    @SyndicationElement(type = FeedType.GENERIC, name = "image", transformer = HippoGalleryImageSetToSyndImageTransformer.class)
     public HippoGalleryImageSet getImage() {
         return getLinkedBean("feed:image", HippoGalleryImageSet.class);
     }
 
-    public String[] getCategories() {
-        return getProperty("feed:categories");
+    @SyndicationElement(type = FeedType.GENERIC, name = "categories", converter = ListToSyndCategoryListConverter.class)
+    public List<String> getCategories() {
+        String[] authorArray = getProperty("feed:categories");
+        return Arrays.asList(authorArray);
+    }
+
+    @SyndicationElement(type = FeedType.GENERIC, name = "link", transformer = DocumentLinkResolver.class)
+    public HippoDocument getLink() {
+        return this;
     }
 
 
