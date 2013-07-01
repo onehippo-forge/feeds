@@ -21,7 +21,7 @@
     <artifactId>hippo-cms7-project</artifactId>
     <version>19</version>
   </parent>
-    
+
 
   <name>Hippo Forge Feed Creator</name>
   <description>Hippo Forge Feed Creator</description>
@@ -49,7 +49,7 @@
 
   <inceptionYear>2013</inceptionYear>
   <url>https://forge.onehippo.org/gf/project/feeds/</url>
-  
+
   <organization>
     <name>Hippo</name>
     <url>http://www.onehippo.com</url>
@@ -107,13 +107,19 @@
   <repositories>
     <repository>
       <id>hippo</id>
-      <name>Hippo maven 2 repository</name>
+      <name>Hippo Maven 2 repository</name>
       <url>http://maven.onehippo.com/maven2/</url>
       <snapshots />
       <releases>
         <updatePolicy>never</updatePolicy>
       </releases>
       <layout>default</layout>
+    </repository>
+    <repository>
+      <id>hippo-maven2-forge</id>
+      <name>Hippo Maven 2 Forge repository</name>
+      <url>http://maven.onehippo.com/maven2-forge/</url>
+      <snapshots />
     </repository>
   </repositories>
 
