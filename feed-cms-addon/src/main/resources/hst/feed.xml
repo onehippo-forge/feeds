@@ -29,6 +29,9 @@
     <sv:property sv:name="jcr:uuid" sv:type="String">
       <sv:value>fcd6384e-b273-4227-8a14-73aa03fe3c19</sv:value>
     </sv:property>
+    <sv:property sv:name="hst:excludedforlinkrewriting" sv:type="Boolean">
+      <sv:value>true</sv:value>
+    </sv:property>
     <sv:property sv:name="hst:namedpipeline" sv:type="String">
       <sv:value>JaxrsRestFeedPipeline</sv:value>
     </sv:property>
