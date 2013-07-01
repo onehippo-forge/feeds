@@ -2,7 +2,6 @@
 /LICENSE -text
 /NOTICE -text
 feed-cms-addon/src/main/resources/feed.cnd -text
-feed-cms-addon/src/main/resources/hst/feed.xml -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/FeedType.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/ContextTransformable.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/SyndicationElement.java -text
@@ -36,3 +35,4 @@ src/site/resources/screenshots/feed-doc3.png -text
 src/site/resources/screenshots/feed-doc4.png -text
 src/site/resources/screenshots/feed-doc5.png -text
 src/site/resources/screenshots/feed-doc6.png -text
+src/site/resources/screenshots/feed-sitemap.png -text svneol=unset#image/png

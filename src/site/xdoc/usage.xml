@@ -63,6 +63,20 @@
 
       </subsection>
 
+      <subsection name="Create a sitemap item in your configuration">
+        <p>
+          In order to make your feed findable you need to add a sitemap item to your configuration.
+          Take a look at the example. Make sure to adjust this to your situation!
+        </p>
+
+        <p>
+          <a href="screenshots/feed-sitemap.png">
+            <img src="screenshots/feed-sitemap.png" alt="feed sitemap item example" width="700"/>
+          </a>
+        </p>
+
+      </subsection>
+
       <subsection name="Create a link to the Feed Document">
 
         <p>
