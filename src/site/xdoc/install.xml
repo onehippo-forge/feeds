@@ -73,19 +73,22 @@
                     <li>
                         <p>In your <i>site</i> module, add the feed classes to the annotated-bean classes  <i>src/main/webapp/WEB-INF/web.xml</i>:</p>
                         <source>
+                             <![CDATA[
   <context-param>
     <param-name>hst-beans-annotated-classes</param-name>
     <param-value>
         classpath*:org/example/beans/**/*.class,
         classpath*:org/onehippo/forge/feed/**/*.class
     </param-value>
-  </context-param>
+  </context-param>       ]]>
                         </source>
 
                     </li>
                         <p> In your <i>site</i> module add also the following line to <i>/src/main/resources/META-INF/hst-assembly/overrides/hst-cms-rest.xml</i>:</p>
                     <source>
+                     <![CDATA[
   <import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>
+                    ]]>
                     </source>
                     <li>
 
