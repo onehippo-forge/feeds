@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2014 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>19</version>
+    <version>25</version>
   </parent>
 
 
@@ -27,17 +27,17 @@
   <description>Hippo Forge Feed Creator</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed</artifactId>
-  <version>2.01.04-SNAPSHOT</version>
+  <version>2.02.00-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
     <notice.project.name>Hippo Forge Feed Creator</notice.project.name>
-    <hippo.cms.version>2.24.00</hippo.cms.version>
-    <hippo.hst.version>2.26.00</hippo.hst.version>
-    <hippo.repository.version>2.24.00</hippo.repository.version>
+    <hippo-cms-version>2.26.00</hippo-cms-version>
+    <hippo-hst-version>2.28.02</hippo-hst-version>
+    <hippo.repository.version>2.26.01</hippo.repository.version>
 
-    <plugin.site.version>3.0-beta-3</plugin.site.version>
+    <plugin.site.version>3.3</plugin.site.version>
     <plugin.source.version>2.1.2</plugin.source.version>
     <plugin.compiler.version>2.3.2</plugin.compiler.version>
     <plugin.jar.version>2.3.1</plugin.jar.version>
@@ -86,13 +86,13 @@
       <dependency>
         <groupId>org.onehippo.cms7.hst</groupId>
         <artifactId>hst-api</artifactId>
-        <version>${hippo.hst.version}</version>
+        <version>${hippo-hst-version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.onehippo.cms7.hst.components</groupId>
         <artifactId>hst-jaxrs</artifactId>
-        <version>${hippo.hst.version}</version>
+        <version>${hippo-hst-version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>

@@ -41,19 +41,17 @@
       <subsection name="Project status">
         <!--todo-->
         <p>
-          The latest release of the Feed Project is ${project.version}, running on CMS 7.7 (2.22.00) and HST 2.26.00.
+          This release of the Feed Project runs on CMS 7.9 (${hippo-cms-version}) and HST ${hippo-hst-version}.
         </p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
-              <th>Release</th>
               <th>CMS</th>
               <th>HST</th>
             </tr>
             <tr>
-              <td>${project.version}</td>
-              <td>7.7 (2.22.00)</td>
-              <td>2.26.00</td>
+              <td>7.9 (${hippo-cms-version})</td>
+              <td>${hippo-hst-version}</td>
             </tr>
 
           </tbody>
