@@ -42,6 +42,7 @@
 
           <li>
             <p>In the folder 'syndication', create some documents of type 'RSS 2.0 Feed', 'Atom 1.0 Feed' or 'Generic Feed' fill it with dummy text.</p>
+            <p><strong>Note: the document names are very important to remember because they will be used later on when trying to get one of the feeds.</strong></p>
           </li>
         </ol>
 
@@ -69,7 +70,7 @@
         <p>
           In order to make your feed findable you need to add a sitemap item to your configuration.
           Take a look at the example from the demo. The path of the sitemap item is feed/_any_.xml.
-          Make sure to adjust this to your situation!
+          Make sure to adjust this to your situation! Keep in mind that everything you time in the CMS console is case sensitive.
         </p>
           <p>
               <a href="screenshots/hst-sitemap-demo.png">
@@ -105,7 +106,7 @@
         <p>
           Admire the result:
           <a href="http://localhost:8080/site/feed/syndication/rss.xml">
-            DEMO PROJECT LINK!
+            http://localhost:8080/site/feed/syndication/rss.xml
           </a>
         </p>
 
