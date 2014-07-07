@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE document PUBLIC
-        "-//Apache Software Foundation//DTD XDOC 1.0//EN"
-        "http://maven.apache.org/dtd/xdoc_1_0.dtd">
+  "-//Apache Software Foundation//DTD XDOC 1.0//EN"
+  "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
   Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
 
@@ -24,83 +24,75 @@
   <body>
     <section name="Prerequisites">
       <p>
-        These instruction assume that you have an HST project based on the HST archetype, i.e.
+        These instruction assume that you have an Hippo CMS project based on the <a href="http://www.onehippo.org/trails/developer-trail/hippo-baby-steps.html">Hippo CMS website archetype</a>, i.e.
         a Maven multiproject consisting of three submodules: cms, site and content.
       </p>
       <p>
         Any document type you want to include in a feed should have at least a title field
         and a date field.
       </p>
-
     </section>
     <section name="Installation">
-                <ol>
-                    <li>
-                        <p>Add to the pom.xml of your <i>cms</i> module:</p>
-                        <source>
-                            <![CDATA[
+      <ol>
+        <li><p>Add a property called ${forge.feed.version} to the 'properties' section in the Maven pom.xml file in the root of your project.</p>
+<source><![CDATA[<properties>
+  ...
+  <forge.feed.version>2.XX.XX</forge.feed.version>
+</properties>
+]]></source>
+          <p>You can find the correct version of the plugin for your project in the table on the <a href="index.html">plugins homepage</a>.</p>
+        </li>
+        <li>
+          <p>Add to the pom.xml of your <i>cms</i> module (cms/pom.xml):
+          </p>
+          <source><![CDATA[
 <dependency>
-      <groupId>org.onehippo.forge</groupId>
-      <artifactId>feed-cms-addon</artifactId>
-      <version>${forge.feed.version}</version>
-    </dependency>
-                        ]]>
-                        </source>
-                    </li>
-                    <li>
-                        <p>Add to the pom.xml of your <i>site</i> module:</p>
-                        <source>
-                            <![CDATA[
-
-
+  <groupId>org.onehippo.forge</groupId>
+  <artifactId>feed-cms-addon</artifactId>
+  <version>${forge.feed.version}</version>
+</dependency>]]></source>
+        </li>
+        <li>
+          <p>Add to the pom.xml of your <i>site</i> module (site/pom.xml):</p>
+          <source><![CDATA[
 <dependency>
-      <groupId>org.onehippo.forge</groupId>
-      <artifactId>feed-hst</artifactId>
- <version>${forge.feed.version}</version>
- <type>jar</type>
+  <groupId>org.onehippo.forge</groupId>
+  <artifactId>feed-hst</artifactId>
+  <version>${forge.feed.version}</version>
+  <type>jar</type>
 </dependency>
 
- <dependency>
-      <groupId>rome</groupId>
-      <artifactId>rome</artifactId>
-      <version>1.0</version>
-    </dependency>
+<dependency>
+  <groupId>rome</groupId>
+  <artifactId>rome</artifactId>
+  <version>1.0</version>
+</dependency>]]></source>
 
-                        ]]>
-                        </source>
+        </li>
+        <li>
+          <p>In your <i>site</i> module, add the feeds plugin classes to bean scanner configuration in the context-parameter 'hst-annotated-bean' in the web.xml located at <i><strong>src/main/webapp/WEB-INF/web.xml</strong></i>:</p>
+          <source><![CDATA[<context-param>
+  <param-name>hst-beans-annotated-classes</param-name>
+  <param-value>
+      classpath*:org/example/beans/**/*.class,
+      classpath*:org/onehippo/forge/feed/**/*.class
+  </param-value>
+</context-param>]]></source>
+        </li>
+        <p>In your <i>site</i> module also add the following line to <i>/src/main/resources/META-INF/hst-assembly/overrides/hst-cms-rest.xml</i>:
+        </p>
+        <source><![CDATA[<import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>]]></source>
+        <li>
+          <p>
+            Rebuild your project using Maven.
+          </p>
+        </li>
+        <li>
+          <p>See <a href="usage.html"> usage page for further instructions.</a>
+          </p>
+        </li>
+      </ol>
 
-                    </li>
-                    <li>
-                        <p>In your <i>site</i> module, add the feed classes to the annotated-bean classes  <i>src/main/webapp/WEB-INF/web.xml</i>:</p>
-                        <source>
-                             <![CDATA[
-  <context-param>
-    <param-name>hst-beans-annotated-classes</param-name>
-    <param-value>
-        classpath*:org/example/beans/**/*.class,
-        classpath*:org/onehippo/forge/feed/**/*.class
-    </param-value>
-  </context-param>       ]]>
-                        </source>
-
-                    </li>
-                        <p> In your <i>site</i> module add also the following line to <i>/src/main/resources/META-INF/hst-assembly/overrides/hst-cms-rest.xml</i>:</p>
-                    <source>
-                     <![CDATA[
-  <import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>
-                    ]]>
-                    </source>
-                    <li>
-
-                    </li>
-
-                    <li>
-                        <p>
-                            Rebuild your project using Maven.
-                        </p>
-                    </li>
-                </ol>
-
-            </section>
+    </section>
   </body>
 </document>

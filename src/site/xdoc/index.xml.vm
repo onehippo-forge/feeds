@@ -41,22 +41,24 @@
       <subsection name="Project status">
         <!--todo-->
         <p>
-          This release of the Feed Project runs on CMS 7.9 (${hippo-cms-version}) and HST ${hippo-hst-version}.
+          This release of the Feed Project is compatible with on CMS 7.8 and 7.9. See the table below for the latest stable version of the plugin for your project.
         </p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
-              <th>CMS</th>
-              <th>HST</th>
+              <th>Hippo CMS version</th>
+              <th>Latests stable plugin version</th>
             </tr>
             <tr>
-              <td>7.9 (${hippo-cms-version})</td>
-              <td>${hippo-hst-version}</td>
+              <td>7.9.x</td>
+              <td>2.02.00</td>
             </tr>
-
+            <tr>
+              <td>7.8.x</td>
+              <td>2.01.03</td>
+            </tr>
           </tbody>
         </table>
-
         <p>
           See the
           <a href="https://forge.onehippo.org/gf/project/feeds/tracker/">project tracker</a>

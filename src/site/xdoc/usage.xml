@@ -23,8 +23,10 @@
   </properties>
   <body>
     <section name="Usage">
+      <subsection name="Intruduction">
+        <p>In this section we'll go through an example setup of the plugin in an example project.</p>
+      </subsection>
       <subsection name="Create a new Feed Document: RSS, Atom or Generic">
-
         <p>
           Add a new "Feed" document (aka descriptor) anywhere in your CMS.
         </p>
