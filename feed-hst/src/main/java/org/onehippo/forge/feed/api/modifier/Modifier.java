@@ -29,30 +29,26 @@ public interface Modifier<K, V, E extends FeedDescriptor> {
     /**
      * Modify the HST Query, set implementation in override spring xml
      * e.g. for RSS:
-     * <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
-     * @param context
-     * @param query
-     * @param descriptor
+     * {@code
+     *    <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
+     * }
      */
     public void modifyHstQuery(final HstRequestContext context, final HstQuery query, final E descriptor);
 
     /**
      * Modify the Syndication Feed
      * e.g. for RSS
-     * <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
-     * @param context
-     * @param feed
-     * @param descriptor
+     * {@code
+     *   <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
+     * }
      */
     public void modifyFeed(final HstRequestContext context, final K feed, final E descriptor);
 
     /**
      * Modify the Syndication Entry
-     * e.g. for RSS
-     * <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
-     * @param context
-     * @param entry
-     * @param bean
+     * {@code
+     *    <bean id="rssModifier" class="org.onehippo.forge.feed.api.modifier.RSS20Modifier" scope="singleton"/>
+     * }
      */
     public void modifyEntry(final HstRequestContext context, final V entry, final HippoBean bean);
 
