@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>25</version>
+    <version>27.2</version>
   </parent>
 
 
@@ -33,15 +33,15 @@
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
     <notice.project.name>Hippo Forge Feed Creator</notice.project.name>
-    <hippo-cms-version>2.26.00</hippo-cms-version>
-    <hippo-hst-version>2.28.02</hippo-hst-version>
-    <hippo.repository.version>2.26.01</hippo.repository.version>
+    <hippo-cms-version>3.0.0</hippo-cms-version>
+    <hippo-hst-version>3.0.0</hippo-hst-version>
+    <hippo.repository.version>3.0.0</hippo.repository.version>
 
     <plugin.site.version>3.3</plugin.site.version>
-    <plugin.source.version>2.1.2</plugin.source.version>
-    <plugin.compiler.version>2.3.2</plugin.compiler.version>
-    <plugin.jar.version>2.3.1</plugin.jar.version>
-    <plugin.surefire.version>2.9</plugin.surefire.version>
+    <plugin.source.version>2.2.1</plugin.source.version>
+    <plugin.compiler.version>3.1</plugin.compiler.version>
+    <plugin.jar.version>2.4</plugin.jar.version>
+    <plugin.surefire.version>2.16</plugin.surefire.version>
     <plugin.jxr.version>2.2</plugin.jxr.version>
 
     <rome.version>1.0</rome.version>
@@ -211,7 +211,7 @@
         <version>${maven.plugin.javadoc.version}</version>
         <configuration>
           <aggregate>true</aggregate>
-          <source>1.6</source>
+          <source>1.8</source>
           <links>
             <link>http://download.oracle.com/javase/6/docs/api</link>
           </links>
