@@ -16,7 +16,6 @@
 
 package org.onehippo.forge.feed.api.transform.gen;
 
-import com.sun.syndication.feed.rss.Image;
 import com.sun.syndication.feed.synd.SyndImage;
 import com.sun.syndication.feed.synd.SyndImageImpl;
 
