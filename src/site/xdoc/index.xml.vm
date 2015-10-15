@@ -41,13 +41,17 @@
       <subsection name="Project status">
         <!--todo-->
         <p>
-          This release of the Feed Project is compatible with on CMS 7.8 and 7.9. See the table below for the latest stable version of the plugin for your project.
+          This release of the Feed Project is compatible with on CMS 7.8, 7.9 and Hippo 10. See the table below for the latest stable version of the plugin for your project.
         </p>
         <table border="1" cellpadding="0" cellspacing="5">
           <tbody>
             <tr>
               <th>Hippo CMS version</th>
               <th>Latests stable plugin version</th>
+            </tr>
+            <tr>
+              <td>10.0.x</td>
+              <td>2.03.00</td>
             </tr>
             <tr>
               <td>7.9.x</td>
