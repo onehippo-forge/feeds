@@ -56,9 +56,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</connection>
-    <developerConnection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</developerConnection>
-    <url>https://forge.onehippo.org/svn/feeds/trunk</url>
+    <connection>scm:svn:https://forge.onehippo.org/svn/feeds/branches/feed-2.03.xx</connection>
+    <developerConnection>scm:svn:https://forge.onehippo.org/svn/feeds/branches/feed-2.03.xx</developerConnection>
+    <url>https://forge.onehippo.org/svn/feeds/branches/feed-2.03.xx</url>
   </scm>
 
   <distributionManagement>
