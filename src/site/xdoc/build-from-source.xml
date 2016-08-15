@@ -3,7 +3,7 @@
   "-//Apache Software Foundation//DTD XDOC 1.0//EN"
   "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
-  Copyright 2008-2013 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2008-2016 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the  "License");
   you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
             <subsection name="Requirements">
                 <ul>
                     <li>
-                        <p>Java 6 JDK</p>
+                        <p>Java 8 JDK</p>
                     </li>
                     <li>
                         <p>Maven 3</p>
