@@ -37,7 +37,7 @@
         <li><p>Add a property called ${forge.feed.version} to the 'properties' section in the Maven pom.xml file in the root of your project.</p>
 <source><![CDATA[<properties>
   ...
-  <forge.feed.version>2.XX.XX</forge.feed.version>
+  <forge.feed.version>3.x.y</forge.feed.version>
 </properties>
 ]]></source>
           <p>You can find the correct version of the plugin for your project in the table on the <a href="index.html">plugins homepage</a>.</p>
