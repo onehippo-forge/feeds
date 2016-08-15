@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>27.6</version>
+    <version>28.1</version>
   </parent>
 
 
@@ -33,9 +33,8 @@
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
     <notice.project.name>Hippo Forge Feed Creator</notice.project.name>
-    <hippo-cms-version>3.0.0</hippo-cms-version>
-    <hippo-hst-version>3.0.0</hippo-hst-version>
-    <hippo.repository.version>3.0.0</hippo.repository.version>
+    <hippo-hst-version>4.0.1</hippo-hst-version>
+    <hippo.repository.version>4.0.1</hippo.repository.version>
 
     <plugin.site.version>3.3</plugin.site.version>
     <plugin.source.version>2.2.1</plugin.source.version>
