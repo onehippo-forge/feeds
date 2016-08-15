@@ -2,6 +2,7 @@
 /LICENSE -text
 /NOTICE -text
 feed-cms-addon/src/main/resources/feed.cnd -text
+feed-cms-addon/src/main/resources/types-translations.json -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/FeedType.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/ContextTransformable.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/api/annot/SyndicationElement.java -text

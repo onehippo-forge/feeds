@@ -1,0 +1,80 @@
+{"hippo:types": {
+  "feed:rss20descriptor":   {
+    "en":     {
+      "feed:title": "Title",
+      "jcr:name": "RSS2.0 feed",
+      "feed:language": "Language",
+      "feed:documentType": "Document type",
+      "feed:excludeItems": "Excluded items",
+      "feed:sortByField": "Sort by field",
+      "feed:description": "Description",
+      "feed:managingEditor": "Managing editor e-mail",
+      "feed:webMaster": "Webmaster",
+      "folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac": "Folder"
+    },
+    "nl":     {
+      "feed:title": "Titel",
+      "jcr:name": "RSS2.0 feed",
+      "feed:language": "Taal",
+      "feed:documentType": "Documenttype",
+      "feed:excludeItems": "Uitzonderingen",
+      "feed:sortByField": "Sorteren op veld",
+      "feed:description": "Beschrijving",
+      "feed:managingEditor": "Managing editor e-mail",
+      "feed:webMaster": "Webmaster",
+      "folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac": "Map"
+    }
+  },
+  "feed:atom10descriptor":   {
+    "en":     {
+      "description-570a3e79-b0b1-42c3-b8bd-2ff6b72261c9": "Description",
+      "feed:title": "Title",
+      "folder-0a3bb721-4b2d-4626-b099-fec6ec1b05a1": "Folder",
+      "jcr:name": "Atom 1.0 feed",
+      "feed:documentType": "Document type",
+      "language-910a09eb-8ede-41ff-8480-90c5072845b8": "Language",
+      "feed:excludeItems": "Excluded items",
+      "webMaster-9ff4d162-0087-4efc-a680-50c0890a3c98": "Webmaster",
+      "managingEditor-de6d59bb-408a-4619-91e0-837537c11788": "Managing editor e-mail",
+      "feed:sortByField": "Sort by field"
+    },
+    "nl":     {
+      "description-570a3e79-b0b1-42c3-b8bd-2ff6b72261c9": "Beschrijving",
+      "feed:title": "Titel",
+      "folder-0a3bb721-4b2d-4626-b099-fec6ec1b05a1": "Map",
+      "jcr:name": "Atom 1.0 feed",
+      "feed:documentType": "Documenttype",
+      "language-910a09eb-8ede-41ff-8480-90c5072845b8": "Taal",
+      "feed:excludeItems": "Uitzonderingen",
+      "webMaster-9ff4d162-0087-4efc-a680-50c0890a3c98": "Webmaster",
+      "managingEditor-de6d59bb-408a-4619-91e0-837537c11788": "Managing editor e-mail",
+      "feed:sortByField": "Sorteren op veld"
+    }
+  },
+  "feed:genericdescriptor":   {
+    "en":     {
+      "webMaster-7cf43312-9c0a-456d-8ba2-2ca75a5060dd": "Webmaster",
+      "managingEditor-17f28139-f6e1-4561-97a5-11bcafdb025b": "Managing editor e-mail",
+      "feed:title": "Title",
+      "jcr:name": "Generic feed",
+      "feed:language": "Language",
+      "feed:documentType": "Document type",
+      "feed:excludeItems": "Excluded items",
+      "folder-4eeb931b-ef24-4c01-ad6b-87add9778802": "Folder",
+      "feed:sortByField": "Sort by field",
+      "feed:description": "Description"
+    },
+    "nl":     {
+      "webMaster-7cf43312-9c0a-456d-8ba2-2ca75a5060dd": "Webmaster",
+      "managingEditor-17f28139-f6e1-4561-97a5-11bcafdb025b": "Managing editor e-mail",
+      "feed:title": "Titel",
+      "jcr:name": "Generieke feed",
+      "feed:language": "Taal",
+      "feed:documentType": "Documenttype",
+      "feed:excludeItems": "Uitzonderingen",
+      "folder-4eeb931b-ef24-4c01-ad6b-87add9778802": "Map",
+      "feed:sortByField": "Sorteren op veld",
+      "feed:description": "Beschrijving"
+    }
+  }
+}}
