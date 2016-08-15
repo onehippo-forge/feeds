@@ -3,7 +3,7 @@
   "-//Apache Software Foundation//DTD XDOC 1.0//EN"
   "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
-  Copyright 2009-2013 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2009-2016 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the  "License");
   you may not use this file except in compliance with the License.
@@ -79,9 +79,16 @@
   </param-value>
 </context-param>]]></source>
         </li>
-        <p>In your <i>site</i> module also add the following line to <i>/src/main/resources/META-INF/hst-assembly/overrides/hst-cms-rest.xml</i>:
+        <p>In your <i>site</i> module also create <i>/src/main/resources/META-INF/hst-assembly/overrides/feed-rest-services.xml</i> that contains:
         </p>
-        <source><![CDATA[<import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>]]></source>
+        <source><![CDATA[
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+          <import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>
+       </beans>
+        ]]></source>
         <li>
           <p>
             Rebuild your project using Maven.
