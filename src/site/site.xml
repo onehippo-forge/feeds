@@ -24,13 +24,11 @@
 
   <body>
     <menu name="Feed Creator">
-      <item name="Introduction" href="/index.html"/>
-      <item name="Install" href="/install.html"/>
-      <item name="Usage and Customization" href="/usage.html"/>
-
-      <item name="Building from source" href="/build-from-source.html"/>
-      <!--<item name="Release notes" href="/release-notes.html"/>-->
-      <!--todo-->
+      <item name="Introduction" href="index.html"/>
+      <item name="Install" href="install.html"/>
+      <item name="Usage and Customization" href="usage.html"/>
+      <item name="Building from source" href="build-from-source.html"/>
+      <item name="Release notes" href="release-notes.html"/>
       <item name="Hippo Forge project page" href="http://forge.onehippo.org/gf/project/feeds/"/>
     </menu>
 

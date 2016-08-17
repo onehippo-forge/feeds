@@ -651,6 +651,9 @@
           <sv:property sv:name="wicket.model" sv:type="String">
             <sv:value>${wicket.model}</sv:value>
           </sv:property>
+          <sv:property sv:name="hint" sv:type="String">
+            <sv:value>Comma separated string for document type(s).</sv:value>
+          </sv:property>
         </sv:node>
         <sv:node sv:name="excludeItems">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1382,6 +1385,9 @@
           <sv:property sv:name="wicket.model" sv:type="String">
             <sv:value>${wicket.model}</sv:value>
           </sv:property>
+          <sv:property sv:name="hint" sv:type="String">
+            <sv:value>Comma separated string for document type(s).</sv:value>
+          </sv:property>
         </sv:node>
         <sv:node sv:name="excludeItems">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -2104,6 +2110,9 @@
           </sv:property>
           <sv:property sv:name="wicket.model" sv:type="String">
             <sv:value>${wicket.model}</sv:value>
+          </sv:property>
+          <sv:property sv:name="hint" sv:type="String">
+            <sv:value>Comma separated string for document type(s).</sv:value>
           </sv:property>
         </sv:node>
         <sv:node sv:name="excludeItems">

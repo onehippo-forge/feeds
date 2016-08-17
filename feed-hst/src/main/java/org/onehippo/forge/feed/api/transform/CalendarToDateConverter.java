@@ -31,6 +31,9 @@ public class CalendarToDateConverter implements Converter<Calendar, Date> {
 
     @Override
     public Date convert(final Calendar k) {
-        return k.getTime();
+        if (k != null) {
+            return k.getTime();
+        }
+        return null;
     }
 }
