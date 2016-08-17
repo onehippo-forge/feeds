@@ -27,12 +27,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-import org.hippoecm.hst.content.beans.manager.ObjectConverter;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.filter.BaseFilter;
-import org.hippoecm.hst.content.beans.query.filter.Filter;
-import org.hippoecm.hst.content.beans.query.filter.PrimaryNodeTypeFilterImpl;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
@@ -92,20 +90,10 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
 
             // FIXME get date field from BE template?
             HstQuery hstQuery = null;
-            String documentType = document.getDocumentType();
-            if (documentType != null && documentType.trim().length() != 0) {
-                ObjectConverter converter = getObjectConverter(requestContext);
-                // NOTE: for this to work, document needs to be registered within annotated-nbeans XML file
-                final Class<? extends HippoBean> clazz = converter.getAnnotatedClassFor(documentType);
-                if (clazz != null) {
-                    hstQuery = getHstQueryManager(requestContext.getSession(), requestContext).createQuery(scopeBean, clazz, true);
-                } else {
-                    hstQuery = getHstQueryManager(requestContext.getSession(), requestContext).createQuery(scopeBean);
-                    Filter filter = hstQuery.createFilter();
-                    hstQuery.setFilter(filter);
-                    BaseFilter nt = new PrimaryNodeTypeFilterImpl(documentType);
-                    filter.addAndFilter(nt);
-                }
+            String [] documentTypes = StringUtils.split(document.getDocumentType(), ", \t\r\n");
+            if (!ArrayUtils.isEmpty(documentTypes)) {
+                hstQuery = getHstQueryManager(requestContext.getSession(), requestContext)
+                        .createQuery(scopeBean.getNode(), true, documentTypes);
             }
             if (hstQuery == null) {
                 // dunno if we should go further at this point?
