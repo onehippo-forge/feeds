@@ -41,32 +41,11 @@
       <subsection name="Project status">
         <!--todo-->
         <p>
-          This release of the Feed Project is compatible with on CMS 7.8, 7.9 and Hippo 10. See the table below for the latest stable version of the plugin for your project.
+          See <a href="release-notes.html">Release notes</a> for compatibility.
         </p>
-        <table border="1" cellpadding="0" cellspacing="5">
-          <tbody>
-            <tr>
-              <th>Hippo CMS version</th>
-              <th>Latests stable plugin version</th>
-            </tr>
-            <tr>
-              <td>10.0.x</td>
-              <td>2.03.00</td>
-            </tr>
-            <tr>
-              <td>7.9.x</td>
-              <td>2.02.00</td>
-            </tr>
-            <tr>
-              <td>7.8.x</td>
-              <td>2.01.03</td>
-            </tr>
-          </tbody>
-        </table>
         <p>
-          See the
-          <a href="https://forge.onehippo.org/gf/project/feeds/tracker/">project tracker</a>
-          for a list of bugs and feature requests.
+          Also see the
+          <a href="https://forge.onehippo.org/gf/project/feeds/tracker/">project tracker</a>.
         </p>
       </subsection>
       <subsection name="How can I use Feed Creator in my project?">
