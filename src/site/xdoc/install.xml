@@ -35,25 +35,30 @@
     <section name="Installation">
       <ol>
         <li><p>Add a property called ${forge.feed.version} to the 'properties' section in the Maven pom.xml file in the root of your project.</p>
+<div class="brush: xml">
 <source><![CDATA[<properties>
   ...
   <forge.feed.version>3.x.y</forge.feed.version>
 </properties>
 ]]></source>
+</div>
           <p>You can find the correct version of the plugin for your project in the table on the <a href="index.html">plugins homepage</a>.</p>
         </li>
         <li>
           <p>Add to the pom.xml of your <i>cms</i> module (cms/pom.xml):
           </p>
+          <div class="brush: xml">
           <source><![CDATA[
 <dependency>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed-cms-addon</artifactId>
   <version>${forge.feed.version}</version>
 </dependency>]]></source>
+          </div>
         </li>
         <li>
           <p>Add to the pom.xml of your <i>site</i> module (site/pom.xml):</p>
+          <div class="brush: xml">
           <source><![CDATA[
 <dependency>
   <groupId>org.onehippo.forge</groupId>
@@ -67,10 +72,11 @@
   <artifactId>rome</artifactId>
   <version>1.0</version>
 </dependency>]]></source>
-
+          </div>
         </li>
         <li>
           <p>In your <i>site</i> module, add the feeds plugin classes to bean scanner configuration in the context-parameter 'hst-annotated-bean' in the web.xml located at <i><strong>src/main/webapp/WEB-INF/web.xml</strong></i>:</p>
+          <div class="brush: xml">
           <source><![CDATA[<context-param>
   <param-name>hst-beans-annotated-classes</param-name>
   <param-value>
@@ -78,9 +84,11 @@
       classpath*:org/onehippo/forge/feed/**/*.class
   </param-value>
 </context-param>]]></source>
+          </div>
         </li>
         <p>In your <i>site</i> module also create <i>/src/main/resources/META-INF/hst-assembly/overrides/feed-rest-services.xml</i> that contains:
         </p>
+        <div class="brush: xml">
         <source><![CDATA[
         <?xml version="1.0" encoding="UTF-8"?>
         <beans xmlns="http://www.springframework.org/schema/beans"
@@ -89,6 +97,7 @@
           <import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>
        </beans>
         ]]></source>
+        </div>
         <li>
           <p>
             Rebuild your project using Maven.
