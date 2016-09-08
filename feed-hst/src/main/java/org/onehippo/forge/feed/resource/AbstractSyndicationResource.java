@@ -16,8 +16,17 @@
 package org.onehippo.forge.feed.resource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.StreamSupport;
 
+import javax.jcr.RepositoryException;
+import javax.jcr.nodetype.NoSuchNodeTypeException;
+import javax.jcr.nodetype.NodeType;
+import javax.jcr.nodetype.NodeTypeIterator;
+import javax.jcr.nodetype.NodeTypeManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
@@ -31,6 +40,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
+import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
@@ -90,7 +100,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
 
             // FIXME get date field from BE template?
             HstQuery hstQuery = null;
-            String [] documentTypes = StringUtils.split(document.getDocumentType(), ", \t\r\n");
+            final String[] documentTypes = DocumentTypeHelper.getDocTypes(getDocTypes(requestContext, document), getExcludedDocTypes(document));
             if (!ArrayUtils.isEmpty(documentTypes)) {
                 hstQuery = getHstQueryManager(requestContext.getSession(), requestContext)
                         .createQuery(scopeBean.getNode(), true, documentTypes);
@@ -102,6 +112,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
             if (sortByField != null) {
                 hstQuery.addOrderByDescending(sortByField);
             }
+
 
             hstQuery.setLimit((int) limit);
             if (modifier != null) {
@@ -134,6 +145,30 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
         return feed;
     }
 
+    private Set getExcludedDocTypes(final FeedDescriptor<T, E> document) {
+        Set result = new HashSet<>();
+        if (document.getExclude()!=null){
+            String[] excludedDocumentTypes = StringUtils.split(document.getExclude(), ", \t\r\n");
+            result.addAll(Arrays.asList(excludedDocumentTypes));
+        }
+        return result;
+    }
+
+    private Set<DocType> getDocTypes(final HstRequestContext requestContext, final FeedDescriptor<T, E> document) throws RepositoryException {
+        String [] documentTypes = StringUtils.split(document.getDocumentType(), ", \t\r\n");
+        NodeTypeManager nodeTypeManager = requestContext.getSession().getWorkspace().getNodeTypeManager();
+        Set<DocType> docTypes = new HashSet();
+        for (String documentType : documentTypes) {
+            NodeType nodeType = nodeTypeManager.getNodeType(documentType);
+            NodeTypeIterator iterator = nodeType.getSubtypes();
+            Set<String> subTypes = new HashSet<>();
+            while (iterator.hasNext()){
+                subTypes.add(iterator.nextNodeType().getName());
+            }
+            docTypes.add(new DocType(documentType,subTypes));
+        }
+        return docTypes;
+    }
 
     public Modifier<T, E, FeedDescriptor> getModifier() {
         return modifier;

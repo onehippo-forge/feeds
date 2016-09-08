@@ -28,8 +28,11 @@ feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/ListToRssCatego
 feed-hst/src/main/java/org/onehippo/forge/feed/api/transform/rss/StringToDescriptionConverter.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/resource/AbstractSyndicationResource.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/resource/AtomSyndicationResource.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/DocType.java -text
+feed-hst/src/main/java/org/onehippo/forge/feed/resource/DocumentTypeHelper.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/resource/GenericSyndicationResource.java -text
 feed-hst/src/main/java/org/onehippo/forge/feed/resource/RssSyndicationResource.java -text
+feed-hst/src/test/java/org/onehippo/forge/feed/resource/DocumentTypeHelperTest.java -text
 src/site/resources/screenshots/feed-doc1.png -text
 src/site/resources/screenshots/feed-doc2.png -text
 src/site/resources/screenshots/feed-doc3.png -text

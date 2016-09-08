@@ -164,7 +164,7 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
     }
 
     public String getExclude() {
-        return getProperty("feed:exclude");
+        return getProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {

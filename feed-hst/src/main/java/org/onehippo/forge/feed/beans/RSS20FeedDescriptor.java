@@ -164,7 +164,7 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
     }
 
     public String getExclude() {
-        return getProperty("feed:exclude");
+        return getProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {

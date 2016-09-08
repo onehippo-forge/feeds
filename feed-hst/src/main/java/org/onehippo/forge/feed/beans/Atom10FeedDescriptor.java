@@ -176,7 +176,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
     }
 
     public String getExclude() {
-        return getProperty("feed:exclude");
+        return getProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {
