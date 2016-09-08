@@ -42,7 +42,7 @@
 </properties>
 ]]></source>
 </div>
-          <p>You can find the correct version of the plugin for your project in the table on the <a href="index.html">plugins homepage</a>.</p>
+          <p>You can find the correct version of the plugin for your project in the table on the <a href="release-notes.html">Release Notes page</a>.</p>
         </li>
         <li>
           <p>Add to the pom.xml of your <i>cms</i> module (cms/pom.xml):
@@ -75,13 +75,15 @@
           </div>
         </li>
         <li>
-          <p>In your <i>site</i> module, add the feeds plugin classes to bean scanner configuration in the context-parameter 'hst-annotated-bean' in the web.xml located at <i><strong>src/main/webapp/WEB-INF/web.xml</strong></i>:</p>
+          <p>In your <i>site</i> module, check in the <i>src/main/webapp/WEB-INF/web.xml</i> the context-parameter 'hst-annotated-bean'.
+            It should have an entry for scanning bean classes for the forge like "classpath*:org/onehippo/forge/**/*.class". If it is not present, add it.</p>
           <div class="brush: xml">
           <source><![CDATA[<context-param>
   <param-name>hst-beans-annotated-classes</param-name>
-  <param-value>
-      classpath*:org/example/beans/**/*.class,
-      classpath*:org/onehippo/forge/feed/**/*.class
+  <param-value>classpath*:org/example/**/*.class
+      ,classpath*:org/onehippo/**/*.class
+      ,classpath*:com/onehippo/**/*.class
+      ,classpath*:org/onehippo/forge/**/*.class
   </param-value>
 </context-param>]]></source>
           </div>
@@ -104,7 +106,7 @@
           </p>
         </li>
         <li>
-          <p>See <a href="usage.html"> usage page for further instructions.</a>
+          <p>See the <a href="usage.html">Usage page</a> for further instructions.
           </p>
         </li>
       </ol>

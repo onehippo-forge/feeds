@@ -23,7 +23,7 @@
   </properties>
   <body>
     <section name="Usage">
-      <subsection name="Intruduction">
+      <subsection name="Introduction">
         <p>In this section we'll go through an example setup of the plugin in an example project.</p>
       </subsection>
       <subsection name="Create a new Feed Document: RSS, Atom or Generic">
@@ -33,11 +33,7 @@
 
         <ol>
           <li>
-            <p>Open the CMS in your browser.</p>
-          </li>
-
-          <li>
-            <p>Under Documents, create a new folder called 'syndication'.</p>
+            <p>In the CMS, in the Content / Documents section, create a new folder called 'syndication'.</p>
           </li>
 
           <li>
