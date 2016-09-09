@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.StreamSupport;
 
 import javax.jcr.RepositoryException;
-import javax.jcr.nodetype.NoSuchNodeTypeException;
 import javax.jcr.nodetype.NodeType;
 import javax.jcr.nodetype.NodeTypeIterator;
 import javax.jcr.nodetype.NodeTypeManager;
@@ -40,7 +38,6 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
@@ -59,7 +56,7 @@ import org.slf4j.LoggerFactory;
 @Path("/feed:rss20descriptor/")  //todo: include exclude path
 public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
 
-    private static Logger log = LoggerFactory.getLogger(AbstractSyndicationResource.class);
+    private final static Logger log = LoggerFactory.getLogger(AbstractSyndicationResource.class);
 
     private Modifier<T, E, FeedDescriptor> modifier;
 
@@ -79,7 +76,8 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
                 log.error("Cannot find feed descriptor. Check relative content path on feed's sitemap item.");
                 return null;
             }
-            FeedDescriptor<T, E> document = (FeedDescriptor) contentBean;
+            @SuppressWarnings("unchecked")
+            FeedDescriptor<T, E> document = (FeedDescriptor<T,E>) contentBean;
             final T channel = ConversionUtil.covertToAppropriateSyndicationFeed(document, document, this, requestContext);
 
             // prevent NPE from auto-deboxing
@@ -121,7 +119,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
             HstQueryResult queryResult = hstQuery.execute();
             HippoBeanIterator beans = queryResult.getHippoBeans();
 
-            List entries = new ArrayList();
+            List<E> entries = new ArrayList<>();
             while (beans.hasNext() && indexCount < limit) {
                 HippoBean bean = beans.nextHippoBean();
                 if (bean != null) {
@@ -145,8 +143,8 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
         return feed;
     }
 
-    private Set getExcludedDocTypes(final FeedDescriptor<T, E> document) {
-        Set result = new HashSet<>();
+    private Set<String> getExcludedDocTypes(final FeedDescriptor<T, E> document) {
+        Set<String> result = new HashSet<>();
         if (document.getExclude()!=null){
             String[] excludedDocumentTypes = StringUtils.split(document.getExclude(), ", \t\r\n");
             result.addAll(Arrays.asList(excludedDocumentTypes));
@@ -157,7 +155,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
     private Set<DocType> getDocTypes(final HstRequestContext requestContext, final FeedDescriptor<T, E> document) throws RepositoryException {
         String [] documentTypes = StringUtils.split(document.getDocumentType(), ", \t\r\n");
         NodeTypeManager nodeTypeManager = requestContext.getSession().getWorkspace().getNodeTypeManager();
-        Set<DocType> docTypes = new HashSet();
+        Set<DocType> docTypes = new HashSet<>();
         for (String documentType : documentTypes) {
             NodeType nodeType = nodeTypeManager.getNodeType(documentType);
             NodeTypeIterator iterator = nodeType.getSubtypes();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2016 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * This this implements functionality to exclude a subDocumentTypes from a set of documentTypes.
  * If the list of {@link #excludedDocTypes}
@@ -30,13 +27,11 @@ import org.slf4j.LoggerFactory;
  *
  */
 
-public class DocumentTypeHelper {
-
-    private static final Logger log = LoggerFactory.getLogger(DocumentTypeHelper.class);
+class DocumentTypeHelper {
 
     private final Set<DocType> includedDocTypes;
     private final Set<String> excludedDocTypes;
-    private Set<String> docTypes = new HashSet<>();
+    private final Set<String> docTypes = new HashSet<>();
 
     public DocumentTypeHelper(final Set<DocType> includedDocTypes, final Set<String> excludedDocTypes) {
         this.includedDocTypes = includedDocTypes;
@@ -71,7 +66,7 @@ public class DocumentTypeHelper {
     }
 
     private Set<String> subTypesWithoutExcludedTypes(final DocType docType) {
-        Set<String> result = new HashSet();
+        Set<String> result = new HashSet<>();
         result.addAll(docType.getSubTypes());
         result.removeAll(excludedDocTypes);
         return result;

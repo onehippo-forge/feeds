@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2016 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,51 +29,50 @@ public class DocumentTypeHelperTest {
     private Set<DocType> docTypes;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         docTypes = new HashSet<>();
-        docTypes.add(new DocType("a",new HashSet<String>(Arrays.asList("x","y","z"))));
-        docTypes.add(new DocType("b",new HashSet<String>(Arrays.asList("u","v","w"))));
+        docTypes.add(new DocType("a",new HashSet<>(Arrays.asList("x","y","z"))));
+        docTypes.add(new DocType("b",new HashSet<>(Arrays.asList("u","v","w"))));
 
     }
 
     @Test
-    public void process_happyflow() throws Exception {
+    public void process_happyflow() {
         DocumentTypeHelper helper = new DocumentTypeHelper(
-                docTypes, new HashSet<String>(Arrays.asList("x", "y")));
+                docTypes, new HashSet<>(Arrays.asList("x", "y")));
         helper.process();
         Set<String> actual = helper.getDocTypes();
-        Set<String> expected = new HashSet<String>(Arrays.asList("z","b"));
+        Set<String> expected = new HashSet<>(Arrays.asList("z","b"));
         assertArrayEquals(expected.toArray(),actual.toArray());
     }
 
     @Test
-    public void process_noIntersection() throws Exception {
+    public void process_noIntersection() {
         DocumentTypeHelper helper = new DocumentTypeHelper(
-                docTypes, new HashSet<String>(Arrays.asList("d", "e")));
+                docTypes, new HashSet<>(Arrays.asList("d", "e")));
         helper.process();
         Set<String> actual = helper.getDocTypes();
-        Set<String> expected = new HashSet<String>(Arrays.asList("a","b"));
+        Set<String> expected = new HashSet<>(Arrays.asList("a","b"));
         assertArrayEquals(expected.toArray(),actual.toArray());
     }
 
     @Test
-    public void process_noExcludedTypes() throws Exception {
+    public void process_noExcludedTypes() {
         DocumentTypeHelper helper = new DocumentTypeHelper(
-                docTypes, new HashSet<String>());
+                docTypes, new HashSet<>());
         helper.process();
         Set<String> actual = helper.getDocTypes();
-        Set<String> expected = new HashSet<String>(Arrays.asList("a","b"));
+        Set<String> expected = new HashSet<>(Arrays.asList("a","b"));
         assertArrayEquals(expected.toArray(),actual.toArray());
     }
 
     @Test
-    public void process_bothEmpty() throws Exception {
+    public void process_bothEmpty() {
         DocumentTypeHelper helper = new DocumentTypeHelper(
-                new HashSet<DocType>(), new HashSet<String>());
+                new HashSet<>(), new HashSet<>());
         helper.process();
         Set<String> actual = helper.getDocTypes();
-        Set<String> expected = new HashSet<String>();
-        assertArrayEquals(expected.toArray(),actual.toArray());
+        assertArrayEquals(new HashSet<String>().toArray(),actual.toArray());
     }
 
 }

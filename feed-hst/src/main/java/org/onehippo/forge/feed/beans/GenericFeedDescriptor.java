@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,8 +38,6 @@ import org.onehippo.forge.feed.api.FeedType;
 import org.onehippo.forge.feed.api.annot.SyndicationElement;
 import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
 import org.onehippo.forge.feed.api.transform.DocumentLinkResolver;
-import org.onehippo.forge.feed.api.transform.atom.AuthorListToPersonListConverter;
-import org.onehippo.forge.feed.api.transform.atom.DocumentAtomLinkResolver;
 import org.onehippo.forge.feed.api.transform.gen.AuthorListToSyndPersonListConverter;
 import org.onehippo.forge.feed.api.transform.gen.HippoGalleryImageSetToSyndImageTransformer;
 import org.onehippo.forge.feed.api.transform.gen.ListToSyndCategoryListConverter;
@@ -49,7 +47,7 @@ import org.slf4j.LoggerFactory;
 @Node(jcrType = "feed:genericdescriptor")
 public class GenericFeedDescriptor extends HippoDocument implements FeedDescriptor<SyndFeed, SyndEntry> {
 
-    public static final Logger log = LoggerFactory.getLogger(GenericFeedDescriptor.class);
+    private static final Logger log = LoggerFactory.getLogger(GenericFeedDescriptor.class);
 
 
     public String getType() {
@@ -136,9 +134,7 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
             SyndFeedOutput output = new SyndFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
-        } catch (FeedException e) {
-            log.error("", e);
-        } catch (IOException e) {
+        } catch (FeedException | IOException e) {
             log.error("", e);
         } finally {
             IOUtils.closeQuietly(writer);

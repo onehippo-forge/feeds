@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
 @Node(jcrType = "feed:rss20descriptor")
 public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor<Channel, Item> {
 
-    public static final Logger log = LoggerFactory.getLogger(RSS20FeedDescriptor.class);
+    private static final Logger log = LoggerFactory.getLogger(RSS20FeedDescriptor.class);
 
     /**
      * required
@@ -140,9 +140,7 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
             WireFeedOutput output = new WireFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
-        } catch (FeedException e) {
-            log.error("", e);
-        } catch (IOException e) {
+        } catch (FeedException | IOException e) {
             log.error("", e);
         } finally {
             IOUtils.closeQuietly(writer);
