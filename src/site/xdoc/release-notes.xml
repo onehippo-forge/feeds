@@ -47,7 +47,7 @@
     <section name="Release Notes (3.0.x)">
       <subsection name="3.0.2">
         <ul>
-          <li>[<a href='https://issues.onehippo.com/browse/HIPPLUG-1363'>HIPPLUG-1377</a>] -         Feeds - ability to exclude multiple document types
+          <li>[<a href='https://issues.onehippo.com/browse/HIPPLUG-1377'>HIPPLUG-1377</a>] -         Feeds - ability to exclude multiple document types
           </li>
           <li>Restart with -Drepo.bootstrap=true when upgrading to this release.</li>
         </ul>
