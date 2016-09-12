@@ -45,7 +45,7 @@
       </table>
     </section>
     <section name="Release Notes (3.0.x)">
-      <subsection name="3.0.2 (not yet released)">
+      <subsection name="3.0.2">
         <ul>
           <li>[<a href='https://issues.onehippo.com/browse/HIPPLUG-1363'>HIPPLUG-1377</a>] -         Feeds - ability to exclude multiple document types
           </li>
