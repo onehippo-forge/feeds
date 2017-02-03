@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import com.sun.syndication.feed.atom.Entry;
@@ -61,8 +62,12 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "authors", converter = AuthorListToPersonListConverter.class)
     public List<String> getAuthor() {
-        String[] authorArray = getProperty("feed:author");
-        return Arrays.asList(authorArray);
+        String[] authors = getProperty("feed:author");
+        if (authors != null) {
+            return Arrays.asList(authors);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "subtitle", converter = StringToContentConverter.class)
@@ -91,14 +96,22 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "categories", converter = ListToAtomCategoryListConverter.class)
     public List<String> getCategory() {
-        String[] categoryArray = getProperty("feed:category");
-        return Arrays.asList(categoryArray);
+        String[] categories = getProperty("feed:category");
+        if (categories != null) {
+            return Arrays.asList(categories);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "contributors", converter = AuthorListToPersonListConverter.class)
     public List<String> getContributor() {
-        String[] contributorArray = getProperty("feed:contributor");
-        return Arrays.asList(contributorArray);
+        String[] contributors = getProperty("feed:contributor");
+        if (contributors != null) {
+            return Arrays.asList(contributors);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "generator", converter = StringToGeneratorConverter.class)
@@ -121,7 +134,6 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
         return getProperty("feed:rights");
     }
 
-
     @Override
     public Feed createSyndication() {
         return new Feed("atom_1.0");
@@ -131,7 +143,6 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
     public Entry createEntry() {
         return new Entry();
     }
-
 
     @Override
     public void set(final Feed syndication, final List entries) {
@@ -163,7 +174,6 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
     /**
      * right side
      */
-
 
     public String getScope() {
         return getProperty("feed:scope");

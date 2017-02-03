@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import com.sun.syndication.feed.rss.Channel;
@@ -96,8 +97,12 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @SyndicationElement(type = FeedType.RSS, name = "categories", converter = ListToRssCategoryListConverter.class)
     public List<String> getCategory() {
-       String[] catgries = getProperty("feed:category");
-        return Arrays.asList(catgries);
+        String[] categories = getProperty("feed:category");
+        if (categories != null) {
+            return Arrays.asList(categories);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "generator")
@@ -109,7 +114,6 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
     public HippoGalleryImageSet getImage() {
         return getLinkedBean("feed:image", HippoGalleryImageSet.class);
     }
-
 
     @Override
     public Channel createSyndication() {

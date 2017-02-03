@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -49,7 +50,6 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     private static final Logger log = LoggerFactory.getLogger(GenericFeedDescriptor.class);
 
-
     public String getType() {
         return getProperty("feed:type");
     }
@@ -66,8 +66,12 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "authors", converter = AuthorListToSyndPersonListConverter.class)
     public List<String> getAuthor() {
-        String[] authorArray = getProperty("feed:author");
-        return Arrays.asList(authorArray);
+        String[] authors = getProperty("feed:author");
+        if (authors != null) {
+            return Arrays.asList(authors);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "description")
@@ -82,8 +86,12 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "contributor", converter = AuthorListToSyndPersonListConverter.class)
     public List<String> getContributors() {
-        String[] authorArray = getProperty("feed:contributor");
-        return Arrays.asList(authorArray);
+        String[] contributors = getProperty("feed:contributor");
+        if (contributors != null) {
+            return Arrays.asList(contributors);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "copyright")
@@ -98,15 +106,18 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "categories", converter = ListToSyndCategoryListConverter.class)
     public List<String> getCategories() {
-        String[] authorArray = getProperty("feed:categories");
-        return Arrays.asList(authorArray);
+        String[] categories = getProperty("feed:categories");
+        if (categories != null) {
+            return Arrays.asList(categories);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "link", transformer = DocumentLinkResolver.class)
     public HippoDocument getLink() {
         return this;
     }
-
 
     @Override
     public SyndFeed createSyndication() {

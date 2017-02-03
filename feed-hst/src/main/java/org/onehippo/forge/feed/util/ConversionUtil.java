@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,19 +91,17 @@ public class ConversionUtil {
                         value = converter.convert(initValue);
                     }
                     if (!(annotation.transformer().isAssignableFrom(NoopTransformer.class)) && initValue != null) {
-                        Map<Class, Object> contentMap = new HashMap<Class, Object>();
+                        Map<Class, Object> contentMap = new HashMap<>();
                         for (Object o : context) {
                             contentMap.put(o.getClass(), o);
                         }
-                        //if(initValue!=null){
                         contentMap.put(initValue.getClass(), initValue);
-                        //}
                         final Class<?> transformer = annotation.transformer();
                         final Method[] transformerMethods = transformer.getMethods();
                         for (Method transformerMethod : transformerMethods) {
                             if (transformerMethod.isAnnotationPresent(ContextTransformable.class)) {
                                 final Class<?>[] parameterTypes = transformerMethod.getParameterTypes();
-                                List<Object> parameters = new ArrayList<Object>();
+                                List<Object> parameters = new ArrayList<>();
                                 for (Class clazz : parameterTypes) {
                                     if (contentMap.containsKey(clazz)) {
                                         parameters.add(contentMap.get(clazz));
@@ -135,7 +133,7 @@ public class ConversionUtil {
                         BeanUtils.setProperty(destination, name, value);
                     }
                 } catch (Exception e) {
-                    log.error("exception happened while trying to revolve syndication {e}", e);
+                    log.error(String.format("exception happened while trying to revolve syndication %s", name), e);
                 }
 
             }
