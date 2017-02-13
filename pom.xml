@@ -27,7 +27,7 @@
   <description>Hippo Forge Feed Creator</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed</artifactId>
-  <version>3.0.3</version>
+  <version>3.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -55,9 +55,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:https://forge.onehippo.org/svn/feeds/tags/feed-3.0.3</connection>
-    <developerConnection>scm:svn:https://forge.onehippo.org/svn/feeds/tags/feed-3.0.3</developerConnection>
-    <url>https://forge.onehippo.org/svn/feeds/tags/feed-3.0.3</url>
+    <connection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</connection>
+    <developerConnection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</developerConnection>
+    <url>https://forge.onehippo.org/svn/feeds/trunk</url>
   </scm>
 
   <distributionManagement>
