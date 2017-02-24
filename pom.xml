@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2016 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -47,30 +47,31 @@
   </properties>
 
   <inceptionYear>2013</inceptionYear>
-  <url>https://forge.onehippo.org/gf/project/feeds/</url>
 
   <organization>
     <name>Hippo</name>
-    <url>http://www.onehippo.com</url>
+    <url>https://www.onehippo.com</url>
   </organization>
 
   <scm>
-    <connection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</connection>
-    <developerConnection>scm:svn:https://forge.onehippo.org/svn/feeds/trunk</developerConnection>
-    <url>https://forge.onehippo.org/svn/feeds/trunk</url>
+    <connection>scm:git:git@github.com:onehippo-forge/feeds.git</connection>
+    <developerConnection>scm:git:git@github.com:onehippo-forge/feeds.git</developerConnection>
+    <url>https://github.com/onehippo-forge/feeds.git</url>
+    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
     <repository>
+      <name>Hippo Maven 2 Forge Repository</name>
+      <id>hippo-maven2-forge</id>
+      <url>https://maven.onehippo.com/content/repositories/maven2-forge/</url>
       <uniqueVersion>false</uniqueVersion>
-      <id>feeds-maven-repo</id>
-      <url>svn:https://forge.onehippo.org/svn/feeds/maven2/</url>
     </repository>
   </distributionManagement>
 
   <issueManagement>
-    <system>Hippo Forge</system>
-    <url>https://forge.onehippo.org/gf/project/feeds/tracker/</url>
+    <system>Jira</system>
+    <url>https://issues.onehippo.com/browse/HIPFORGE</url>
   </issueManagement>
 
   <licenses>
@@ -129,13 +130,6 @@
 
   <build>
     <defaultGoal>package</defaultGoal>
-    <extensions>
-      <extension>
-        <groupId>org.jvnet.wagon-svn</groupId>
-        <artifactId>wagon-svn</artifactId>
-        <version>1.9</version>
-      </extension>
-    </extensions>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -185,21 +179,6 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <profiles>
-    <profile>
-      <id>pedantic</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.rat</groupId>
-            <artifactId>apache-rat-plugin</artifactId>
-            <inherited>false</inherited>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
   <reporting>
     <outputDirectory>target/site</outputDirectory>
