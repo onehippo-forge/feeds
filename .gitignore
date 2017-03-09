@@ -1,7 +1,5 @@
-/.idea
-feed-cms-addon/feed-cms-addon.iml
-feed-cms-addon/target
-feed-hst/feed-hst.iml
-feed-hst/target
-/feed.iml
-/target
+.idea
+*.iml
+target
+storage
+overlays

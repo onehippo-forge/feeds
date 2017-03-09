@@ -113,21 +113,15 @@
         </p>
 
       </subsection>
-
-
-
-
     </section>
     <section name="Customization">
       <subsection name="Connect Beans with Entry information">
-
         <p>
           Every Feed has one or more entries. RSS Channel has Items, Atom Feed has entries.
         </p>
         <p>
           With the SyndicationElement annotation you can couple bean property methods with entry elements:
-
-          <a href="https://forge.onehippo.org/svn/feeds/demo/trunk/site/src/main/java/org/example/beans/NewsDocument.java">
+          <a href="https://github.com/onehippo-forge/feeds/tree/master/demo/site/src/main/java/org/example/beans/NewsDocument.java">
             NEWS BEAN LINK
           </a>
 
