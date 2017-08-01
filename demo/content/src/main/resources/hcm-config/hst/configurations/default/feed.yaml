@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/hst:default/hst:sitemap/feed:
+      jcr:primaryType: hst:sitemapitem
+      /_any_:
+        jcr:primaryType: hst:sitemapitem
+        hst:namedpipeline: JaxrsRestFeedPipeline
+        hst:relativecontentpath: ${1}
