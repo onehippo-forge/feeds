@@ -58,7 +58,6 @@
     <taglibs.version>1.2.1</taglibs.version>
     <commons.lang.version>2.6</commons.lang.version>
     <junit.version>4.10</junit.version>
-    <freemarker.version>2.3.18</freemarker.version>
     <filesync.override>false</filesync.override>
     <maven.plugins.filesync.version>1.0.0</maven.plugins.filesync.version>
 
@@ -231,7 +230,7 @@
                   <!-- set project.basedir property to enable automatic export -->
                   <project.basedir>${project.basedir}</project.basedir>
 
-                  <log4j.configuration>file:${project.basedir}/conf/log4j-dev.xml</log4j.configuration>
+                  <log4j.configuration>file://${project.basedir}/conf/log4j2-dev.xml</log4j.configuration>
                 </systemProperties>
               </container>
               <deployables>
@@ -260,8 +259,8 @@
       <id>dist</id>
       <dependencies>
         <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-log4j12</artifactId>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-slf4j-impl</artifactId>
           <scope>provided</scope>
         </dependency>
         <dependency>
@@ -270,8 +269,13 @@
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
           <scope>provided</scope>
         </dependency>
       </dependencies>
