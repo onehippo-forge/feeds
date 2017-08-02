@@ -27,7 +27,7 @@
   <description>Hippo Forge Feed Creator</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed</artifactId>
-  <version>4.0.0</version>
+  <version>4.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
