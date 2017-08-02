@@ -18,14 +18,9 @@
       <destName>site.war</destName>
     </file>
     <file>
-      <source>conf/log4j-prod.xml</source>
+      <source>conf/log4j2-prod.xml</source>
       <outputDirectory>/conf</outputDirectory>
       <destName>log4j.xml</destName>
-    </file>
-    <file>
-      <source>conf/log4j.dtd</source>
-      <outputDirectory>/conf</outputDirectory>
-      <destName>log4j.dtd</destName>
     </file>
     <file>
       <source>conf/context.xml</source>
@@ -56,10 +51,12 @@
         <include>org.onehippo.cms7:hippo-addon-publication-workflow-common</include>
         <include>org.onehippo.cms7.hst:hst-api</include>
         <include>org.onehippo.cms7.hst:hst-commons</include>
+        <include>org.onehippo.cms:hippo-configuration-management-api</include>
         <include>org.slf4j:slf4j-api</include>
         <include>org.slf4j:jcl-over-slf4j</include>
-        <include>org.slf4j:slf4j-log4j12</include>
-        <include>log4j:log4j</include>
+        <include>org.apache.logging.log4j:log4j-slf4j-impl</include>
+        <include>org.apache.logging.log4j:log4j-api</include>
+        <include>org.apache.logging.log4j:log4j-core</include>
       </includes>
     </dependencySet>
   </dependencySets>

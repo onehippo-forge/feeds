@@ -1,0 +1,13 @@
+definitions:
+  config:
+    /hst:hst/hst:sites:
+      jcr:primaryType: hst:sites
+      /myhippoproject:
+        jcr:primaryType: hst:site
+        hst:content: /content/documents/myhippoproject
+        /hst:content:
+          jcr:primaryType: hippo:facetselect
+          hippo:docbase: 996bcac5-86cf-49b5-a7a3-16a74863e814
+          hippo:facets: ['hippo:availability']
+          hippo:modes: [single]
+          hippo:values: [live]

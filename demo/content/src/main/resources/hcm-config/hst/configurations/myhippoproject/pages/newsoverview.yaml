@@ -1,0 +1,5 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/myhippoproject/hst:pages/newsoverview:
+      jcr:primaryType: hst:component
+      hst:referencecomponent: hst:pages/overview

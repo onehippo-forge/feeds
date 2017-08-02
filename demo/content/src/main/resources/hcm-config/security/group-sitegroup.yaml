@@ -1,0 +1,7 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/siteusers:
+      jcr:primaryType: hipposys:group
+      hipposys:members: [siteuser, sitewriter]
+      hipposys:securityprovider: internal
+      hipposys:system: true

@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/onehippo-forge/feeds.svg?branch=develop)](https://travis-ci.org/onehippo-forge/feeds)
 
 # Feeds Plugin
 

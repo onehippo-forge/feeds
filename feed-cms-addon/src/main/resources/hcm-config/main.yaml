@@ -1,0 +1,5 @@
+definitions:
+  namespace:
+    feed:
+      uri: http://www.hippoecm.org/hst/nt/feed/1.0
+      cnd: feed.cnd

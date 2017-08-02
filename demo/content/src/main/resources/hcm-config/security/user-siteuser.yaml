@@ -1,0 +1,8 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:users/siteuser:
+      jcr:primaryType: hipposys:user
+      hipposys:active: true
+      hipposys:password: siteuserpass
+      hipposys:securityprovider: internal
+      hipposys:system: true

@@ -1,0 +1,764 @@
+definitions:
+  config:
+    /hippo:namespaces/feed:
+      jcr:primaryType: hipposysedit:namespace
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      /rss20descriptor:
+        jcr:primaryType: hipposysedit:templatetype
+        jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+        /hipposysedit:nodetype:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          /hipposysedit:nodetype:
+            jcr:primaryType: hipposysedit:nodetype
+            jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+            hipposysedit:node: true
+            hipposysedit:supertype: ['hippo:document', 'hippostdpubwf:document', 'hippostd:publishableSummary',
+              'hippostd:relaxed']
+            hipposysedit:uri: http://www.hippoecm.org/hst/nt/feed/1.0
+            /title:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:title
+              hipposysedit:type: String
+            /description:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:description
+              hipposysedit:type: Text
+            /language:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:language
+              hipposysedit:type: String
+            /copyright:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:copyright
+              hipposysedit:type: String
+            /managingEditor:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:managingEditor
+              hipposysedit:type: String
+            /webMaster:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:webMaster
+              hipposysedit:type: String
+            /category:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:category
+              hipposysedit:type: String
+            /generator:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:generator
+              hipposysedit:type: String
+            /image:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:image
+              hipposysedit:type: hippogallerypicker:imagelink
+            /scope:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:scope
+              hipposysedit:type: String
+            /documentType:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:documentType
+              hipposysedit:type: String
+            /excludeItems:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:excludeItems
+              hipposysedit:type: String
+            /itemCount:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:itemCount
+              hipposysedit:type: Long
+            /sortByField:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:sortByField
+              hipposysedit:type: String
+        /hipposysedit:prototypes:
+          jcr:primaryType: hipposysedit:prototypeset
+          /hipposysedit:prototype:
+            jcr:primaryType: feed:rss20descriptor
+            jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+            feed:category: ['']
+            feed:itemCount: 10
+            hippostd:state: unpublished
+            hippostdpubwf:createdBy: admin
+            hippostdpubwf:creationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModificationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModifiedBy: admin
+        /editor:templates:
+          jcr:primaryType: editor:templateset
+          /_default_:
+            jcr:primaryType: frontend:plugincluster
+            frontend:properties: [mode]
+            frontend:references: [engine, wicket.model]
+            frontend:services: [wicket.id]
+            mode: edit
+            /root:
+              jcr:primaryType: frontend:plugin
+              extension.left: ${cluster.id}.left
+              extension.right: ${cluster.id}.right
+              plugin.class: org.hippoecm.frontend.editor.layout.TwoColumn
+              wicket.extensions: [extension.left, extension.right]
+              wicket.id: ${wicket.id}
+            /left:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.left.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.left
+            /right:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.right.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.right
+            /title:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: title
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /description:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: description
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.cols: '80'
+              template.rows: '3'
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /language:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: language
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /copyright:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: copyright
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /managingEditor:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: managingEditor
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /webMaster:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: webMaster
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /category:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: category
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /generator:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: generator
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /image:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: image
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /scope:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: scope
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /documentType:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: documentType
+              hint: Comma separated string for document type(s).
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /excludeItems:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: excludeItems
+              hint: Comma separated string for excluded document type(s) ( including
+                mixins )
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /itemCount:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: itemCount
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /sortByField:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: sortByField
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+      /atom10descriptor:
+        jcr:primaryType: hipposysedit:templatetype
+        jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+        /hipposysedit:nodetype:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          /hipposysedit:nodetype:
+            jcr:primaryType: hipposysedit:nodetype
+            jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+            hipposysedit:node: true
+            hipposysedit:supertype: ['hippo:document', 'hippostdpubwf:document', 'hippostd:publishableSummary',
+              'hippostd:relaxed']
+            hipposysedit:uri: http://www.hippoecm.org/hst/nt/feed/1.0
+            /title:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:title
+              hipposysedit:type: String
+            /author:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:author
+              hipposysedit:type: String
+            /subtitle:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:subtitle
+              hipposysedit:type: Text
+            /category:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:category
+              hipposysedit:type: String
+            /contributor:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:contributor
+              hipposysedit:type: String
+            /generator:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:generator
+              hipposysedit:type: String
+            /icon:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:icon
+              hipposysedit:type: hippogallerypicker:imagelink
+            /logo:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:logo
+              hipposysedit:type: hippogallerypicker:imagelink
+            /rights:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:rights
+              hipposysedit:type: String
+            /scope:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:scope
+              hipposysedit:type: String
+            /documentType:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:documentType
+              hipposysedit:type: String
+            /excludeItems:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:excludeItems
+              hipposysedit:type: String
+            /itemCount:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:itemCount
+              hipposysedit:type: Long
+            /sortByField:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:sortByField
+              hipposysedit:type: String
+        /hipposysedit:prototypes:
+          jcr:primaryType: hipposysedit:prototypeset
+          /hipposysedit:prototype:
+            jcr:primaryType: feed:atom10descriptor
+            jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+            feed:author: ['']
+            feed:category: ['']
+            feed:contributor: ['']
+            feed:itemCount: 10
+            hippostd:state: unpublished
+            hippostdpubwf:createdBy: admin
+            hippostdpubwf:creationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModificationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModifiedBy: admin
+        /editor:templates:
+          jcr:primaryType: editor:templateset
+          /_default_:
+            jcr:primaryType: frontend:plugincluster
+            frontend:properties: [mode]
+            frontend:references: [engine, wicket.model]
+            frontend:services: [wicket.id]
+            mode: edit
+            /root:
+              jcr:primaryType: frontend:plugin
+              extension.left: ${cluster.id}.left
+              extension.right: ${cluster.id}.right
+              plugin.class: org.hippoecm.frontend.editor.layout.TwoColumn
+              wicket.extensions: [extension.left, extension.right]
+              wicket.id: ${wicket.id}
+            /left:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.left.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.left
+            /right:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.right.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.right
+            /title:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: title
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /author:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: author
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /subtitle:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: subtitle
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.cols: '80'
+              template.rows: '3'
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /category:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: category
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /contributor:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: contributor
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /generator:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: generator
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /icon:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: icon
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /logo:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: logo
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /rights:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: rights
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /scope:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: scope
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /documentType:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: documentType
+              hint: Comma separated string for document type(s).
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /excludeItems:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: excludeItems
+              hint: Comma separated string for excluded document type(s) ( including
+                mixins )
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /itemCount:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: itemCount
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /sortByField:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: sortByField
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+      /genericdescriptor:
+        jcr:primaryType: hipposysedit:templatetype
+        jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+        /hipposysedit:nodetype:
+          jcr:primaryType: hippo:handle
+          jcr:mixinTypes: ['mix:referenceable']
+          /hipposysedit:nodetype:
+            jcr:primaryType: hipposysedit:nodetype
+            jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+            hipposysedit:node: true
+            hipposysedit:supertype: ['hippo:document', 'hippostdpubwf:document', 'hippostd:publishableSummary',
+              'hippostd:relaxed']
+            hipposysedit:uri: http://www.hippoecm.org/hst/nt/feed/1.0
+            /type:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:type
+              hipposysedit:type: String
+            /title:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:title
+              hipposysedit:type: String
+            /author:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:author
+              hipposysedit:type: String
+            /description:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:description
+              hipposysedit:type: Text
+            /language:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:language
+              hipposysedit:type: String
+            /contributor:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:contributor
+              hipposysedit:type: String
+            /copyright:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:copyright
+              hipposysedit:type: String
+            /image:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:image
+              hipposysedit:type: hippogallerypicker:imagelink
+            /categories:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:multiple: true
+              hipposysedit:ordered: true
+              hipposysedit:path: feed:categories
+              hipposysedit:type: String
+            /scope:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:scope
+              hipposysedit:type: String
+            /documentType:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:documentType
+              hipposysedit:type: String
+            /excludeItems:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:excludeItems
+              hipposysedit:type: String
+            /itemCount:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:itemCount
+              hipposysedit:type: Long
+            /sortByField:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:path: feed:sortByField
+              hipposysedit:type: String
+        /hipposysedit:prototypes:
+          jcr:primaryType: hipposysedit:prototypeset
+          /hipposysedit:prototype:
+            jcr:primaryType: feed:genericdescriptor
+            jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+            feed:itemCount: 10
+            hippostd:state: unpublished
+            hippostdpubwf:createdBy: admin
+            hippostdpubwf:creationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModificationDate: 2010-02-04T16:32:28.068+02:00
+            hippostdpubwf:lastModifiedBy: admin
+        /editor:templates:
+          jcr:primaryType: editor:templateset
+          /_default_:
+            jcr:primaryType: frontend:plugincluster
+            frontend:properties: [mode]
+            frontend:references: [engine, wicket.model]
+            frontend:services: [wicket.id]
+            mode: edit
+            /root:
+              jcr:primaryType: frontend:plugin
+              extension.left: ${cluster.id}.left
+              extension.right: ${cluster.id}.right
+              plugin.class: org.hippoecm.frontend.editor.layout.TwoColumn
+              wicket.extensions: [extension.left, extension.right]
+              wicket.id: ${wicket.id}
+            /left:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.left.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.left
+            /right:
+              jcr:primaryType: frontend:plugin
+              item: ${cluster.id}.right.item
+              plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+              wicket.id: ${cluster.id}.right
+            /type:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: type
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /title:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: title
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /author:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: author
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /description:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: description
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.cols: '80'
+              template.rows: '3'
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /language:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: language
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /contributor:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: contributor
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /copyright:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: copyright
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /image:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: image
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /categories:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: categories
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.left.item
+              wicket.model: ${wicket.model}
+            /scope:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: scope
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /documentType:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: documentType
+              hint: Comma separated string for document type(s).
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /excludeItems:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: excludeItems
+              hint: Comma separated string for excluded document type(s) ( including
+                mixins )
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /itemCount:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: itemCount
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              template.size: ''
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}
+            /sortByField:
+              jcr:primaryType: frontend:plugin
+              engine: ${engine}
+              field: sortByField
+              mode: ${mode}
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              translator.id: ${cluster.id}.translator
+              wicket.id: ${cluster.id}.right.item
+              wicket.model: ${wicket.model}

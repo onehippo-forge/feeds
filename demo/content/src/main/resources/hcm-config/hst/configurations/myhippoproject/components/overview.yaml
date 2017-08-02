@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/myhippoproject/hst:components/overview:
+      jcr:primaryType: hst:component
+      hst:componentclassname: org.example.components.Overview
+      hst:template: overview.main.content
