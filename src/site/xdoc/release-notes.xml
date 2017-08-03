@@ -53,6 +53,17 @@
       </table>
     </section>
     <section name="Release Notes">
+      <subsection name="4.0.1">
+        <p class="smallinfo">Release Date: 3 August 2017</p>
+        <ul>
+          <li>
+            Bump parent POM to use version 29 of project POM
+          </li>
+          <li>
+            Demo: Fix HST configuration bootstrap resources and log4j configuration for local deployment.
+          </li>
+        </ul>
+      </subsection>
       <subsection name="4.0.0">
         <p class="smallinfo">Release Date: 2 August 2017</p>
         <ul>
