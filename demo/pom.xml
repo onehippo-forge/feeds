@@ -230,7 +230,7 @@
                   <!-- set project.basedir property to enable automatic export -->
                   <project.basedir>${project.basedir}</project.basedir>
 
-                  <log4j.configuration>file://${project.basedir}/conf/log4j2-dev.xml</log4j.configuration>
+                  <log4j.configurationFile>file://${project.basedir}/conf/log4j2-dev.xml</log4j.configurationFile>
                 </systemProperties>
               </container>
               <deployables>
