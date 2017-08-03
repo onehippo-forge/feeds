@@ -19,5 +19,4 @@ definitions:
           jcr:primaryType: hst:virtualhost
           /hst:root:
             jcr:primaryType: hst:mount
-            hst:channelpath: /hst:hst/hst:channels/myhippoproject
             hst:mountpoint: /hst:hst/hst:sites/myhippoproject
