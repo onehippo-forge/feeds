@@ -23,8 +23,8 @@
   </parent>
 
 
-  <name>Hippo Forge Feed Creator</name>
-  <description>Hippo Forge Feed Creator</description>
+  <name>Bloomreach Forge Feed Creator</name>
+  <description>Bloomreach Forge Feed Creator</description>
   <groupId>org.onehippo.forge</groupId>
   <artifactId>feed</artifactId>
   <version>4.0.2-SNAPSHOT</version>
@@ -32,7 +32,7 @@
 
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
-    <notice.project.name>Hippo Forge Feed Creator</notice.project.name>
+    <notice.project.name>Bloomreach Forge Feed Creator</notice.project.name>
     <hippo-hst-version>5.0.0</hippo-hst-version>
     <hippo.repository.version>5.0.0</hippo.repository.version>
 
@@ -54,9 +54,9 @@
   </organization>
 
   <scm>
-    <connection>scm:git:git@github.com:onehippo-forge/feeds.git</connection>
-    <developerConnection>scm:git:git@github.com:onehippo-forge/feeds.git</developerConnection>
-    <url>https://github.com/onehippo-forge/feeds.git</url>
+    <connection>scm:git:git@github.com:bloomreach-forge/feeds.git</connection>
+    <developerConnection>scm:git:git@github.com:bloomreach-forge/feeds.git</developerConnection>
+    <url>https://github.com/bloomreach-forge/feeds.git</url>
     <tag>HEAD</tag>
   </scm>
 
