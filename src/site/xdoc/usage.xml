@@ -121,7 +121,7 @@
         </p>
         <p>
           With the SyndicationElement annotation you can couple bean property methods with entry elements:
-          <a href="https://github.com/onehippo-forge/feeds/tree/master/demo/site/src/main/java/org/example/beans/NewsDocument.java">
+          <a href="https://github.com/bloomreach-forge/feeds/tree/master/demo/site/src/main/java/org/example/beans/NewsDocument.java">
             NEWS BEAN LINK
           </a>
 
