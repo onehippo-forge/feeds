@@ -36,7 +36,7 @@
     <hippo-hst-version>5.0.0</hippo-hst-version>
     <hippo.repository.version>5.0.0</hippo.repository.version>
 
-    <plugin.site.version>3.3</plugin.site.version>
+    <plugin.site.version>3.6</plugin.site.version>
     <plugin.source.version>2.2.1</plugin.source.version>
     <plugin.compiler.version>3.1</plugin.compiler.version>
     <plugin.jar.version>2.4</plugin.jar.version>
