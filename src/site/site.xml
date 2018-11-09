@@ -21,6 +21,14 @@
     <artifactId>forge-maven-skin</artifactId>
     <version>3.0.1</version>
   </skin>
+  <custom>
+    <bloomreach>
+      <!-- Add a 'Fork me on GitHub' ribbon  -->
+      <gitHub>
+        <projectId>bloomreach-forge/feeds</projectId>
+      </gitHub>
+    </bloomreach>
+  </custom>
 
   <body>
     <menu name="Feed Creator">
