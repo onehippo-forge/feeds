@@ -36,9 +36,9 @@ public class ImageModifier  extends RSS20Modifier {
         if (bean instanceof NewsDocument) {
             final HippoGalleryImageSetBean image = ((NewsDocument) bean).getImage();
             if (image != null) {
-                final Element element = new Element("image", Namespace.getNamespace("image", "http://web.resource.org/rss/1.0/modules/image/"));
                 final HstLink hstLink = context.getHstLinkCreator().create(image, context);
                 if (hstLink != null) {
+                    final Element element = new Element("image", Namespace.getNamespace("image", "http://web.resource.org/rss/1.0/modules/image/"));
                     element.addContent(hstLink.toUrlForm(context, true));
                     final List foreignMarkup = (List) entry.getForeignMarkup();
                     foreignMarkup.add(element);
