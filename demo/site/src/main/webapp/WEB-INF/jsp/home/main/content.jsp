@@ -14,7 +14,7 @@
       <hst:headContribution keyHint="headTitle" element="${headTitle}"/>
     </c:if>
     
-    <hst:cmseditlink hippobean="${document}"/>
+    <hst:manageContent hippobean="${document}"/>
     <h2>${document.title}</h2>
     <p>I18n key example: <fmt:message key="home.title"/></p>
     <p>${document.summary}</p>

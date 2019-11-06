@@ -1,8 +1,8 @@
 definitions:
   config:
-    /hippo:configuration/hippo:users/siteuser:
+    /hippo:configuration/hippo:users/sitewriter:
       jcr:primaryType: hipposys:user
       hipposys:active: true
-      hipposys:password: siteuserpass
+      hipposys:passkey: jvm://
       hipposys:securityprovider: internal
       hipposys:system: true

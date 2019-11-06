@@ -1,7 +1,6 @@
 package org.example.componentsinfo;
 
 import org.hippoecm.hst.configuration.hosting.Mount;
-import org.hippoecm.hst.core.parameters.Color;
 import org.hippoecm.hst.core.parameters.Parameter;
 
 public interface ListViewInfo extends GeneralListInfo {
@@ -22,7 +21,6 @@ public interface ListViewInfo extends GeneralListInfo {
     String getCssClass();
 
     @Parameter(name = "bgcolor", defaultValue="", displayName = "Background Color")
-    @Color
     String getBgColor();
 
 }

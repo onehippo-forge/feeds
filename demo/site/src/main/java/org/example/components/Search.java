@@ -1,11 +1,13 @@
 package org.example.components;
 
 import org.example.componentsinfo.SearchInfo;
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,16 +18,17 @@ public class Search extends BaseComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {
+        HstRequestContext requestContext = RequestContextProvider.get();
 
-       SearchInfo info = getParametersInfo(request);
-       HippoBean scope = getSiteContentBaseBean(request);
+        SearchInfo info = getComponentParametersInfo(request);
+        HippoBean scope = requestContext.getSiteContentBaseBean();
 
-       String query = getPublicRequestParameter(request, "query");
-       if(query == null) {
-           // test namespaced query parameter
-           query = request.getParameter("query");
-       }
-       createAndExecuteSearch(request, info, scope, query);
+        String query = getPublicRequestParameter(request, "query");
+        if(query == null) {
+            // test namespaced query parameter
+            query = request.getParameter("query");
+        }
+        createAndExecuteSearch(request, info, scope, query);
     }
 
 }

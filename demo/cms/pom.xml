@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.example</groupId>
     <artifactId>myhippoproject</artifactId>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
   </parent>
 
   <name>My Hippo Project CMS</name>
@@ -25,7 +25,7 @@
       <artifactId>hippo-package-cms-dependencies</artifactId>
       <type>pom</type>
     </dependency>
-    
+
     <dependency>
       <groupId>org.onehippo.cms7.hst.toolkit-resources.addon.toolkit-cnd</groupId>
       <artifactId>hst-addon-cnd</artifactId>
@@ -37,13 +37,8 @@
     </dependency>
 
     <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-addon-channel-manager-frontend</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-addon-channel-manager-repository</artifactId>
+      <groupId>org.onehippo.cms7.hst.toolkit-resources.addon</groupId>
+      <artifactId>hst-addon-hcm-site</artifactId>
     </dependency>
 
     <dependency>
@@ -51,22 +46,13 @@
       <artifactId>myhippoproject-content</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
     <!--  Gallery picker dependency -->
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-gallerypicker</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-repository-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-cms-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
+
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
       <artifactId>hippo-plugin-resourcebundle-editor</artifactId>
@@ -95,7 +81,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <Hippo-Release-Version>${hippo.release.version}</Hippo-Release-Version>
+              <BloomReach-Release-Version>${hippo.release.version}</BloomReach-Release-Version>
               <Project-Version>${project.version}</Project-Version>
               <Project-Build>${buildNumber}</Project-Build>
             </manifestEntries>

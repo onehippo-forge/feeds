@@ -13,7 +13,7 @@
       <hst:headContribution keyHint="headTitle" element="${headTitle}"/>
     </c:if>
     
-    <hst:cmseditlink hippobean="${document}"/>
+    <hst:manageContent hippobean="${document}"/>
     <h2>${document.title}</h2>
     <c:if test="${hst:isReadable(document, 'date.time')}">
       <p><fmt:formatDate value="${document.date.time}" type="Date"/></p>

@@ -24,7 +24,7 @@
       <c:forEach var="item" items="${result.hippoBeans}">
         <hst:link var="link" hippobean="${item}"/>
         <li class="overview-item">
-          <hst:cmseditlink hippobean="${item}"/>
+          <hst:manageContent hippobean="${item}"/>
           <a href="${link}">${item.title}</a>
           <div>
             <c:if test="${hst:isReadable(item, 'date.time')}">

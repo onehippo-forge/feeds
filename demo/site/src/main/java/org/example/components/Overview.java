@@ -1,11 +1,13 @@
 package org.example.components;
 
 import org.example.componentsinfo.PageableListInfo;
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,9 +18,10 @@ public class Overview extends BaseComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {
+        HstRequestContext requestContext = RequestContextProvider.get();
 
-       PageableListInfo info = getParametersInfo(request);
-       HippoBean scope = getContentBean(request);
+       PageableListInfo info = getComponentParametersInfo(request);
+       HippoBean scope = requestContext.getContentBean();
 
        if(scope == null) {
            response.setStatus(404);

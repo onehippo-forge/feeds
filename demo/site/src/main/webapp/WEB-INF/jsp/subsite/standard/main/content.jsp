@@ -13,7 +13,7 @@
       <hst:headContribution keyHint="headTitle" element="${headTitle}"/>
     </c:if>
     
-    <hst:cmseditlink hippobean="${document}"/>
+    <hst:manageContent hippobean="${document}"/>
     <h2>${document.title}</h2>
     <p>${document.summary}</p>
     <hst:html hippohtml="${document.html}"/>
