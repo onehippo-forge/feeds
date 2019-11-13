@@ -51,22 +51,22 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
     private static final Logger log = LoggerFactory.getLogger(GenericFeedDescriptor.class);
 
     public String getType() {
-        return getProperty("feed:type");
+        return getSingleProperty("feed:type");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "title")
     public String getTitle() {
-        return getProperty("feed:title");
+        return getSingleProperty("feed:title");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "publishedDate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
-        return getProperty("hippostdpubwf:publicationDate");
+        return getSingleProperty("hippostdpubwf:publicationDate");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "authors", converter = AuthorListToSyndPersonListConverter.class)
     public List<String> getAuthor() {
-        String[] authors = getProperty("feed:author");
+        String[] authors = getMultipleProperty("feed:author");
         if (authors != null) {
             return Arrays.asList(authors);
         } else {
@@ -76,17 +76,17 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "description")
     public String getDescription() {
-        return getProperty("feed:description");
+        return getSingleProperty("feed:description");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "language")
     public String getLanguage() {
-        return getProperty("feed:language");
+        return getSingleProperty("feed:language");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "contributor", converter = AuthorListToSyndPersonListConverter.class)
     public List<String> getContributors() {
-        String[] contributors = getProperty("feed:contributor");
+        String[] contributors = getMultipleProperty("feed:contributor");
         if (contributors != null) {
             return Arrays.asList(contributors);
         } else {
@@ -96,7 +96,7 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "copyright")
     public String getCopyright() {
-        return getProperty("feed:copyright");
+        return getSingleProperty("feed:copyright");
     }
 
     @SyndicationElement(type = FeedType.GENERIC, name = "image", transformer = HippoGalleryImageSetToSyndImageTransformer.class)
@@ -106,7 +106,7 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @SyndicationElement(type = FeedType.GENERIC, name = "categories", converter = ListToSyndCategoryListConverter.class)
     public List<String> getCategories() {
-        String[] categories = getProperty("feed:categories");
+        String[] categories = getMultipleProperty("feed:categories");
         if (categories != null) {
             return Arrays.asList(categories);
         } else {
@@ -163,23 +163,23 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
      */
 
     public String getScope() {
-        return getProperty("feed:scope");
+        return getSingleProperty("feed:scope");
     }
 
     public String getDocumentType() {
-        return getProperty("feed:documentType");
+        return getSingleProperty("feed:documentType");
     }
 
     public String getExclude() {
-        return getProperty("feed:excludeItems");
+        return getSingleProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {
-        return getProperty("feed:itemCount");
+        return getSingleProperty("feed:itemCount");
     }
 
     public String getSortByField() {
-        return getProperty("feed:sortByField");
+        return getSingleProperty("feed:sortByField");
     }
 
 }

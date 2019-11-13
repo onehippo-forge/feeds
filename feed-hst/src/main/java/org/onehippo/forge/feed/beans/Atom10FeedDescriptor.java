@@ -57,12 +57,12 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "title", converter = StringToContentConverter.class)
     public String getTitle() {
-        return getProperty("feed:title");
+        return getSingleProperty("feed:title");
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "authors", converter = AuthorListToPersonListConverter.class)
     public List<String> getAuthor() {
-        String[] authors = getProperty("feed:author");
+        String[] authors = getMultipleProperty("feed:author");
         if (authors != null) {
             return Arrays.asList(authors);
         } else {
@@ -72,12 +72,12 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "subtitle", converter = StringToContentConverter.class)
     public String getSubtitle() {
-        return getProperty("feed:subtitle");
+        return getSingleProperty("feed:subtitle");
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "updated", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
-        return getProperty("hippostdpubwf:publicationDate");
+        return getSingleProperty("hippostdpubwf:publicationDate");
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "id", transformer = PathLinkResolver.class)
@@ -96,7 +96,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "categories", converter = ListToAtomCategoryListConverter.class)
     public List<String> getCategory() {
-        String[] categories = getProperty("feed:category");
+        String[] categories = getMultipleProperty("feed:category");
         if (categories != null) {
             return Arrays.asList(categories);
         } else {
@@ -106,7 +106,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "contributors", converter = AuthorListToPersonListConverter.class)
     public List<String> getContributor() {
-        String[] contributors = getProperty("feed:contributor");
+        String[] contributors = getMultipleProperty("feed:contributor");
         if (contributors != null) {
             return Arrays.asList(contributors);
         } else {
@@ -116,7 +116,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "generator", converter = StringToGeneratorConverter.class)
     public String getGenerator() {
-        return getProperty("feed:generator");
+        return getSingleProperty("feed:generator");
     }
 
     @SyndicationElement(type = FeedType.ATOM, name = "icon", transformer = DocumentLinkResolver.class)
@@ -131,7 +131,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @SyndicationElement(type = FeedType.ATOM, name = "rights")
     public String getRights() {
-        return getProperty("feed:rights");
+        return getSingleProperty("feed:rights");
     }
 
     @Override
@@ -176,23 +176,23 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
      */
 
     public String getScope() {
-        return getProperty("feed:scope");
+        return getSingleProperty("feed:scope");
     }
 
     public String getDocumentType() {
-        return getProperty("feed:documentType");
+        return getSingleProperty("feed:documentType");
     }
 
     public String getExclude() {
-        return getProperty("feed:excludeItems");
+        return getSingleProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {
-        return getProperty("feed:itemCount");
+        return getSingleProperty("feed:itemCount");
     }
 
     public String getSortByField() {
-        return getProperty("feed:sortByField");
+        return getSingleProperty("feed:sortByField");
     }
 
 }

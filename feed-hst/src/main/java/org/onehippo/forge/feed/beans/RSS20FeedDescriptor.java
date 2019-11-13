@@ -53,17 +53,17 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @SyndicationElement(type = FeedType.RSS, name = "title")
     public String getTitle() {
-        return getProperty("feed:title");
+        return getSingleProperty("feed:title");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "description")
     public String getDescription() {
-        return getProperty("feed:description");
+        return getSingleProperty("feed:description");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "pubdate", converter = CalendarToDateConverter.class)
     public Calendar getPublicationDate() {
-        return getProperty("hippostdpubwf:publicationDate");
+        return getSingleProperty("hippostdpubwf:publicationDate");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "link", transformer = PathLinkResolver.class)
@@ -77,27 +77,27 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @SyndicationElement(type = FeedType.RSS, name = "language")
     public String getLanguage() {
-        return getProperty("feed:language");
+        return getSingleProperty("feed:language");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "copyright")
     public String getCopyright() {
-        return getProperty("feed:copyright");
+        return getSingleProperty("feed:copyright");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "managingEditor")
     public String getManagingEditor() {
-        return getProperty("feed:managingEditor");
+        return getSingleProperty("feed:managingEditor");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "webMaster")
     public String getWebMaster() {
-        return getProperty("feed:webMaster");
+        return getSingleProperty("feed:webMaster");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "categories", converter = ListToRssCategoryListConverter.class)
     public List<String> getCategory() {
-        String[] categories = getProperty("feed:category");
+        String[] categories = getMultipleProperty("feed:category");
         if (categories != null) {
             return Arrays.asList(categories);
         } else {
@@ -107,7 +107,7 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @SyndicationElement(type = FeedType.RSS, name = "generator")
     public String getGenerator() {
-        return getProperty("feed:generator");
+        return getSingleProperty("feed:generator");
     }
 
     @SyndicationElement(type = FeedType.RSS, name = "image", transformer = HippoGalleryImageSetToImageTransformer.class)
@@ -158,23 +158,23 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
 
     public String getScope() {
-        return getProperty("feed:scope");
+        return getSingleProperty("feed:scope");
     }
 
     public String getDocumentType() {
-        return getProperty("feed:documentType");
+        return getSingleProperty("feed:documentType");
     }
 
     public String getExclude() {
-        return getProperty("feed:excludeItems");
+        return getSingleProperty("feed:excludeItems");
     }
 
     public Long getItemCount() {
-        return getProperty("feed:itemCount");
+        return getSingleProperty("feed:itemCount");
     }
 
     public String getSortByField() {
-        return getProperty("feed:sortByField");
+        return getSingleProperty("feed:sortByField");
     }
 
 }
