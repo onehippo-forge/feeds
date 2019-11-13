@@ -34,10 +34,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
+import org.hippoecm.hst.content.beans.ObjectBeanManagerException;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
+import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
+import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
 import org.hippoecm.hst.content.beans.standard.HippoDocumentBean;
@@ -66,9 +68,6 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
     public String getFeed(@Context HttpServletRequest request, @Context HttpServletResponse response, @Context UriInfo info) {
         String feed = null;
         try {
-            long indexCount = 0;
-            long limit = 10L;
-            String sortByField;
             HstRequestContext requestContext = getRequestContext(request);
             HippoDocumentBean contentBean = getRequestContentBean(requestContext, HippoDocumentBean.class);
 
@@ -80,67 +79,66 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
             FeedDescriptor<T, E> document = (FeedDescriptor<T,E>) contentBean;
             final T channel = ConversionUtil.covertToAppropriateSyndicationFeed(document, document, this, requestContext);
 
-            // prevent NPE from auto-deboxing
-            if (document.getItemCount() != null) {
-                limit = document.getItemCount();
-            }
-            sortByField = document.getSortByField();
+            HstQuery hstQuery = getHstQuery(requestContext, document);
 
-            // get scope for search query
-            HippoBean scopeBean = getMountContentBaseBean(requestContext);
-            String scope = document.getScope();
-            if (scope != null && !"".equals(scope)) {
-                HippoBean folderBean = scopeBean.getBean(scope);
-                if (folderBean != null) {
-                    scopeBean = folderBean;
-                }
-            }
-
-            // FIXME get date field from BE template?
-            HstQuery hstQuery = null;
-            final String[] documentTypes = DocumentTypeHelper.getDocTypes(getDocTypes(requestContext, document), getExcludedDocTypes(document));
-            if (!ArrayUtils.isEmpty(documentTypes)) {
-                hstQuery = getHstQueryManager(requestContext.getSession(), requestContext)
-                        .createQuery(scopeBean.getNode(), true, documentTypes);
-            }
-            if (hstQuery == null) {
-                // dunno if we should go further at this point?
-                hstQuery = getHstQueryManager(requestContext.getSession(), requestContext).createQuery(scopeBean);
-            }
-            if (sortByField != null) {
-                hstQuery.addOrderByDescending(sortByField);
-            }
-
-
-            hstQuery.setLimit((int) limit);
-            if (modifier != null) {
-                modifier.modifyHstQuery(requestContext, hstQuery, document);
-            }
             HstQueryResult queryResult = hstQuery.execute();
             HippoBeanIterator beans = queryResult.getHippoBeans();
 
-            List<E> entries = new ArrayList<>();
-            while (beans.hasNext() && indexCount < limit) {
-                HippoBean bean = beans.nextHippoBean();
-                if (bean != null) {
-                    final E item = ConversionUtil.covertToAppropriateSyndicationEntry(document, bean, this, requestContext);
-                    if (modifier != null) {
-                        modifier.modifyEntry(requestContext, item, bean);
-                    }
+            List<E> entries = getModifiedEntries(requestContext, document, beans);
 
-                    entries.add(item);
-                }
-                indexCount++;
-            }
             document.set(channel, entries);
+
             if (modifier != null) {
                 modifier.modifyFeed(requestContext, channel, document);
             }
             feed = document.process(channel);
-        } catch (Exception e) {
+        } catch (RepositoryException | QueryException | ObjectBeanManagerException e) {
             log.error("Cannot execute query for RSS feed. {e}", e);
         }
         return feed;
+    }
+
+    private List<E> getModifiedEntries(HstRequestContext requestContext, FeedDescriptor<T, E> document, HippoBeanIterator beans) {
+        List<E> entries = new ArrayList<>();
+        while (beans.hasNext()) {
+            HippoBean bean = beans.nextHippoBean();
+            if (bean != null) {
+                final E item = ConversionUtil.covertToAppropriateSyndicationEntry(document, bean, this, requestContext);
+                if (modifier != null) {
+                    modifier.modifyEntry(requestContext, item, bean);
+                }
+                entries.add(item);
+            }
+        }
+        return entries;
+    }
+
+    private HstQuery getHstQuery(HstRequestContext requestContext, FeedDescriptor<T, E> document) throws RepositoryException, QueryException, ObjectBeanManagerException {
+        HippoBean scopeBean = getScopeForSearchQuery(requestContext, document);
+        final String[] documentTypes = DocumentTypeHelper.getDocTypes(getDocTypes(requestContext, document), getExcludedDocTypes(document));
+
+        HstQuery hstQuery = HstQueryBuilder.create(scopeBean)
+                .ofTypes(documentTypes)
+                .orderByDescending(document.getSortByField())
+                .limit(document.getItemCount().intValue())
+                .build();
+
+        if (modifier != null) {
+            modifier.modifyHstQuery(requestContext, hstQuery, document);
+        }
+        return hstQuery;
+    }
+
+    private HippoBean getScopeForSearchQuery(HstRequestContext requestContext, FeedDescriptor<T, E> document) throws ObjectBeanManagerException {
+        HippoBean scopeBean = getMountContentBaseBean(requestContext);
+        String scope = document.getScope();
+        if (scope != null && !"".equals(scope)) {
+            HippoBean folderBean = scopeBean.getBean(scope);
+            if (folderBean != null) {
+                scopeBean = folderBean;
+            }
+        }
+        return scopeBean;
     }
 
     private Set<String> getExcludedDocTypes(final FeedDescriptor<T, E> document) {
