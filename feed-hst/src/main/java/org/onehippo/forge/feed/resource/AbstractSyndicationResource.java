@@ -38,6 +38,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.content.beans.ObjectBeanManagerException;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
+import org.hippoecm.hst.content.beans.query.builder.Constraint;
 import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
@@ -50,6 +51,9 @@ import org.onehippo.forge.feed.api.modifier.Modifier;
 import org.onehippo.forge.feed.util.ConversionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.hippoecm.hst.content.beans.query.builder.ConstraintBuilder.*;
+
 
 /**
  * @version "$Id: RssFeedResource.java 9 2013-04-08 08:29:25Z ksalic $"
@@ -117,16 +121,32 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
         HippoBean scopeBean = getScopeForSearchQuery(requestContext, document);
         final String[] documentTypes = DocumentTypeHelper.getDocTypes(getDocTypes(requestContext, document), getExcludedDocTypes(document));
 
+        document.getPropertyFilters();
         HstQuery hstQuery = HstQueryBuilder.create(scopeBean)
                 .ofTypes(documentTypes)
                 .orderByDescending(document.getSortByField())
                 .limit(document.getItemCount().intValue())
+                .where(
+                        getPropertyContstraint(document)
+                )
                 .build();
 
         if (modifier != null) {
             modifier.modifyHstQuery(requestContext, hstQuery, document);
         }
         return hstQuery;
+    }
+
+    private Constraint getPropertyContstraint(FeedDescriptor<T, E> document) {
+
+        return document.getPropertyFilters() == null ? constraint(".").equalTo(null) :or(
+            Arrays.stream(document.getPropertyFilters())
+                .map( propfilter-> {
+                    String[] s = propfilter.split("=");
+                    return s.length==2 ? constraint(s[0]).equalTo(s[1]) : constraint(".").equalTo(null);
+                }
+            ).toArray(Constraint[]::new)
+        );
     }
 
     private HippoBean getScopeForSearchQuery(HstRequestContext requestContext, FeedDescriptor<T, E> document) throws ObjectBeanManagerException {
