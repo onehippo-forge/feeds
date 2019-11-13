@@ -196,7 +196,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
     }
 
     @Override
-    public String[] getFieldSelect() {
+    public String[] getPropertyFilters() {
         return getMultipleProperty("feed:propertyfilter");
     }
 }

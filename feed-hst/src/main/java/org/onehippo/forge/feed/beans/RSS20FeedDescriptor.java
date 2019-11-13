@@ -178,7 +178,7 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
     }
 
     @Override
-    public String[] getFieldSelect() {
+    public String[] getPropertyFilters() {
         return getMultipleProperty("feed:propertyfilter");
     }
 }

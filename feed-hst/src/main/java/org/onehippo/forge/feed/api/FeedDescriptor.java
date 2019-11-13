@@ -69,6 +69,6 @@ public interface FeedDescriptor<T, E> {
 
     public String getExclude();
 
-    public String[] getFieldSelect();
+    public String[] getPropertyFilters();
 
 }

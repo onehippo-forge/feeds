@@ -183,7 +183,7 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
     }
     
     @Override
-    public String[] getFieldSelect() {
+    public String[] getPropertyFilters() {
         return getMultipleProperty("feed:propertyfilter");
     }
 }
