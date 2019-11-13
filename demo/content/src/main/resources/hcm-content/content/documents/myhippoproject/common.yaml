@@ -1,6 +1,6 @@
 /content/documents/myhippoproject/common:
   jcr:primaryType: hippostd:folder
-  jcr:mixinTypes: ['hippotranslation:translated', 'hippo:named', 'mix:referenceable']
+  jcr:mixinTypes: ['hippo:named', 'hippotranslation:translated', 'mix:referenceable']
   jcr:uuid: c70b4474-b0b5-4918-871d-a83c180b2673
   hippo:name: Common
   hippostd:foldertype: [new-translated-folder, new-document]
@@ -52,7 +52,6 @@
       jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
       jcr:uuid: 35fb4571-0bb4-468d-b2f9-ff7ae9655cf1
       hippo:availability: []
-      hippostd:holder: admin
       hippostd:state: draft
       hippostdpubwf:createdBy: admin
       hippostdpubwf:creationDate: 2010-01-21T11:34:11.055+01:00

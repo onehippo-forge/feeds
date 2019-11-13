@@ -181,5 +181,9 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
     public String getSortByField() {
         return getSingleProperty("feed:sortByField");
     }
-
+    
+    @Override
+    public String[] getFieldSelect() {
+        return getMultipleProperty("feed:propertyfilter");
+    }
 }

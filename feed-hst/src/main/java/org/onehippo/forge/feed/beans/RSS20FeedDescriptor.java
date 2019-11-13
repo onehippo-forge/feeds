@@ -177,4 +177,8 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
         return getSingleProperty("feed:sortByField");
     }
 
+    @Override
+    public String[] getFieldSelect() {
+        return getMultipleProperty("feed:propertyfilter");
+    }
 }

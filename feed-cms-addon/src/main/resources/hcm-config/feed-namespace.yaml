@@ -74,6 +74,14 @@ definitions:
               jcr:primaryType: hipposysedit:field
               hipposysedit:path: feed:sortByField
               hipposysedit:type: String
+            /propertyfilter:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:mandatory: false
+              hipposysedit:multiple: true
+              hipposysedit:ordered: false
+              hipposysedit:path: feed:propertyfilter
+              hipposysedit:primary: false
+              hipposysedit:type: String
         /hipposysedit:prototypes:
           jcr:primaryType: hipposysedit:prototypeset
           /hipposysedit:prototype:
@@ -253,6 +261,17 @@ definitions:
               translator.id: ${cluster.id}.translator
               wicket.id: ${cluster.id}.right.item
               wicket.model: ${wicket.model}
+            /propertyfilter:
+              jcr:primaryType: frontend:plugin
+              caption: Property Filter
+              field: propertyfilter
+              hint: "Filter the feed contents by document properties. Each field must be written\
+                \ as \"mydoc:myproperty=value\".\r\n\r\nMultiple properties will be combined using\
+                \ a logical OR.  This means matching on more properties is actually less restrictive."
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              wicket.id: ${cluster.id}.right.item
+              /cluster.options:
+                jcr:primaryType: frontend:pluginconfig
       /atom10descriptor:
         jcr:primaryType: hipposysedit:templatetype
         jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
@@ -327,6 +346,14 @@ definitions:
             /sortByField:
               jcr:primaryType: hipposysedit:field
               hipposysedit:path: feed:sortByField
+              hipposysedit:type: String
+            /propertyfilter:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:mandatory: false
+              hipposysedit:multiple: true
+              hipposysedit:ordered: false
+              hipposysedit:path: feed:propertyfilter
+              hipposysedit:primary: false
               hipposysedit:type: String
         /hipposysedit:prototypes:
           jcr:primaryType: hipposysedit:prototypeset
@@ -509,6 +536,17 @@ definitions:
               translator.id: ${cluster.id}.translator
               wicket.id: ${cluster.id}.right.item
               wicket.model: ${wicket.model}
+            /propertyfilter:
+              jcr:primaryType: frontend:plugin
+              caption: Property Filter
+              field: propertyfilter
+              hint: "Filter the feed contents by document properties. Each field must be written\
+                \ as \"mydoc:myproperty=value\".\r\n\r\nMultiple properties will be combined using\
+                \ a logical OR.  This means matching on more properties is actually less restrictive."
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              wicket.id: ${cluster.id}.right.item
+              /cluster.options:
+                jcr:primaryType: frontend:pluginconfig
       /genericdescriptor:
         jcr:primaryType: hipposysedit:templatetype
         jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
@@ -583,6 +621,14 @@ definitions:
             /sortByField:
               jcr:primaryType: hipposysedit:field
               hipposysedit:path: feed:sortByField
+              hipposysedit:type: String
+            /propertyfilter:
+              jcr:primaryType: hipposysedit:field
+              hipposysedit:mandatory: false
+              hipposysedit:multiple: true
+              hipposysedit:ordered: false
+              hipposysedit:path: feed:propertyfilter
+              hipposysedit:primary: false
               hipposysedit:type: String
         /hipposysedit:prototypes:
           jcr:primaryType: hipposysedit:prototypeset
@@ -762,3 +808,14 @@ definitions:
               translator.id: ${cluster.id}.translator
               wicket.id: ${cluster.id}.right.item
               wicket.model: ${wicket.model}
+            /propertyfilter:
+              jcr:primaryType: frontend:plugin
+              caption: Property Filter
+              field: propertyfilter
+              hint: "Filter the feed contents by document properties. Each field must be written\
+                \ as \"mydoc:myproperty=value\".\r\n\r\nMultiple properties will be combined using\
+                \ a logical OR.  This means matching on more properties is actually less restrictive."
+              plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+              wicket.id: ${cluster.id}.right.item
+              /cluster.options:
+                jcr:primaryType: frontend:pluginconfig
