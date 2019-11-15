@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-    Copyright 2017 Hippo
+    Copyright 2017-2019 Hippo
 
     Licensed under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
@@ -26,9 +26,12 @@
           <th>
             Plugin Version
           </th>
-          <th>
-            Hippo CMS Release Version
+          <th>oomreach Experience Manager Version
           </th>
+        </tr>
+        <tr>
+          <td>5.x.y</td>
+          <td>13</td>
         </tr>
         <tr>
           <td>4.x.y</td>
@@ -53,6 +56,16 @@
       </table>
     </section>
     <section name="Release Notes">
+      <subsection name="5.0.0">
+        <p class="smallinfo">Release Date: 15 November 2019</p>
+        <ul>
+         <li>
+            Upgrade to Bloomreach Experience Manager 13.<br/>
+           This includes repackaging from <code>org.onehippo</code> to <code>org.bloomreach</code> and also the artifacts'
+           Maven coordinates have changed likewise. Please revisit the <a href="install.html">Installation page</a>.
+          </li>
+        </ul>
+      </subsection>
       <subsection name="4.0.1">
         <p class="smallinfo">Release Date: 3 August 2017</p>
         <ul>
@@ -68,7 +81,7 @@
         <p class="smallinfo">Release Date: 2 August 2017</p>
         <ul>
           <li>
-            Upgrade feeds plugin to be CMS 12 compatible. The changes to the plugin (rather than the demo) are basically
+            Upgrade to be CMS 12 compatible. The changes to the plugin (rather than the demo) are basically
             limited to converting the XML-based bootstrap resources to YAML format.
           </li>
         </ul>

@@ -3,7 +3,7 @@
   "-//Apache Software Foundation//DTD XDOC 1.0//EN"
   "http://maven.apache.org/dtd/xdoc_1_0.dtd">
 <!--
-  Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2009-2019 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the  "License");
   you may not use this file except in compliance with the License.
@@ -25,17 +25,11 @@
     <section name="Introduction">
       <subsection name="What is the Feed Creator?">
         <p>
-          <b>Feed Creator</b>
-          was previously known as the RSS Feed Creator Project
-        </p>
-        <p>
-          <b>Feed Creator</b>
-          is an addon for Hippo CMS that lets you create
-          <a href="http://cyber.law.harvard.edu/rss/rss.html">RSS feeds</a>,
-          <a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">ATOM feeds</a>
-          and  provides an API which enables you to create your own web syndications
-          with the CMS. You can create as many feeds as you like, and for each
-          feed you can setup filters to determine which documents to include.
+          <b>Feed Creator</b> is a plugin for Bloomreach Experience Manager, f.k.a. Hippo CMS, that lets you create
+          <a href="http://cyber.law.harvard.edu/rss/rss.html">RSS feeds</a> and
+          <a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">ATOM feeds</a>. It provides
+          an API that enables you to create your own web syndications with the CMS, using documents. You can create as
+          many feeds as you like, and for each feed you can setup filters to determine which documents to include.
         </p>
       </subsection>
       <subsection name="Code base on GitHub">
