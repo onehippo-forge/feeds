@@ -66,61 +66,50 @@
           <p>You can find the correct version of the plugin for your project in the table on the <a href="release-notes.html">Release Notes page</a>.</p>
         </li>
         <li>
-          <p>Add to the pom.xml of your <i>cms</i> module (cms/pom.xml):
+          <p>Add to the pom.xml of your <i>cms dependencies</i> module module (cms-dependencies/pom.xml):
           </p>
-          <div class="brush: xml">
           <source><![CDATA[
 <dependency>
-  <groupId>org.onehippo.forge</groupId>
-  <artifactId>feed-cms-addon</artifactId>
-  <version>${forge.feed.version}</version>
+  <groupId>org.bloomreach.forge.feed</groupId>
+  <artifactId>feed-repository</artifactId>
+  <version>${bloomreach.forge.feed.version}</version>
 </dependency>]]></source>
-          </div>
+          <p>Note: before version 5.0.0, the artifact's coordinates were <code>org.onehippo.forge:feed-cms-addon</code></p>
         </li>
         <li>
           <p>Add to the pom.xml of your <i>site</i> module (site/pom.xml):</p>
-          <div class="brush: xml">
           <source><![CDATA[
 <dependency>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.feed</groupId>
   <artifactId>feed-hst</artifactId>
-  <version>${forge.feed.version}</version>
+  <version>${bloomreach.forge.feed.version}</version>
   <type>jar</type>
-</dependency>
-
-<dependency>
-  <groupId>rome</groupId>
-  <artifactId>rome</artifactId>
-  <version>1.0</version>
 </dependency>]]></source>
-          </div>
+          <p>Note: before version 5.0.0, the artifact's coordinates were <code>org.onehippo.forge:feed-hst</code></p>
         </li>
         <li>
           <p>In your <i>site</i> module, check in the <i>src/main/webapp/WEB-INF/web.xml</i> the context-parameter 'hst-annotated-bean'.
-            It should have an entry for scanning bean classes for the forge like "classpath*:org/onehippo/forge/**/*.class". If it is not present, add it.</p>
-          <div class="brush: xml">
+            It should have an entry for scanning bean classes for the forge like "classpath*:org/bloomreach/forge/**/*.class". If it is not present, add it.</p>
           <source><![CDATA[<context-param>
   <param-name>hst-beans-annotated-classes</param-name>
   <param-value>classpath*:org/example/**/*.class
       ,classpath*:org/onehippo/**/*.class
       ,classpath*:com/onehippo/**/*.class
-      ,classpath*:org/onehippo/forge/**/*.class
+      ,classpath*:org/bloomreach/forge/**/*.class
   </param-value>
 </context-param>]]></source>
-          </div>
         </li>
-        <p>In your <i>site</i> module also create <i>/src/main/resources/META-INF/hst-assembly/overrides/feed-rest-services.xml</i> that contains:
+        <p>In your <i>site</i> module also create <i>/src/main/resources/META-INF/hst-assembly/overrides/feed-rest-services.xml</i>
+          that contains:
         </p>
-        <div class="brush: xml">
         <source><![CDATA[
         <?xml version="1.0" encoding="UTF-8"?>
         <beans xmlns="http://www.springframework.org/schema/beans"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
-          <import resource="classpath:/org/onehippo/forge/feed/site/jaxrs/feed-rest-services.xml"/>
+          <import resource="classpath:/org/bloomreach/forge/feed/site/jaxrs/feed-rest-services.xml"/>
        </beans>
         ]]></source>
-        </div>
         <li>
           <p>
             Rebuild your project using Maven.

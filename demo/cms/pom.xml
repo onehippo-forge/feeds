@@ -16,8 +16,8 @@
   <dependencies>
 
     <dependency>
-      <groupId>org.onehippo.forge</groupId>
-      <artifactId>feed-cms-addon</artifactId>
+      <groupId>org.bloomreach.forge.feed</groupId>
+      <artifactId>feed-repository</artifactId>
     </dependency>
 
     <dependency>

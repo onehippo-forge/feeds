@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2019 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -22,10 +22,8 @@
     <version>30.4.0</version>
   </parent>
 
-
   <name>Bloomreach Forge Feed Creator</name>
-  <description>Bloomreach Forge Feed Creator</description>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.feed</groupId>
   <artifactId>feed</artifactId>
   <version>5.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -49,8 +47,8 @@
   <inceptionYear>2013</inceptionYear>
 
   <organization>
-    <name>Hippo</name>
-    <url>https://www.onehippo.com</url>
+    <name>Bloomreach</name>
+    <url>https://www.bloomreach.com</url>
   </organization>
 
   <scm>
@@ -124,8 +122,8 @@
   </repositories>
 
   <modules>
-    <module>feed-cms-addon</module>
-    <module>feed-hst</module>
+    <module>repository</module>
+    <module>hst</module>
   </modules>
 
   <build>

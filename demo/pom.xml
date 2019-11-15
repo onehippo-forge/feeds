@@ -53,7 +53,7 @@
   <!-- End of emptied/overridden metadata from parent hippo-cms7-release pom. -->
 
   <properties>
-    <forge.feed.version>${project.version}</forge.feed.version>
+    <bloomreach.forge.feed.version>${project.version}</bloomreach.forge.feed.version>
 
     <taglibs.version>1.2.1</taglibs.version>
     <commons.lang.version>2.6</commons.lang.version>
@@ -81,15 +81,15 @@
     <dependencies>
 
       <dependency>
-        <groupId>org.onehippo.forge</groupId>
-        <artifactId>feed-cms-addon</artifactId>
-        <version>${forge.feed.version}</version>
+        <groupId>org.bloomreach.forge.feed</groupId>
+        <artifactId>feed-repository</artifactId>
+        <version>${bloomreach.forge.feed.version}</version>
       </dependency>
 
       <dependency>
-        <groupId>org.onehippo.forge</groupId>
+        <groupId>org.bloomreach.forge.feed</groupId>
         <artifactId>feed-hst</artifactId>
-        <version>${forge.feed.version}</version>
+        <version>${bloomreach.forge.feed.version}</version>
       </dependency>
 
       <!-- other predefined runtime scope versioned dependencies -->

@@ -25,7 +25,7 @@ import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.jdom.Element;
 import org.jdom.Namespace;
-import org.onehippo.forge.feed.api.modifier.RSS20Modifier;
+import org.bloomreach.forge.feed.api.modifier.RSS20Modifier;
 
 import com.sun.syndication.feed.rss.Item;
 
