@@ -5,14 +5,14 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-release</artifactId>
-    <version>12.0.0</version>
+    <version>13.4.0</version>
   </parent>
 
   <name>My Hippo Project</name>
   <description>My Hippo Project</description>
   <groupId>org.example</groupId>
   <artifactId>myhippoproject</artifactId>
-  <version>4.0.1</version>
+  <version>5.0.0</version>
   <packaging>pom</packaging>
 
   <!-- 
@@ -53,7 +53,7 @@
   <!-- End of emptied/overridden metadata from parent hippo-cms7-release pom. -->
 
   <properties>
-    <forge.feed.version>${project.version}</forge.feed.version>
+    <bloomreach.forge.feed.version>${project.version}</bloomreach.forge.feed.version>
 
     <taglibs.version>1.2.1</taglibs.version>
     <commons.lang.version>2.6</commons.lang.version>
@@ -81,15 +81,15 @@
     <dependencies>
 
       <dependency>
-        <groupId>org.onehippo.forge</groupId>
-        <artifactId>feed-cms-addon</artifactId>
-        <version>${forge.feed.version}</version>
+        <groupId>org.bloomreach.forge.feed</groupId>
+        <artifactId>feed-repository</artifactId>
+        <version>${bloomreach.forge.feed.version}</version>
       </dependency>
 
       <dependency>
-        <groupId>org.onehippo.forge</groupId>
+        <groupId>org.bloomreach.forge.feed</groupId>
         <artifactId>feed-hst</artifactId>
-        <version>${forge.feed.version}</version>
+        <version>${bloomreach.forge.feed.version}</version>
       </dependency>
 
       <!-- other predefined runtime scope versioned dependencies -->

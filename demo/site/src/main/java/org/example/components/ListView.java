@@ -1,11 +1,13 @@
 package org.example.components;
 
 import org.example.componentsinfo.ListViewInfo;
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.PathUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +19,8 @@ public class ListView extends BaseComponent {
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) throws HstComponentException {
-
-       ListViewInfo info = getParametersInfo(request);
+        HstRequestContext requestContext = RequestContextProvider.get();
+       ListViewInfo info = getComponentParametersInfo(request);
        HippoBean scopeBean = null;
 
        String scope = info.getScope();
@@ -26,7 +28,7 @@ public class ListView extends BaseComponent {
            throw new HstComponentException("Scope is not allowed to be null for a List component. Cannot create a list");
        }
 
-       scopeBean = getSiteContentBaseBean(request);
+       scopeBean = requestContext.getSiteContentBaseBean();
        if("".equals(scope) || "/".equals(scope)) {
            // the scope is the root content bean of this site, scopeBean is already ok.
        } else {

@@ -8,6 +8,7 @@ import org.example.componentsinfo.PageableListInfo;
 
 import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.component.support.bean.BaseHstComponent;
+import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
@@ -15,6 +16,7 @@ import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
+import org.hippoecm.hst.core.request.HstRequestContext;
 import org.hippoecm.hst.util.SearchInputParsingUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,9 @@ public abstract class BaseComponent extends BaseHstComponent {
         if(scope == null) {
             throw new HstComponentException("Scope is not allowed to be null for a search");
         }
+
+        HstRequestContext requestContext = RequestContextProvider.get();
+
         int pageSize = info.getPageSize();
         if(pageSize == 0) {
             log.warn("Empty pageSize or set to null. This is not a valid size. Use default size");
@@ -55,14 +60,14 @@ public abstract class BaseComponent extends BaseHstComponent {
         }
 
         @SuppressWarnings("rawtypes")
-        Class filterClass = getObjectConverter().getAnnotatedClassFor(docType);
+        Class filterClass = requestContext.getObjectConverter().getAnnotatedClassFor(docType);
         if(filterClass == null) {
             throw new HstComponentException("There is no bean for docType '"+docType+"'. Cannot use '"+docType+"' as in this search");
         }
 
         try {
             @SuppressWarnings("unchecked")
-            HstQuery hstQuery = getQueryManager(request).createQuery(scope, filterClass, true);
+            HstQuery hstQuery = requestContext.getQueryManager().createQuery(scope, filterClass, true);
             hstQuery.setLimit(pageSize);
             hstQuery.setOffset(pageSize * (crPage - 1));
             if(sortBy != null && !"".equals(sortBy)) {

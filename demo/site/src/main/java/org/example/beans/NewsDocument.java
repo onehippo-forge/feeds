@@ -5,12 +5,13 @@ import java.util.Calendar;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSetBean;
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
-import org.onehippo.forge.feed.api.FeedType;
-import org.onehippo.forge.feed.api.annot.SyndicationElement;
-import org.onehippo.forge.feed.api.annot.SyndicationRefs;
-import org.onehippo.forge.feed.api.transform.CalendarToDateConverter;
-import org.onehippo.forge.feed.api.transform.atom.StringToContentConverter;
-import org.onehippo.forge.feed.api.transform.rss.HippoHtmlToDescriptionTransformer;
+
+import org.bloomreach.forge.feed.api.FeedType;
+import org.bloomreach.forge.feed.api.annot.SyndicationElement;
+import org.bloomreach.forge.feed.api.annot.SyndicationRefs;
+import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
+import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
+import org.bloomreach.forge.feed.api.transform.rss.HippoHtmlToDescriptionTransformer;
 
 @Node(jcrType = "myhippoproject:newsdocument")
 public class NewsDocument extends BaseDocument {

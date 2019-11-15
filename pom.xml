@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2017 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2019 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,38 +19,36 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>29</version>
+    <version>30.4.0</version>
   </parent>
 
-
   <name>Bloomreach Forge Feed Creator</name>
-  <description>Bloomreach Forge Feed Creator</description>
-  <groupId>org.onehippo.forge</groupId>
+  <groupId>org.bloomreach.forge.feed</groupId>
   <artifactId>feed</artifactId>
-  <version>4.0.1</version>
+  <version>5.0.0</version>
   <packaging>pom</packaging>
 
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
     <notice.project.name>Bloomreach Forge Feed Creator</notice.project.name>
-    <hippo-hst-version>5.0.0</hippo-hst-version>
-    <hippo.repository.version>5.0.0</hippo.repository.version>
-
-    <plugin.site.version>3.6</plugin.site.version>
-    <plugin.source.version>2.2.1</plugin.source.version>
-    <plugin.compiler.version>3.1</plugin.compiler.version>
-    <plugin.jar.version>2.4</plugin.jar.version>
-    <plugin.surefire.version>2.16</plugin.surefire.version>
-    <plugin.jxr.version>2.2</plugin.jxr.version>
+    <hippo.hst.version>13.4.0</hippo.hst.version>
+    <hippo.repository.version>13.4.0</hippo.repository.version>
 
     <rome.version>1.0</rome.version>
+
+    <maven.plugin.site.version>3.7</maven.plugin.site.version>
+    <maven.plugin.source.version>2.2.1</maven.plugin.source.version>
+    <maven.plugin.compiler.version>3.1</maven.plugin.compiler.version>
+    <maven.plugin.jar.version>2.4</maven.plugin.jar.version>
+    <maven.plugin.surefire.version>2.16</maven.plugin.surefire.version>
+    <maven.plugin.jxr.version>3.0.0</maven.plugin.jxr.version>
   </properties>
 
   <inceptionYear>2013</inceptionYear>
 
   <organization>
-    <name>Hippo</name>
-    <url>https://www.onehippo.com</url>
+    <name>Bloomreach</name>
+    <url>https://www.bloomreach.com</url>
   </organization>
 
   <scm>
@@ -86,13 +84,13 @@
       <dependency>
         <groupId>org.onehippo.cms7.hst</groupId>
         <artifactId>hst-api</artifactId>
-        <version>${hippo-hst-version}</version>
+        <version>${hippo.hst.version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.onehippo.cms7.hst.components</groupId>
         <artifactId>hst-jaxrs</artifactId>
-        <version>${hippo-hst-version}</version>
+        <version>${hippo.hst.version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
@@ -115,17 +113,11 @@
       </releases>
       <layout>default</layout>
     </repository>
-    <repository>
-      <id>hippo-maven2-forge</id>
-      <name>Hippo Maven 2 Forge repository</name>
-      <url>http://maven.onehippo.com/maven2-forge/</url>
-      <snapshots />
-    </repository>
   </repositories>
 
   <modules>
-    <module>feed-cms-addon</module>
-    <module>feed-hst</module>
+    <module>repository</module>
+    <module>hst</module>
   </modules>
 
   <build>
@@ -134,15 +126,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>${plugin.site.version}</version>
-        <configuration>
-          <outputDirectory>docs</outputDirectory>
-        </configuration>
+        <version>${maven.plugin.site.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${plugin.source.version}</version>
+        <version>${maven.plugin.source.version}</version>
         <inherited>true</inherited>
         <executions>
           <execution>
@@ -156,12 +145,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${plugin.compiler.version}</version>
+        <version>${maven.plugin.compiler.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>${plugin.jar.version}</version>
+        <version>${maven.plugin.jar.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -177,7 +166,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>${plugin.surefire.version}</version>
+          <version>${maven.plugin.surefire.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -191,7 +180,6 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven.plugin.javadoc.version}</version>
         <configuration>
-          <aggregate>true</aggregate>
           <source>1.8</source>
           <links>
             <link>http://download.oracle.com/javase/6/docs/api</link>
@@ -201,7 +189,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>${plugin.jxr.version}</version>
+        <version>${maven.plugin.jxr.version}</version>
         <reportSets>
           <reportSet>
             <id>src-xref</id>
@@ -217,7 +205,23 @@
     </plugins>
   </reporting>
 
-  <contributors />
-  <mailingLists />
+  <profiles>
+    <profile>
+      <!-- For generating/publishing GitHub Site Pages into /docs/ folder on master branch only -->
+      <id>github.pages</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>${maven.plugin.site.version}</version>
+            <configuration>
+              <outputDirectory>docs</outputDirectory>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>

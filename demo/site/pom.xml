@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.example</groupId>
     <artifactId>myhippoproject</artifactId>
-    <version>4.0.1</version>
+    <version>5.0.0</version>
   </parent>
 
   <name>My Hippo Project site</name>
@@ -14,22 +14,9 @@
   <packaging>war</packaging>
 
   <dependencies>
-
     <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-server-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-spring-dependencies</artifactId>
-      <type>pom</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.dependencies</groupId>
-      <artifactId>hst-client-dependencies</artifactId>
+      <groupId>org.onehippo.cms7</groupId>
+      <artifactId>hippo-package-site-dependencies</artifactId>
       <type>pom</type>
     </dependency>
 
@@ -59,29 +46,8 @@
     </dependency>
 
     <dependency>
-      <groupId>org.onehippo.cms7.hst.client-modules</groupId>
-      <artifactId>hst-cms-rest</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.client-modules</groupId>
-      <artifactId>hst-page-composer</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.components</groupId>
-      <artifactId>hst-security</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.forge</groupId>
+      <groupId>org.bloomreach.forge.feed</groupId>
       <artifactId>feed-hst</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>rome</groupId>
-      <artifactId>rome</artifactId>
-      <version>1.0</version>
     </dependency>
   </dependencies>
 
