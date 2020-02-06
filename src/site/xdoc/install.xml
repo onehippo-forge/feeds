@@ -101,6 +101,18 @@
         ]]></source>
         <li>
           <p>
+            When running a version 12 or later, make sure your project bootstraps after `hippo-forge` group.
+            Typically, add it in file `repository-data/application/src/main/resources/hcm-module.yaml`:
+          </p>
+          <pre>
+            group:
+            name:
+            your-group-name
+            after: [hippo-cms, hippo-forge]
+          </pre>
+        </li>
+        <li>
+          <p>
             Rebuild your project using Maven.
           </p>
         </li>
