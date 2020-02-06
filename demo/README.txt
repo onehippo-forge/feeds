@@ -1,60 +1,38 @@
-Running locally
+Running Locally
 ===============
 
-This project uses the Maven Cargo plugin to run the CMS and site locally in Tomcat.
+This project uses the Maven Cargo plugin to run Essentials, the CMS and site locally in Tomcat.
 From the project root folder, execute:
 
-  $ mvn clean install
-  $ mvn -P cargo.run
+    mvn clean verify
+    mvn -P cargo.run
 
-Access the CMS at http://localhost:8080/cms, and the site at http://localhost:8080/site
-Logs are located in target/tomcat6x/logs
+By default this includes and bootstraps repository data from the repository-data/development module,
+which is deployed by cargo to the Tomcat shared/lib.
+If you want or need to start *without* bootstrapping the development data, for example when testing
+against an existing repository, you can specify the *additional* Maven profile without-development-data to do so:
 
-Building distribution
-=====================
+    mvn -P cargo.run,without-development-data
 
-To build a Tomcat distribution tarball containing only deployable artifacts:
+This additional profile will modify the target location for the development module to the Tomcat temp/ folder so that
+it won't be seen and picked up during the repository bootstrap process.
 
-  $ mvn clean install
-  $ mvn -P dist
+Access the Bloomreach setup application at <http://localhost:8080/essentials>.
+After your project is set up, access the CMS at <http://localhost:8080/cms> and the site at <http://localhost:8080/feedsdemo>.
+Logs are located in target/tomcat9x/logs
 
-See also src/main/assembly/distribution.xml if you need to customize the distribution
 
-Using JRebel
-============
+Best Practice for Development
+=============================
 
-Set the environment variable REBEL_HOME to the directory containing jrebel.jar.
+Use the option `-Drepo.path=/some/path/to/repository` during start up. This will avoid
+your repository to be cleared when you do a mvn clean.
 
-Build with:
+For example start your project with:
 
-  $ mvn clean install -Djrebel
+    mvn -P cargo.run -Drepo.path=/home/usr/tmp/repo
 
-Start with:
 
-  $ mvn -P cargo.run -Djrebel
-
-Best Practice for development
-============
-
-Use the option -Drepo.path=/some/path/to/repository during start up. This will avoid
-your repository to be cleared when you do a mvn clean. 
-
-For example start your project with: 
-
-$ mvn -P cargo.run -Drepo.path=/home/usr/tmp/repo
-
-or with jrebel:
-
-$ mvn -P cargo.run -Drepo.path=/home/usr/tmp/repo -Djrebel
-
-Hot deploy
-==========
-
-To hot deploy, redeploy or undeploy the CMS or site:
-
-  $ cd cms (or site)
-  $ mvn cargo:redeploy (or cargo:undeploy, or cargo:deploy)
-  
 Automatic Export
 ================
 
@@ -116,14 +94,33 @@ To run the image with in-memory h2 database:
     mvn -Pdocker.run
 
 
-Changes to your repository are automatically exported to filesystem during local development, to disable this feature, 
-log into the console and press "disable auto export".
+Running with an embedded MySQL database. To create & run environment containing builtin MySQL DB just run:
 
-Monitoring with JMX Console
-===========================
-You may run the following command:
+    mvn -Pdocker.run,docker.mysql
 
-  $ jconsole 
- 
-Now open the local process org.apache.catalina.startyp.Bootstrap start
-  
+As a result, default db credentials will be used (admin/admin) and DB name will be the same as project's artifactId (e.g. myproject)
+
+Running with an embedded PostgreSQL database. To create & run environment containing builtin PostgreSQL DB just run:
+
+    mvn -Pdocker.run,docker.postgres
+
+As a result, default db credentials will be used (admin/admin) and DB name will be the same as project's artifactId (e.g. myproject)
+
+To run the image with an external mysql database, add the provided database name, username and password below to the properties
+section of your project's pom.xml:
+
+    <docker.db.host>DATABASE_HOSTNAME</docker.db.host>
+    <docker.db.port>DATABASE_PORT</docker.db.port>
+    <docker.db.schema>DATABASE_NAME</docker.db.schema>
+    <docker.db.username>DATABASE_USERNAME</docker.db.username>
+    <docker.db.password>DATABASE_PASSWORD</docker.db.password>
+
+Then run:
+
+    mvn -Pdocker.run,mysql
+
+To run the image with an external postgresql database, add the same db properties as above, then run:
+
+    mvn -Pdocker.run,postgres
+
+After running the docker image, application logs will be shown on the terminal window.

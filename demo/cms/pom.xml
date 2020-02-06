@@ -1,82 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>org.example</groupId>
     <artifactId>feedsdemo</artifactId>
     <version>5.0.1-SNAPSHOT</version>
   </parent>
-
-  <name>My Hippo Project CMS</name>
-  <description>My Hippo Project CMS</description>
-  <artifactId>myhippoproject-cms</artifactId>
+  <artifactId>feedsdemo-cms</artifactId>
   <packaging>war</packaging>
-
+  <name>feedsdemo CMS</name>
+  <description>feedsdemo CMS</description>
   <dependencies>
-
     <dependency>
-      <groupId>org.bloomreach.forge.feed</groupId>
-      <artifactId>feed-repository</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-package-cms-dependencies</artifactId>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>feedsdemo-cms-dependencies</artifactId>
+      <version>${project.version}</version>
       <type>pom</type>
     </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.toolkit-resources.addon.toolkit-cnd</groupId>
-      <artifactId>hst-addon-cnd</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.toolkit-resources.addon</groupId>
-      <artifactId>hst-addon-repository</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7.hst.toolkit-resources.addon</groupId>
-      <artifactId>hst-addon-hcm-site</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.example</groupId>
-      <artifactId>myhippoproject-content</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-
-    <!--  Gallery picker dependency -->
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-plugin-gallerypicker</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-plugin-resourcebundle-editor</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-plugin-selections-addon-cms</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-plugin-selections-addon-repository</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.onehippo.cms7</groupId>
-      <artifactId>hippo-essentials-components-cms</artifactId>
-    </dependency>
-
   </dependencies>
-
   <build>
     <finalName>cms</finalName>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <archive>
@@ -100,23 +46,6 @@
           </container>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>com.googlecode.mavenfilesync</groupId>
-        <artifactId>maven-filesync-plugin</artifactId>
-        <configuration>
-          <mappings>
-            <mapping>
-              <sourceFolder>src/main/resources</sourceFolder>
-              <destinationFolder>@../target/tomcat${cargo.tomcat.major.version}x/webapps/cms/WEB-INF/classes</destinationFolder>
-            </mapping>
-            <mapping>
-              <sourceFolder>src/main/webapp</sourceFolder>
-              <destinationFolder>@../target/tomcat${cargo.tomcat.major.version}x/webapps/cms</destinationFolder>
-            </mapping>
-          </mappings>
-        </configuration>
-      </plugin>
-
       <plugin>
         <groupId>org.onehippo.cms.l10n</groupId>
         <artifactId>hippo-cms-l10n-maven-plugin</artifactId>

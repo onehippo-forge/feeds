@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hst:hst/hst:configurations/myhippoproject/hst:components/leftmenu:
-      jcr:primaryType: hst:component
-      hst:componentclassname: org.example.components.LeftMenu
-      hst:template: standard.main.leftmenu

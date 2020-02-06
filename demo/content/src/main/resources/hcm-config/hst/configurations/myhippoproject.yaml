@@ -1,4 +1,0 @@
-definitions:
-  config:
-    /hst:hst/hst:configurations/myhippoproject:
-      jcr:primaryType: hst:configuration
