@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,9 +49,6 @@ import org.bloomreach.forge.feed.util.ConversionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id: RssFeedResource.java 9 2013-04-08 08:29:25Z ksalic $"
- */
 @Produces({MediaType.APPLICATION_XML})
 @Path("/feed:rss20descriptor/")  //todo: include exclude path
 public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
@@ -72,7 +69,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
             HstRequestContext requestContext = getRequestContext(request);
             HippoDocumentBean contentBean = getRequestContentBean(requestContext, HippoDocumentBean.class);
 
-            if (contentBean == null || !(contentBean instanceof FeedDescriptor)) {
+            if (!(contentBean instanceof FeedDescriptor)) {
                 log.error("Cannot find feed descriptor. Check relative content path on feed's sitemap item.");
                 return null;
             }
@@ -89,7 +86,7 @@ public class AbstractSyndicationResource<T, E> extends AbstractContentResource {
             // get scope for search query
             HippoBean scopeBean = getMountContentBaseBean(requestContext);
             String scope = document.getScope();
-            if (scope != null && !"".equals(scope)) {
+            if (scope != null && !scope.isEmpty()) {
                 HippoBean folderBean = scopeBean.getBean(scope);
                 if (folderBean != null) {
                     scopeBean = folderBean;
