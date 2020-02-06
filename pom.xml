@@ -1,5 +1,5 @@
 <!--
-    Copyright 2009-2019 Hippo B.V. (http://www.onehippo.com)
+    Copyright 2009-2020 Hippo B.V. (http://www.onehippo.com)
 
     Licensed under the Apache License, Version 2.0 (the  "License");
     you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.onehippo.cms7</groupId>
     <artifactId>hippo-cms7-project</artifactId>
-    <version>30.4.0</version>
+    <version>31.0.0</version>
   </parent>
 
   <name>Bloomreach Forge Feed Creator</name>
@@ -31,7 +31,7 @@
   <properties>
     <!-- use root project name for all project modules NOTICE files, should be the same as in the root NOTICE file -->
     <notice.project.name>Bloomreach Forge Feed Creator</notice.project.name>
-    <hippo.hst.version>13.4.0</hippo.hst.version>
+    <hippo.hst.version>14.0.0</hippo.hst.version>
     <hippo.repository.version>13.4.0</hippo.repository.version>
 
     <rome.version>1.0</rome.version>

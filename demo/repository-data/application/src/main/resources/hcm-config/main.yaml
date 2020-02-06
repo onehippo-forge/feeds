@@ -1,0 +1,5 @@
+definitions:
+  namespace:
+    feedsdemo:
+      uri: http://www.feedsdemo.com/feedsdemo/nt/1.0
+      cnd: namespaces/feedsdemo.cnd
