@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Item;
+import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.rss.Item;
 
-/**
- * @version "$Id: RssFeedResource.java 9 2013-04-08 08:29:25Z ksalic $"
- */
+
 @Produces({MediaType.APPLICATION_XML})
 @Path("/feed:rss20descriptor/")
 public class RssSyndicationResource extends AbstractSyndicationResource<Channel, Item> {

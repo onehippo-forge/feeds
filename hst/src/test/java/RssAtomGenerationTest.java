@@ -24,11 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.io.WireFeedOutput;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
@@ -44,9 +39,12 @@ import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.WireFeedOutput;
+
 public class RssAtomGenerationTest {
 
     private static Logger log = LoggerFactory.getLogger(RssAtomGenerationTest.class);
@@ -70,7 +68,7 @@ public class RssAtomGenerationTest {
         Writer writer = new StringWriter();
         WireFeedOutput output = new WireFeedOutput();
         output.output(channel, writer);
-        System.out.println(writer.toString());
+        log.info(writer.toString());
 
         final SyndFeedImpl syndFeed = new SyndFeedImpl(channel, true);
 
@@ -78,7 +76,7 @@ public class RssAtomGenerationTest {
         SyndFeedOutput syndFeedOutput = new SyndFeedOutput();
         syndFeedOutput.output(syndFeed, writer1);
 
-        System.out.println(writer1.toString());
+        log.info(writer1.toString());
 
     }
 
@@ -242,7 +240,6 @@ public class RssAtomGenerationTest {
                     BeanUtils.setProperty(destination, name, value);
                 } catch (Exception e) {
                     log.error("test", e);
-                    e.printStackTrace();
                 }
 
             }
@@ -251,7 +248,7 @@ public class RssAtomGenerationTest {
     }
 
 
-    public static List<Method> getSyndicationElementsOfType(Class clazz, FeedType type) {
+    public static List<Method> getSyndicationElementsOfType(Class<?> clazz, FeedType type) {
         List<Method> methodList = new ArrayList<Method>();
         final Method[] methods = clazz.getMethods();
         for (Method method : methods) {

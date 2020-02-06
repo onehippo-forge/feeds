@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,17 +23,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndEntryImpl;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedOutput;
-
-import org.apache.commons.io.IOUtils;
-import org.hippoecm.hst.content.beans.Node;
-import org.hippoecm.hst.content.beans.standard.HippoDocument;
-import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.bloomreach.forge.feed.api.FeedDescriptor;
 import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.SyndicationElement;
@@ -42,8 +31,18 @@ import org.bloomreach.forge.feed.api.transform.DocumentLinkResolver;
 import org.bloomreach.forge.feed.api.transform.gen.AuthorListToSyndPersonListConverter;
 import org.bloomreach.forge.feed.api.transform.gen.HippoGalleryImageSetToSyndImageTransformer;
 import org.bloomreach.forge.feed.api.transform.gen.ListToSyndCategoryListConverter;
+import org.hippoecm.hst.content.beans.Node;
+import org.hippoecm.hst.content.beans.standard.HippoDocument;
+import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndEntryImpl;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedOutput;
 
 @Node(jcrType = "feed:genericdescriptor")
 public class GenericFeedDescriptor extends HippoDocument implements FeedDescriptor<SyndFeed, SyndEntry> {

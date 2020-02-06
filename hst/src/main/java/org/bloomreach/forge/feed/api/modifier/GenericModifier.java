@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,17 @@
 
 package org.bloomreach.forge.feed.api.modifier;
 
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
 
+import org.bloomreach.forge.feed.beans.GenericFeedDescriptor;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.bloomreach.forge.feed.beans.GenericFeedDescriptor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndFeed;
+
+
 public class GenericModifier implements Modifier<SyndFeed, SyndEntry, GenericFeedDescriptor> {
-
-    private static Logger log = LoggerFactory.getLogger(GenericModifier.class);
 
 
     @Override

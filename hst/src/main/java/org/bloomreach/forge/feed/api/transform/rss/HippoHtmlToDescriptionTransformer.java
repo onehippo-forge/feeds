@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 package org.bloomreach.forge.feed.api.transform.rss;
 
-import com.sun.syndication.feed.rss.Description;
+
 
 import org.hippoecm.hst.content.beans.standard.HippoHtml;
 import org.hippoecm.hst.content.rewriter.ContentRewriter;
@@ -27,12 +27,12 @@ import org.bloomreach.forge.feed.api.annot.ContextTransformable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.rss.Description;
+
+
 public class HippoHtmlToDescriptionTransformer {
 
-    private static Logger log = LoggerFactory.getLogger(HippoHtmlToDescriptionTransformer.class);
+    private static final Logger log = LoggerFactory.getLogger(HippoHtmlToDescriptionTransformer.class);
 
     @ContextTransformable
     public Description transform(HippoHtml html, AbstractResource resource, HstRequestContext context) {
@@ -42,8 +42,10 @@ public class HippoHtmlToDescriptionTransformer {
             contentRewriter = new SimpleContentRewriter();
             contentRewriter.setFullyQualifiedLinks(true);
         }
-        String rewrittenHtml = contentRewriter.rewrite(html.getContent(), html.getNode(), context);
-        description.setValue(rewrittenHtml);
+        if (html != null) {
+            String rewrittenHtml = contentRewriter.rewrite(html.getContent(), html.getNode(), context);
+            description.setValue(rewrittenHtml);
+        }
         return description;
 
     }

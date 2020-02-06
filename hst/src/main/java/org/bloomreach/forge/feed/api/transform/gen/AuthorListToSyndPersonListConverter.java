@@ -19,19 +19,16 @@ package org.bloomreach.forge.feed.api.transform.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndPerson;
-import com.sun.syndication.feed.synd.SyndPersonImpl;
 
 import org.bloomreach.forge.feed.api.transform.Converter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
-public class AuthorListToSyndPersonListConverter implements Converter<List<String>, List<SyndPerson>> {
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
 
-    private static Logger log = LoggerFactory.getLogger(AuthorListToSyndPersonListConverter.class);
+
+public class AuthorListToSyndPersonListConverter implements Converter<List<String>, List<SyndPerson>> {
 
 
     @Override

@@ -24,13 +24,16 @@ import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSetBean;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.jdom.Element;
-import org.jdom.Namespace;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
 
-import com.sun.syndication.feed.rss.Item;
+
+import com.rometools.rome.feed.rss.Item;
+
+
 
 public class ImageModifier extends RSS20Modifier {
-    @SuppressWarnings({"rawtypes", "unchecked"})
+
     @Override
     public void modifyEntry(final HstRequestContext context, final Item entry, final HippoBean bean) {
         super.modifyEntry(context, entry, bean);
@@ -41,7 +44,7 @@ public class ImageModifier extends RSS20Modifier {
                 if (hstLink != null) {
                     final Element element = new Element("image", Namespace.getNamespace("image", "http://web.resource.org/rss/1.0/modules/image/"));
                     element.addContent(hstLink.toUrlForm(context, true));
-                    final List foreignMarkup = (List) entry.getForeignMarkup();
+                    final List<Element> foreignMarkup = entry.getForeignMarkup();
                     foreignMarkup.add(element);
                 }
             }

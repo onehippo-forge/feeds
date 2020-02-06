@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,16 @@
 
 package org.bloomreach.forge.feed.api.modifier;
 
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
 
+import org.bloomreach.forge.feed.beans.Atom10FeedDescriptor;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.bloomreach.forge.feed.beans.Atom10FeedDescriptor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+
 public class Atom10Modifier implements Modifier<Feed, Entry, Atom10FeedDescriptor> {
-
-    private static Logger log = LoggerFactory.getLogger(Atom10Modifier.class);
 
 
     @Override

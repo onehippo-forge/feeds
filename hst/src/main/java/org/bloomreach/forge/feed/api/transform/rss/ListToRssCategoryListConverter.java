@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,11 @@ package org.bloomreach.forge.feed.api.transform.rss;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.syndication.feed.rss.Category;
-
 import org.bloomreach.forge.feed.api.transform.Converter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.rss.Category;
+
 public class ListToRssCategoryListConverter implements Converter<List, List<Category>> {
-
-    private static Logger log = LoggerFactory.getLogger(ListToRssCategoryListConverter.class);
-
 
     @Override
     public List<Category> convert(final List k) {
