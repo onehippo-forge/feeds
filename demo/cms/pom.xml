@@ -4,7 +4,7 @@
 
   <parent>
     <groupId>org.example</groupId>
-    <artifactId>myhippoproject</artifactId>
+    <artifactId>feedsdemo</artifactId>
     <version>5.0.1-SNAPSHOT</version>
   </parent>
 

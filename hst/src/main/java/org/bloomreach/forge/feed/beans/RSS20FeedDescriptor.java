@@ -137,24 +137,17 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @Override
     public String process(final Channel syndication) {
-        Writer writer = null;
+
         String feed = null;
-        try {
-            writer = new StringWriter();
+        try (final Writer writer =new StringWriter()){
             WireFeedOutput output = new WireFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
         } catch (FeedException | IOException e) {
-            log.error("", e);
-        } finally {
-            IOUtils.closeQuietly(writer);
+            log.error("Error processing feed channel", e);
         }
         return feed;
     }
-
-    /**
-     * right side
-     */
 
 
     public String getScope() {

@@ -138,17 +138,13 @@ public class GenericFeedDescriptor extends HippoDocument implements FeedDescript
 
     @Override
     public String process(final SyndFeed syndication) {
-        Writer writer = null;
         String feed = null;
-        try {
-            writer = new StringWriter();
+        try (final Writer writer = new StringWriter()) {
             SyndFeedOutput output = new SyndFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
         } catch (FeedException | IOException e) {
-            log.error("", e);
-        } finally {
-            IOUtils.closeQuietly(writer);
+            log.error("Error processing SyndFeed", e);
         }
         return feed;
     }

@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.example</groupId>
     <artifactId>feedsdemo</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>5.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>feedsdemo-cms-dependencies</artifactId>
   <packaging>pom</packaging>
@@ -13,6 +13,11 @@
   <description>feedsdemo CMS Dependencies</description>
   <dependencies>
 
+    <dependency>
+      <groupId>org.bloomreach.forge.feed</groupId>
+      <artifactId>feed-repository</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.example</groupId>
       <artifactId>feedsdemo-repository-data-application</artifactId>
