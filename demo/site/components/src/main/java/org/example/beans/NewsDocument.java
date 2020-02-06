@@ -16,6 +16,12 @@ package org.example.beans;
  */
 import java.util.Calendar;
 
+import org.bloomreach.forge.feed.api.FeedType;
+import org.bloomreach.forge.feed.api.annot.SyndicationElement;
+import org.bloomreach.forge.feed.api.annot.SyndicationRefs;
+import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
+import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
+import org.bloomreach.forge.feed.api.transform.rss.HippoHtmlToDescriptionTransformer;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoDocument;
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
@@ -45,6 +51,10 @@ public class NewsDocument extends HippoDocument {
      *
      * @return the title
      */
+    @SyndicationRefs({
+            @SyndicationElement(type = FeedType.RSS, name = "title"),
+            @SyndicationElement(type = FeedType.ATOM, name = "title", converter = StringToContentConverter.class)
+    })
     @HippoEssentialsGenerated(internalName = "feedsdemo:title")
     public String getTitle() {
         return getSingleProperty(TITLE);
@@ -55,6 +65,7 @@ public class NewsDocument extends HippoDocument {
      *
      * @return the date
      */
+    @SyndicationElement(type = FeedType.RSS, name = "pubDate", converter = CalendarToDateConverter.class)
     @HippoEssentialsGenerated(internalName = "feedsdemo:date")
     public Calendar getDate() {
         return getSingleProperty(DATE);
@@ -65,6 +76,7 @@ public class NewsDocument extends HippoDocument {
      *
      * @return the introduction
      */
+    @SyndicationElement(type = FeedType.RSS, name = "description", transformer = HippoHtmlToDescriptionTransformer.class)
     @HippoEssentialsGenerated(internalName = "feedsdemo:introduction")
     public String getIntroduction() {
         return getSingleProperty(INTRODUCTION);
