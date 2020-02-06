@@ -1,0 +1,48 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:translations/hippo:types/feedsdemo:newsdocument:
+      jcr:primaryType: hipposys:resourcebundles
+      /en:
+        jcr:primaryType: hipposys:resourcebundle
+        feedsdemo:author: Author
+        feedsdemo:content: Content
+        feedsdemo:date: Date
+        feedsdemo:image: Image
+        feedsdemo:introduction: Introduction
+        feedsdemo:location: Location
+        feedsdemo:source: Source
+        feedsdemo:title: Title
+        jcr:name: News Item
+      /nl:
+        jcr:primaryType: hipposys:resourcebundle
+        feedsdemo:author: Auteur
+        feedsdemo:content: Inhoud
+        feedsdemo:date: Datum
+        feedsdemo:image: Afbeelding
+        feedsdemo:introduction: Introductie
+        feedsdemo:location: Locatie
+        feedsdemo:source: Bron
+        feedsdemo:title: Titel
+        jcr:name: Nieuwsbericht
+      /de:
+        jcr:primaryType: hipposys:resourcebundle
+        feedsdemo:author: Verfasser
+        feedsdemo:content: Inhalt
+        feedsdemo:date: Datum
+        feedsdemo:image: Abbildung
+        feedsdemo:introduction: Einführung
+        feedsdemo:location: Standort
+        feedsdemo:source: Quelle
+        feedsdemo:title: Titel
+        jcr:name: News
+      /fr:
+        jcr:primaryType: hipposys:resourcebundle
+        feedsdemo:author: Auteur
+        feedsdemo:content: Contenu
+        feedsdemo:date: Date
+        feedsdemo:image: Image
+        feedsdemo:introduction: Introduction
+        feedsdemo:location: Lieu
+        feedsdemo:source: Source
+        feedsdemo:title: Titre
+        jcr:name: Message d'info
