@@ -15,3 +15,10 @@ definitions:
           jcr:primaryType: hst:sitemapitem
           hst:componentconfigurationid: hst:pages/newslist
           hst:relativecontentpath: ${parent}/${1}
+      /feed:
+        jcr:primaryType: hst:sitemapitem
+        hst:relativecontentpath: feeds
+        /_any_.xml:
+          jcr:primaryType: hst:sitemapitem
+          hst:relativecontentpath: ${parent}/${1}
+          hst:namedpipeline: JaxrsRestFeedPipeline
