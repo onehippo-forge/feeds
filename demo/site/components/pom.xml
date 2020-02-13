@@ -16,7 +16,7 @@
     <dependency>
       <groupId>org.bloomreach.forge.feed</groupId>
       <artifactId>feed-hst</artifactId>
-      <version>${project.version}</version>
+      <version>${bloomreach.forge.feed.version}</version>
     </dependency>
 
     <dependency>

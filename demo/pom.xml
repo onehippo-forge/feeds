@@ -59,7 +59,7 @@
   <!-- End of emptied/overridden metadata from parent hippo-cms7-release pom. -->
 
   <properties>
-
+    <bloomreach.forge.feed.version>${project.version}</bloomreach.forge.feed.version>
     <!--***START temporary override of versions*** -->
     <!-- ***END temporary override of versions*** -->
 
@@ -88,6 +88,13 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.bloomreach.forge.feed</groupId>
+        <artifactId>feed-repository</artifactId>
+        <version>${bloomreach.forge.feed.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
