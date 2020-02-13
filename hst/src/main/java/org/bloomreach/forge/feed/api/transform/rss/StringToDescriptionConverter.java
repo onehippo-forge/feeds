@@ -16,7 +16,6 @@
 
 package org.bloomreach.forge.feed.api.transform.rss;
 
-
 import org.bloomreach.forge.feed.api.transform.Converter;
 
 import com.rometools.rome.feed.rss.Description;

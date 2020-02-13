@@ -19,20 +19,15 @@ package org.bloomreach.forge.feed.api.transform.atom;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.core.linking.HstLink;
 import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.bloomreach.forge.feed.api.annot.ContextTransformable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.atom.Link;
 
-
 public class DocumentAtomLinkResolver {
-
 
     @ContextTransformable
     public List<Link> getHstLink(HstRequestContext context, HippoBean document) {

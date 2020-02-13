@@ -16,7 +16,6 @@
 
 package org.bloomreach.forge.feed.api.transform.gen;
 
-
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;

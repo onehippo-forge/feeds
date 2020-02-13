@@ -16,19 +16,14 @@
 
 package org.bloomreach.forge.feed.api.transform.rss;
 
-
 import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.hippoecm.hst.core.linking.HstLinkCreator;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.bloomreach.forge.feed.api.annot.ContextTransformable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.rss.Image;
 
-
 public class HippoGalleryImageSetToImageTransformer {
-
 
     @ContextTransformable
     public Image getImage(HstRequestContext context, HippoGalleryImageSet imageSet) {

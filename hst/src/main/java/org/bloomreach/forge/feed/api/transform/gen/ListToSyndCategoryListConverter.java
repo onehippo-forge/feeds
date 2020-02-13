@@ -26,7 +26,6 @@ import com.rometools.rome.feed.synd.SyndCategoryImpl;
 
 public class ListToSyndCategoryListConverter implements Converter<List<String>, List<SyndCategory>> {
 
-
     @Override
     public List<SyndCategory> convert(final List<String> k) {
         List<SyndCategory> categories = new ArrayList<>();

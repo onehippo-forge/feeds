@@ -20,15 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bloomreach.forge.feed.api.transform.Converter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.atom.Person;
 
 public class AuthorListToPersonListConverter implements Converter<List<String>, List<Person>> {
-
-    private static Logger log = LoggerFactory.getLogger(AuthorListToPersonListConverter.class);
-
 
     @Override
     public List<Person> convert(final List<String> authors) {

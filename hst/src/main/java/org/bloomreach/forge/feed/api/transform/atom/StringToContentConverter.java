@@ -16,16 +16,12 @@
 
 package org.bloomreach.forge.feed.api.transform.atom;
 
-
 import org.bloomreach.forge.feed.api.transform.Converter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.rometools.rome.feed.atom.Content;
 
-/**
- * @version "$Id$"
- */
 public class StringToContentConverter implements Converter<String, Content> {
 
     private static Logger log = LoggerFactory.getLogger(StringToContentConverter.class);

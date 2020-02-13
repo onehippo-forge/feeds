@@ -25,7 +25,6 @@ import com.rometools.rome.feed.atom.Category;
 
 public class ListToAtomCategoryListConverter implements Converter<List<String>, List<Category>> {
 
-
     @Override
     public List<Category> convert(final List<String> k) {
         List<Category> categories = new ArrayList<>();
