@@ -38,7 +38,7 @@ definitions:
         feed:documentType: Document type(s)
         feed:excludeItems: Excluded items
         feed:excludeItems#hint: Comma separated string for excluded document type(s)
-          ( including mixins )
+          (including mixins)
         feed:language: Language
         feed:sortByField: Sort by field
         feed:title: Title
@@ -52,7 +52,7 @@ definitions:
         feed:documentType: Documenttype
         feed:excludeItems: Uitzonderingen
         feed:excludeItems#hint: Een door komma's gescheiden string die de uitgezonderde
-          documenttypes bevat ( inclusief mixins )
+          documenttypes bevat (inclusief mixins)
         feed:language: Taal
         feed:sortByField: Sorteren op veld
         feed:title: Titel
@@ -75,7 +75,7 @@ definitions:
         feed:title: Title
         feed:webMaster: Webmaster
         folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac: Folder
-        jcr:name: RSS2.0 feed
+        jcr:name: RSS 2.0 feed
       /nl:
         jcr:primaryType: hipposys:resourcebundle
         feed:description: Beschrijving
@@ -89,4 +89,4 @@ definitions:
         feed:title: Titel
         feed:webMaster: Webmaster
         folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac: Map
-        jcr:name: RSS2.0 feed
+        jcr:name: RSS 2.0 feed
