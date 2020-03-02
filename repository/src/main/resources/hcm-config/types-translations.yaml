@@ -4,32 +4,33 @@ definitions:
       jcr:primaryType: hipposys:resourcebundles
       /en:
         jcr:primaryType: hipposys:resourcebundle
-        description-570a3e79-b0b1-42c3-b8bd-2ff6b72261c9: Description
+        feed:author: Author
+        feed:category: Category
         feed:documentType: Document type(s)
+        feed:documentType#hint: Comma separated string for document type(s).
         feed:excludeItems: Excluded items
-        feed:excludeItems#hint: Comma separated string for excluded document type(s)
-          ( including mixins )
+        feed:excludeItems#hint: Comma separated string for excluded document type(s) (including mixins)
+        feed:itemCount: Item count
         feed:sortByField: Sort by field
         feed:title: Title
-        folder-0a3bb721-4b2d-4626-b099-fec6ec1b05a1: Folder
+        feed:subtitle: Subtitle
+        feed:rights: Rights
         jcr:name: Atom 1.0 feed
-        language-910a09eb-8ede-41ff-8480-90c5072845b8: Language
-        managingEditor-de6d59bb-408a-4619-91e0-837537c11788: Managing editor e-mail
-        webMaster-9ff4d162-0087-4efc-a680-50c0890a3c98: Webmaster
       /nl:
         jcr:primaryType: hipposys:resourcebundle
-        description-570a3e79-b0b1-42c3-b8bd-2ff6b72261c9: Beschrijving
-        feed:documentType: Documenttype
+        feed:author: Auteur
+        feed:category: Category
+        feed:documentType: Documenttype(s)
+        feed:documentType#hint: Een door komma's gescheiden string voor de documenttypes
         feed:excludeItems: Uitzonderingen
         feed:excludeItems#hint: Een door komma's gescheiden string die de uitgezonderde
-          documenttypes bevat ( inclusief mixins )
+          documenttypes bevat (inclusief mixins)
+        feed:itemCount: Aantal items
         feed:sortByField: Sorteren op veld
         feed:title: Titel
-        folder-0a3bb721-4b2d-4626-b099-fec6ec1b05a1: Map
+        feed:subtitle: Ondertitel
+        feed:rights: Rechten
         jcr:name: Atom 1.0 feed
-        language-910a09eb-8ede-41ff-8480-90c5072845b8: Taal
-        managingEditor-de6d59bb-408a-4619-91e0-837537c11788: Managing editor e-mail
-        webMaster-9ff4d162-0087-4efc-a680-50c0890a3c98: Webmaster
     /hippo:configuration/hippo:translations/hippo:types/feed:genericdescriptor:
       jcr:primaryType: hipposys:resourcebundles
       /en:
@@ -42,10 +43,7 @@ definitions:
         feed:language: Language
         feed:sortByField: Sort by field
         feed:title: Title
-        folder-4eeb931b-ef24-4c01-ad6b-87add9778802: Folder
         jcr:name: Generic feed
-        managingEditor-17f28139-f6e1-4561-97a5-11bcafdb025b: Managing editor e-mail
-        webMaster-7cf43312-9c0a-456d-8ba2-2ca75a5060dd: Webmaster
       /nl:
         jcr:primaryType: hipposys:resourcebundle
         feed:description: Beschrijving
@@ -56,37 +54,38 @@ definitions:
         feed:language: Taal
         feed:sortByField: Sorteren op veld
         feed:title: Titel
-        folder-4eeb931b-ef24-4c01-ad6b-87add9778802: Map
         jcr:name: Generieke feed
-        managingEditor-17f28139-f6e1-4561-97a5-11bcafdb025b: Managing editor e-mail
-        webMaster-7cf43312-9c0a-456d-8ba2-2ca75a5060dd: Webmaster
     /hippo:configuration/hippo:translations/hippo:types/feed:rss20descriptor:
       jcr:primaryType: hipposys:resourcebundles
       /en:
         jcr:primaryType: hipposys:resourcebundle
+        feed:category: Category
         feed:description: Description
         feed:documentType: Document type(s)
+        feed:documentType#hint: Comma separated string for document type(s).
         feed:excludeItems: Excluded items
         feed:excludeItems#hint: Comma separated string for excluded document type(s)
-          ( including mixins )
+          (including mixins)
+        feed:itemCount: Item count
         feed:language: Language
         feed:managingEditor: Managing editor e-mail
         feed:sortByField: Sort by field
         feed:title: Title
         feed:webMaster: Webmaster
-        folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac: Folder
         jcr:name: RSS 2.0 feed
       /nl:
         jcr:primaryType: hipposys:resourcebundle
+        feed:category: Categorie
         feed:description: Beschrijving
         feed:documentType: Documenttype
+        feed:documentType#hint: Een door komma's gescheiden string voor de documenttypes
         feed:excludeItems: Uitzonderingen
         feed:excludeItems#hint: Een door komma's gescheiden string die de uitgezonderde
-          documenttypes bevat ( inclusief mixins )
+          documenttypes bevat (inclusief mixins)
+        feed:itemCount: Aantal items
         feed:language: Taal
         feed:managingEditor: Managing editor e-mail
         feed:sortByField: Sorteren op veld
         feed:title: Titel
         feed:webMaster: Webmaster
-        folder-3affb65c-cf39-438e-b606-d8fe6b3fa1ac: Map
         jcr:name: RSS 2.0 feed
