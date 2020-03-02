@@ -1,7 +1,0 @@
-group:
- name: hippo-forge
- after: hippo-cms
-project: feeds
-module:
- name: demo
- after: repository

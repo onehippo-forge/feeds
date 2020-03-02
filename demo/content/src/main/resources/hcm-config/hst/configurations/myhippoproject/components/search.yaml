@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hst:hst/hst:configurations/myhippoproject/hst:components/search:
-      jcr:primaryType: hst:component
-      hst:componentclassname: org.example.components.Search
-      hst:template: search.main.content

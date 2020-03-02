@@ -1,6 +1,0 @@
-definitions:
-  config:
-    /hst:hst/hst:configurations/myhippoproject/hst:components/header:
-      jcr:primaryType: hst:component
-      hst:componentclassname: org.example.components.Header
-      hst:template: standard.header
