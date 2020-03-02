@@ -44,7 +44,7 @@
 
         <p>
           <a href="screenshots/feed-doc1.png">
-            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="800"/>
           </a>
         </p>
 
@@ -56,7 +56,7 @@
           While you still have the Document open add query parameters on the right side of your document. Such as; document type, limit, etc etc.
           <br/>
           <a href="screenshots/feed-doc1.png">
-            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="700"/>
+            <img src="screenshots/feed-doc1.png" alt="Screenshot 'Add new document'" width="800"/>
           </a>
         </p>
 
@@ -70,13 +70,13 @@
         </p>
           <p>
               <a href="screenshots/hst-sitemap-demo.png">
-                  <img src="screenshots/hst-sitemap-demo.png" alt="feed sitemap item example" width="700"/>
+                  <img src="screenshots/hst-sitemap-demo.png" alt="feed sitemap item example" width="800"/>
               </a>
           </p>
 
         <p>
             <a href="screenshots/feed-sitemap.png">
-                <img src="screenshots/feed-sitemap.png" alt="feed sitemap item example detail" width="700"/>
+                <img src="screenshots/feed-sitemap.png" alt="feed sitemap item example detail" width="800"/>
             </a>
         </p>
 
@@ -90,7 +90,7 @@
 
         <p>
           <a href="screenshots/feed-doc2.png">
-            <img src="screenshots/feed-doc2.png" alt="Screenshot 'Add link'" width="700"/>
+            <img src="screenshots/feed-doc2.png" alt="Screenshot 'Add link'" width="800"/>
           </a>
         </p>
 
@@ -108,7 +108,7 @@
 
         <p>
           <a href="screenshots/feed-doc3.png">
-            <img src="screenshots/feed-doc3.png" alt="RSS feed example" width="700"/>
+            <img src="screenshots/feed-doc3.png" alt="RSS feed example" width="800"/>
           </a>
         </p>
 
@@ -129,7 +129,7 @@
 
         <p>
           <a href="screenshots/feed-doc4.png">
-            <img src="screenshots/feed-doc4.png" alt="Bean customization" width="700"/>
+            <img src="screenshots/feed-doc4.png" alt="Bean customization" width="800"/>
           </a>
         </p>
 
@@ -137,7 +137,7 @@
           This will result in the following:
           <br/>
           <a href="screenshots/feed-doc5.png">
-            <img src="screenshots/feed-doc5.png" alt="Bean customization" width="700"/>
+            <img src="screenshots/feed-doc5.png" alt="Bean customization" width="800"/>
           </a>
         </p>
 
@@ -145,7 +145,7 @@
           Example of an Atom feed with the annotations:
           <br/>
           <a href="screenshots/feed-doc6.png">
-            <img src="screenshots/feed-doc6.png" alt="Bean customization" width="700"/>
+            <img src="screenshots/feed-doc6.png" alt="Bean customization" width="800"/>
           </a>
         </p>
 
