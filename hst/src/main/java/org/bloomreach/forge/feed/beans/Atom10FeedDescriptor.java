@@ -54,7 +54,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
      * required /recommended
      */
 
-    @SyndicationElement(type = FeedType.ATOM, name = "title", converter = StringToContentConverter.class)
+    @SyndicationElement(type = FeedType.ATOM, name = "title")
     public String getTitle() {
         return getSingleProperty("feed:title");
     }
