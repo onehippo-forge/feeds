@@ -1,6 +1,6 @@
 package org.example.beans;
 /*
- * Copyright 2014-2019 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2014-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.SyndicationElement;
 import org.bloomreach.forge.feed.api.annot.SyndicationRefs;
 import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
-import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
 import org.bloomreach.forge.feed.api.transform.rss.HippoHtmlToDescriptionTransformer;
 import org.hippoecm.hst.content.beans.Node;
 import org.hippoecm.hst.content.beans.standard.HippoDocument;
@@ -53,7 +52,7 @@ public class NewsDocument extends HippoDocument {
      */
     @SyndicationRefs({
             @SyndicationElement(type = FeedType.RSS, name = "title"),
-            @SyndicationElement(type = FeedType.ATOM, name = "title", converter = StringToContentConverter.class)
+            @SyndicationElement(type = FeedType.ATOM, name = "title")
     })
     @HippoEssentialsGenerated(internalName = "feedsdemo:title")
     public String getTitle() {
