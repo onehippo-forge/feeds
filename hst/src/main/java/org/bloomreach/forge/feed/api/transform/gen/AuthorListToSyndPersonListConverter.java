@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,13 @@ package org.bloomreach.forge.feed.api.transform.gen;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndPerson;
-import com.sun.syndication.feed.synd.SyndPersonImpl;
 
 import org.bloomreach.forge.feed.api.transform.Converter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.synd.SyndPerson;
+import com.rometools.rome.feed.synd.SyndPersonImpl;
+
 public class AuthorListToSyndPersonListConverter implements Converter<List<String>, List<SyndPerson>> {
-
-    private static Logger log = LoggerFactory.getLogger(AuthorListToSyndPersonListConverter.class);
-
 
     @Override
     public List<SyndPerson> convert(final List<String> authors) {

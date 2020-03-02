@@ -1,0 +1,7 @@
+group: 
+  name: feedsdemo
+  after: hippo-cms
+project: feedsdemo
+module: 
+  name: feedsdemo-repository-data-development
+  after: feedsdemo-repository-data-application

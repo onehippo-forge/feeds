@@ -1,0 +1,5 @@
+group: 
+  name: feedsdemo
+project: feedsdemo
+module:
+  name: feedsdemo-repository-data-webfiles

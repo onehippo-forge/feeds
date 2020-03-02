@@ -1,0 +1,6 @@
+site: feedsdemo
+group: feedsdemo
+project: feedsdemo
+module:
+  name: feedsdemo-repository-data-site-development
+  after: feedsdemo-repository-data-site

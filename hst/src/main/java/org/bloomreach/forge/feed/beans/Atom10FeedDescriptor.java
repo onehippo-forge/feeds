@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,28 +23,27 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import com.sun.syndication.feed.atom.Entry;
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.WireFeedOutput;
-
-import org.apache.commons.io.IOUtils;
-import org.hippoecm.hst.content.beans.Node;
-import org.hippoecm.hst.content.beans.standard.HippoDocument;
-import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.bloomreach.forge.feed.api.FeedDescriptor;
 import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.SyndicationElement;
-import org.bloomreach.forge.feed.api.transform.atom.DocumentAtomLinkResolver;
-import org.bloomreach.forge.feed.api.transform.atom.ListToAtomCategoryListConverter;
-import org.bloomreach.forge.feed.api.transform.atom.AuthorListToPersonListConverter;
 import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
 import org.bloomreach.forge.feed.api.transform.DocumentLinkResolver;
 import org.bloomreach.forge.feed.api.transform.PathLinkResolver;
+import org.bloomreach.forge.feed.api.transform.atom.AuthorListToPersonListConverter;
+import org.bloomreach.forge.feed.api.transform.atom.DocumentAtomLinkResolver;
+import org.bloomreach.forge.feed.api.transform.atom.ListToAtomCategoryListConverter;
 import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
 import org.bloomreach.forge.feed.api.transform.atom.StringToGeneratorConverter;
+import org.hippoecm.hst.content.beans.Node;
+import org.hippoecm.hst.content.beans.standard.HippoDocument;
+import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.WireFeedOutput;
 
 @Node(jcrType = "feed:atom10descriptor")
 public class Atom10FeedDescriptor extends HippoDocument implements FeedDescriptor<Feed, Entry> {
@@ -55,7 +54,7 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
      * required /recommended
      */
 
-    @SyndicationElement(type = FeedType.ATOM, name = "title", converter = StringToContentConverter.class)
+    @SyndicationElement(type = FeedType.ATOM, name = "title")
     public String getTitle() {
         return getSingleProperty("feed:title");
     }
@@ -151,17 +150,14 @@ public class Atom10FeedDescriptor extends HippoDocument implements FeedDescripto
 
     @Override
     public String process(final Feed syndication) {
-        Writer writer = null;
+
         String feed = null;
-        try {
-            writer = new StringWriter();
+        try (final Writer writer = new StringWriter()) {
             WireFeedOutput output = new WireFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
         } catch (FeedException | IOException e) {
-            log.error("", e);
-        } finally {
-            IOUtils.closeQuietly(writer);
+            log.error("Error processing feed", e);
         }
         return feed;
     }

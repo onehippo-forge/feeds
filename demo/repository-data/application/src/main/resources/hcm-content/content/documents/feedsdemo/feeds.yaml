@@ -1,0 +1,208 @@
+/content/documents/feedsdemo/feeds:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippotranslation:translated', 'mix:versionable']
+  jcr:uuid: efae083e-3991-4e55-82c1-3dfc2d38cc16
+  hippostd:foldertype: [new-translated-folder, new-document]
+  hippotranslation:id: 4bf25746-fc47-4c35-ac1f-d1c9da5e20c7
+  hippotranslation:locale: en
+  /rss:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 532873a9-92b3-4735-910f-5a2be8fecc77
+    hippo:versionHistory: 88af95ba-c22a-4861-bf41-d67408523e3e
+    /rss[1]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: df8ed711-f88e-40d5-81d8-f00ecf2d8a4d
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: Our RSS feed
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: ''
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:title: News RSS feed
+      feed:webMaster: ''
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:08:21.512+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:09:03.368+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /rss[2]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 5841b768-30f4-4bb9-b5c2-d7f0c88c0812
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: Our RSS feed
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: ''
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:title: News RSS feed
+      feed:webMaster: ''
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:08:21.512+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:08:22.920+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /rss[3]:
+      jcr:primaryType: feed:rss20descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 3fbcf110-cf13-403d-97e4-dfe7356a6357
+      feed:category: ['']
+      feed:copyright: ''
+      feed:description: Our RSS feed
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: ''
+      feed:itemCount: 10
+      feed:language: ''
+      feed:managingEditor: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:title: News RSS feed
+      feed:webMaster: ''
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:08:21.512+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:09:03.368+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2020-02-06T15:09:06.478+01:00
+      /feed:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+  /atom:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 604fc2ba-0011-4e2f-8960-c9ba82f5c5d1
+    hippo:versionHistory: f0ab0bd6-373a-4341-9fd7-28f80f81d6c6
+    /atom[1]:
+      jcr:primaryType: feed:atom10descriptor
+      jcr:mixinTypes: ['mix:versionable']
+      jcr:uuid: 93ff90fb-6790-492e-adf3-2c36e55cc849
+      feed:author: [Atom]
+      feed:category: [test]
+      feed:contributor: [Atom]
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: Atom
+      feed:itemCount: 10
+      feed:rights: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:subtitle: Sub
+      feed:title: Atom news
+      hippo:availability: [preview]
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:12:40.571+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:13:59.403+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      /feed:icon:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /feed:logo:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /atom[2]:
+      jcr:primaryType: feed:atom10descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: ae51d55f-2841-4ea1-b991-9853788f814b
+      feed:author: [Atom]
+      feed:category: [test]
+      feed:contributor: [Atom]
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: Atom
+      feed:itemCount: 10
+      feed:rights: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:subtitle: Sub
+      feed:title: Atom news
+      hippo:availability: []
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:12:40.571+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:13:42.489+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      /feed:icon:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /feed:logo:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+    /atom[3]:
+      jcr:primaryType: feed:atom10descriptor
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 1117e8b7-5165-461a-9539-339756f15247
+      feed:author: [Atom]
+      feed:category: [test]
+      feed:contributor: [Atom]
+      feed:documentType: feedsdemo:newsdocument
+      feed:excludeItems: ''
+      feed:generator: Atom
+      feed:itemCount: 10
+      feed:rights: ''
+      feed:scope: ''
+      feed:sortByField: ''
+      feed:subtitle: Sub
+      feed:title: Atom news
+      hippo:availability: [live]
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2020-02-06T15:12:40.571+01:00
+      hippostdpubwf:lastModificationDate: 2020-02-06T15:13:59.403+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2020-02-06T15:14:01.763+01:00
+      /feed:icon:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /feed:logo:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []

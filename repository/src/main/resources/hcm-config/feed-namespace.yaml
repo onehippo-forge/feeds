@@ -227,8 +227,7 @@ definitions:
               jcr:primaryType: frontend:plugin
               engine: ${engine}
               field: excludeItems
-              hint: Comma separated string for excluded document type(s) ( including
-                mixins )
+              hint: Comma separated string for excluded document type(s) (including mixins)
               mode: ${mode}
               plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
               translator.id: ${cluster.id}.translator
@@ -483,8 +482,7 @@ definitions:
               jcr:primaryType: frontend:plugin
               engine: ${engine}
               field: excludeItems
-              hint: Comma separated string for excluded document type(s) ( including
-                mixins )
+              hint: Comma separated string for excluded document type(s) (including mixins)
               mode: ${mode}
               plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
               translator.id: ${cluster.id}.translator
@@ -725,7 +723,6 @@ definitions:
               jcr:primaryType: frontend:plugin
               engine: ${engine}
               field: documentType
-              hint: Comma separated string for document type(s).
               mode: ${mode}
               plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
               template.size: ''
@@ -736,8 +733,6 @@ definitions:
               jcr:primaryType: frontend:plugin
               engine: ${engine}
               field: excludeItems
-              hint: Comma separated string for excluded document type(s) ( including
-                mixins )
               mode: ${mode}
               plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
               translator.id: ${cluster.id}.translator

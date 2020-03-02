@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2014 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import java.io.StringWriter;
+package org.bloomreach.forge.feed;import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -24,13 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.synd.SyndFeedImpl;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.io.WireFeedOutput;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.bloomreach.forge.feed.beans.Atom10FeedDescriptor;
 import org.junit.Test;
 import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.ContextTransformable;
@@ -44,12 +40,15 @@ import org.bloomreach.forge.feed.api.transform.atom.StringToContentConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @version "$Id$"
- */
+import com.rometools.rome.feed.atom.Feed;
+import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.synd.SyndFeedImpl;
+import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.io.WireFeedOutput;
+
 public class RssAtomGenerationTest {
 
-    private static Logger log = LoggerFactory.getLogger(RssAtomGenerationTest.class);
+    private static final Logger log = LoggerFactory.getLogger(RssAtomGenerationTest.class);
 
     @Test
     public void testRssChannelGeneration() throws Exception {
@@ -70,7 +69,7 @@ public class RssAtomGenerationTest {
         Writer writer = new StringWriter();
         WireFeedOutput output = new WireFeedOutput();
         output.output(channel, writer);
-        System.out.println(writer.toString());
+        log.info(writer.toString());
 
         final SyndFeedImpl syndFeed = new SyndFeedImpl(channel, true);
 
@@ -78,7 +77,7 @@ public class RssAtomGenerationTest {
         SyndFeedOutput syndFeedOutput = new SyndFeedOutput();
         syndFeedOutput.output(syndFeed, writer1);
 
-        System.out.println(writer1.toString());
+        log.info(writer1.toString());
 
     }
 
@@ -86,69 +85,19 @@ public class RssAtomGenerationTest {
     @Test
     public void testReflectionUtils() throws Exception {
         TestBean bean = new TestBean();
-        final Channel channel = convertObject(new Channel(), bean, FeedType.RSS, new Integer(23324324));
-        final Feed feed = convertObject(new Feed(), bean, FeedType.ATOM, new Integer(23324324));
+        final Channel channel = convertObject(new Channel(), bean, FeedType.RSS, 23324324);
+        final Feed ourFeed = new Feed();
+        final Feed feed = convertObject(ourFeed, bean, FeedType.ATOM, 23324324);
+        feed.setFeedType("atom_1.0");
+        log.info("feed {}", feed);
         final String title = channel.getTitle();
-
+        final Writer writer = new StringWriter();
+        final Atom10FeedDescriptor syndFeedOutput = new Atom10FeedDescriptor();
+        log.info(syndFeedOutput.process(feed));
     }
 
-//    public static <T> T convertObject(final T destination, final Object source, FeedType type, Object... context) {
-//        Map<Class, Object> contentMap = new HashMap<Class, Object>();
-//        for (Object o : context) {
-//            contentMap.put(o.getClass(), o);
-//        }
-//        final Method[] methods = source.getClass().getMethods();
-//        for (Method method : methods) {
-//            if (method.isAnnotationPresent(SyndicationElement.class) && method.getAnnotation(SyndicationElement.class).type().equals(type)) {
-//                final SyndicationElement annotation = method.getAnnotation(SyndicationElement.class);
-//                final String name = annotation.name();
-//                try {
-//                    final Object initValue = method.invoke(source);
-//                    Object value = null;
-//                    if (!(annotation.converter().isAssignableFrom(NoopConverter.class))) {
-//                        final Converter converter = annotation.converter().newInstance();
-//                        value = converter.convert(initValue);
-//                    }
-//                    if (!(annotation.transformer().isAssignableFrom(NoopTransformer.class))) {
-//                        contentMap.put(initValue.getClass(), initValue);
-//                        final Class<?> transformer = annotation.transformer();
-//                        final Method[] transformerMethods = transformer.getMethods();
-//                        for (Method transformerMethod : transformerMethods) {
-//                            if (transformerMethod.isAnnotationPresent(ContextTransformable.class)) {
-//                                final Class<?>[] parameterTypes = transformerMethod.getParameterTypes();
-//                                List<Object> parameters = new ArrayList<Object>();
-//                                for (Class clazz : parameterTypes) {
-//                                    if (contentMap.containsKey(clazz)) {
-//                                        parameters.add(contentMap.get(clazz));
-//                                    } else {
-//                                        parameters.add(null);
-//                                    }
-//                                }
-//                                final Object tranformInstance = transformer.newInstance();
-//                                value = transformerMethod.invoke(tranformInstance, parameters.toArray());
-//                            }
-//                        }
-//
-//                    }
-//                    BeanUtils.setProperty(destination, name, value);
-//                } catch (Exception e) {
-//                    log.error("test", e);
-//                    e.printStackTrace();
-//                /* catch (InvocationTargetException e) {
-//                    log.error("", e);
-//                } catch (InstantiationException e) {
-//                    log.error("", e);
-//                } catch (IllegalAccessException e) {
-//                    log.error("", e);
-//                }*/
-//                }
-//
-//            }
-//        }
-//        return destination;
-//    }
 
-    public class TestBean {
+    public static class TestBean {
 
         @SyndicationRefs({
                 @SyndicationElement(type = FeedType.RSS, name = "title"),
@@ -157,11 +106,6 @@ public class RssAtomGenerationTest {
         public String getTitle() {
             return "testtitle";
         }
-
-//        @SyndicationElement(type = FeedType.RSS, name = "description")
-//        public String getDescription() {
-//            return "testdescription";
-//        }
 
 
         @SyndicationElement(type = FeedType.RSS, name = "pubDate", transformer = CalendarToDateTransformer.class)
@@ -172,7 +116,7 @@ public class RssAtomGenerationTest {
     }
 
     public static <T> T convertObject(final T destination, final Object source, FeedType type, Object... context) {
-        Map<Class, Object> contentMap = new HashMap<Class, Object>();
+        Map<Class, Object> contentMap = new HashMap<>();
         for (Object o : context) {
             contentMap.put(o.getClass(), o);
         }
@@ -212,7 +156,7 @@ public class RssAtomGenerationTest {
                             if (transformerMethod.isAnnotationPresent(ContextTransformable.class)) {
                                 final Class<?>[] parameterTypes = transformerMethod.getParameterTypes();
                                 List<Object> parameters = new ArrayList<Object>();
-                                for (Class clazz : parameterTypes) {
+                                for (Class<?> clazz : parameterTypes) {
                                     if (contentMap.containsKey(clazz)) {
                                         parameters.add(contentMap.get(clazz));
                                     } else {
@@ -242,7 +186,6 @@ public class RssAtomGenerationTest {
                     BeanUtils.setProperty(destination, name, value);
                 } catch (Exception e) {
                     log.error("test", e);
-                    e.printStackTrace();
                 }
 
             }
@@ -251,22 +194,5 @@ public class RssAtomGenerationTest {
     }
 
 
-    public static List<Method> getSyndicationElementsOfType(Class clazz, FeedType type) {
-        List<Method> methodList = new ArrayList<Method>();
-        final Method[] methods = clazz.getMethods();
-        for (Method method : methods) {
-            if (method.isAnnotationPresent(SyndicationElement.class) && method.getAnnotation(SyndicationElement.class).type().equals(type)) {
-                methodList.add(method);
-            }
-        }
-        return methodList;
-    }
-//    public class TestTransformer {
-//
-//        @ContextTransformable
-//        public String getDesriptionFromString(Integer s) {
-//            return String.valueOf(s);
-//        }
-//
-//    }
+
 }

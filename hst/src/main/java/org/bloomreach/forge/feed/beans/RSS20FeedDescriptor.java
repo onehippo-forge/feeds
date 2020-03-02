@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2017 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2013-2020 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,24 +23,23 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-import com.sun.syndication.feed.rss.Channel;
-import com.sun.syndication.feed.rss.Item;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.WireFeedOutput;
-
-import org.apache.commons.io.IOUtils;
-import org.hippoecm.hst.content.beans.Node;
-import org.hippoecm.hst.content.beans.standard.HippoDocument;
-import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.bloomreach.forge.feed.api.FeedDescriptor;
 import org.bloomreach.forge.feed.api.FeedType;
 import org.bloomreach.forge.feed.api.annot.SyndicationElement;
-import org.bloomreach.forge.feed.api.transform.rss.ListToRssCategoryListConverter;
 import org.bloomreach.forge.feed.api.transform.CalendarToDateConverter;
-import org.bloomreach.forge.feed.api.transform.rss.HippoGalleryImageSetToImageTransformer;
 import org.bloomreach.forge.feed.api.transform.PathLinkResolver;
+import org.bloomreach.forge.feed.api.transform.rss.HippoGalleryImageSetToImageTransformer;
+import org.bloomreach.forge.feed.api.transform.rss.ListToRssCategoryListConverter;
+import org.hippoecm.hst.content.beans.Node;
+import org.hippoecm.hst.content.beans.standard.HippoDocument;
+import org.hippoecm.hst.content.beans.standard.HippoGalleryImageSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.rss.Item;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.WireFeedOutput;
 
 @Node(jcrType = "feed:rss20descriptor")
 public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor<Channel, Item> {
@@ -137,24 +136,17 @@ public class RSS20FeedDescriptor extends HippoDocument implements FeedDescriptor
 
     @Override
     public String process(final Channel syndication) {
-        Writer writer = null;
+
         String feed = null;
-        try {
-            writer = new StringWriter();
+        try (final Writer writer = new StringWriter()) {
             WireFeedOutput output = new WireFeedOutput();
             output.output(syndication, writer);
             feed = writer.toString();
         } catch (FeedException | IOException e) {
-            log.error("", e);
-        } finally {
-            IOUtils.closeQuietly(writer);
+            log.error("Error processing feed channel", e);
         }
         return feed;
     }
-
-    /**
-     * right side
-     */
 
 
     public String getScope() {

@@ -1,0 +1,8 @@
+/content/documents/feedsdemo:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippo:named', 'hippotranslation:translated', 'mix:referenceable']
+  jcr:uuid: a481500f-8459-413e-867e-9d09ef4d9807
+  hippo:name: feedsdemo
+  hippostd:foldertype: [new-translated-folder, new-document]
+  hippotranslation:id: 996bcac5-86cf-49b5-a7a3-16a74863e814
+  hippotranslation:locale: en

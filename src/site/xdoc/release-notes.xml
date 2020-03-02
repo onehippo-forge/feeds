@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-    Copyright 2017-2019 Hippo
+    Copyright 2017-2020 Hippo
 
     Licensed under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
@@ -26,15 +26,19 @@
           <th>
             Plugin Version
           </th>
-          <th>oomreach Experience Manager Version
+          <th>Bloomreach Experience Manager
           </th>
         </tr>
         <tr>
-          <td>5.x.y</td>
+          <td>6.x</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>5.x</td>
           <td>13</td>
         </tr>
         <tr>
-          <td>4.x.y</td>
+          <td>4.x</td>
           <td>12</td>
         </tr>
         <tr>
@@ -56,6 +60,19 @@
       </table>
     </section>
     <section name="Release Notes">
+      <subsection name="6.0.0">
+        <p class="smallinfo">Release Date: 2 March 2020</p>
+        <ul>
+         <li>
+           <a href='https://issues.onehippo.com/browse/HIPFORGE-335'>HIPFORGE-335</a><br/>
+           Upgrade to Bloomreach Experience Manager 14.
+         </li>
+          <li>
+            Upgrade the Rome library dependency version from 1.0 to 1.12.0.
+            Package names changed from <strong>com.sun.syndication</strong> to <strong>com.rometools</strong>.
+          </li>
+        </ul>
+      </subsection>
       <subsection name="5.0.0">
         <p class="smallinfo">Release Date: 15 November 2019</p>
         <ul>
